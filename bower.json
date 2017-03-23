@@ -1,0 +1,23 @@
+{
+  "name": "project-3",
+  "description": "WDI25 Project 3",
+  "main": "server.js",
+  "authors": [
+    "alexpchin <alex@alexchin.co.uk>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.3"
+  },
+  "resolutions": {
+    "angular": "^1.6.3"
+  }
+}
