@@ -1,1 +1,23 @@
 <h1>register page</h1>
+{{register.user}}
+<form name="registerForm" enctype="multipart/form-data"> <!-- Hook up the register.createUser() from the CTRL --->
+
+<label for="username">Username</label>
+<input type="text" name="username" ng-model="register.user.username">
+
+<label for="email">Email</label>
+<input type="text" name="email" ng-model="register.user.email">
+
+<label for="location">Location</label>
+<input type="text" name="location" ng-model="register.user.location">
+
+<label for="image">Image</label>
+<input type="file" name="image" ng-model="register.user.image"> <!-- CHANGE THIS FOR IAMGEUPLAOD -->
+
+<label for="password">Password</label>
+<input type="text" name="password" ng-model="register.user.password">
+
+<label for="passwordConfirmation">PasswordConfirmation</label>
+<input type="text" name="passwordConfirmation" ng-model="register.user.passwordConfirmation">
+<button>Register</button>
+</form>

@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const userController = require('../controllers/user');
 const itemController = require('../controllers/item');
+const auth = require('../controllers/auth');
+const secureRoute = require('../lib/secureRoute');
 
 router.route('/users')
   .get(userController.index) //landing page
@@ -25,6 +27,12 @@ router.route('/item/:id/comments')
 
 router.route('/item/:id/comments/:commentId')
   .delete(itemController.deleteComment);
+
+// router.route('/register')
+//   .post(auth.register);
+//
+// router.route('/login')
+//   .post(auth.login);
 
 // catch all 404 response
 router.all('*', (req, res) => res.notFound());
