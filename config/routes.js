@@ -10,8 +10,14 @@ router.route('/users')
 
 router.route('/users/:id')
   .get(userController.show)
-  .put(userController.update)
+  .put(secureRoute, userController.update)
   .delete(userController.delete);
+
+router.route('/register')
+  .post(auth.register);
+
+router.route('/login')
+  .post(auth.login);
 
 router.route('/item')
   .get(itemController.index)
@@ -27,12 +33,6 @@ router.route('/item/:id/comments')
 
 router.route('/item/:id/comments/:commentId')
   .delete(itemController.deleteComment);
-
-// router.route('/register')
-//   .post(auth.register);
-//
-// router.route('/login')
-//   .post(auth.login);
 
 // catch all 404 response
 router.all('*', (req, res) => res.notFound());
