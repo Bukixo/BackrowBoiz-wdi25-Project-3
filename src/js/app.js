@@ -1,2 +1,2 @@
 angular
-  .module('rentApp', ['ui.router', 'ngResource', 'ui.bootstrap', 'ngAnimate']);
+  .module('rentApp', ['ui.router', 'ngResource', 'ui.bootstrap', 'ngAnimate', 'satellizer']);

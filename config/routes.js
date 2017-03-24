@@ -9,14 +9,14 @@ router.route('/users')
 
 router.route('/users/:id')
   .get(userController.show)
-  .put(secureRoute, userController.update)
+  .put(userController.update)
   .delete(userController.delete);
 
-router.route('/register')
-  .post(auth.register);
-
-router.route('/login')
-  .post(auth.login);
+// router.route('/register')
+//   .post(auth.register);
+//
+// router.route('/login')
+//   .post(auth.login);
 
 
 // catch all 404 response
