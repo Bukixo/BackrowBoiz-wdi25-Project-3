@@ -5,8 +5,8 @@ const auth = require('../controllers/auth');
 const secureRoute = require('../lib/secureRoute');
 
 router.route('/users')
-  .get(userController.index) //landing page
-  .post(userController.create);
+  .get(userController.index); //landing page
+
 
 router.route('/users/:id')
   .get(userController.show)

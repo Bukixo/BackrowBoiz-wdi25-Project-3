@@ -2,16 +2,16 @@ angular
   .module('rentApp')
   .controller('RegisterCtrl', RegisterCtrl);
 
-RegisterCtrl.$inject = ['$state', '$auth'];
-function RegisterCtrl($state, $auth){
+RegisterCtrl.$inject = ['$auth', '$state'];
+function RegisterCtrl($auth, $state){
   const vm = this;
   vm.user = {};
 
-  vm.credentials; // Is going the be the ng-model form our formdata
   function createUser(){
+    console.log('here', vm.user);
+    console.log('CreateUser exectues');
     $auth.signup(vm.user)
     .then(()=> $state.go('login'));
-    //$state.go('login');
   }
-  vm.createUser = createUser();
+  vm.createUser = createUser;
 }

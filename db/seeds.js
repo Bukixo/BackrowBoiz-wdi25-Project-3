@@ -12,14 +12,12 @@ User
   .create([{
     username: 'LLcoolJ',
     password: 'password',
-    passwordConfirmation: 'password',
     email: 'jj@jj',
     location: 'London',
     profileImage: 'cool'
   },{
     username: 'BigBadBuki',
     password: 'password',
-    passwordConfirmation: 'password', 
     email: 'buki@buki',
     location: 'London',
     profileImage: 'cool'

@@ -7,12 +7,12 @@ function indexRoute(req, res, next) {
     .catch(next);
 }
 
-function createRoute(req, res, next) {
-  User
-    .create(req.body)
-    .then((user) => res.status(201).json(user))
-    .catch(next);
-}
+// function createRoute(req, res, next) {
+//   User
+//     .create(req.body)
+//     .then((user) => res.status(201).json(user))
+//     .catch(next);
+// }
 
 function showRoute(req, res, next) {
   User
@@ -53,7 +53,7 @@ function deleteRoute(req, res, next) {
 
 module.exports = {
   index: indexRoute,
-  create: createRoute,
+//  create: createRoute,
   show: showRoute,
   update: updateRoute,
   delete: deleteRoute
