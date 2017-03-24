@@ -9,9 +9,10 @@ function LoginCtrl($auth, $state) {
   vm.credentials = {};
 
   function submit() {
-    $auth.login(vm.credentials)
+    if(vm.loginForm.$valid){
+      $auth.login(vm.credentials)
       .then(() => $state.go('itemIndex'));
-
+    }
   }
 
   vm.submit = submit;
