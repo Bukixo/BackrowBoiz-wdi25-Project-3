@@ -1,2 +1,2 @@
 angular
-  .module('nameYourAppHere', []);
+  .module('rentApp', ['ui.router', 'ngResource', 'ui.bootstrap', 'ngAnimate']);
