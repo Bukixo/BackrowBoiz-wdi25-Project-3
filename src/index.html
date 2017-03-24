@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html ng-app="rentApp">
 <head>
+  <base href="/">
   <title>Project 3</title>
   <!-- inject:js -->
   <!-- endinject -->
   <!-- inject:css -->
   <!-- endinject -->
 </head>
-<body>
+<body ng-controller="MainCtrl as main">
+  <nav>
+    <ul>
+      <li><a ui-sref="itemIndex">index</a></li>
+      <li ui-sref="itemNew">New</li>
+      <li ui-sref="itemShow">Show</li>
+      <li ui-sref="login">Login</li>
+      <li ui-sref="register">Register</li>
+    </ul>
+  </nav>
   <h1>Project 3</h1>
+  <main ui-view>
+
+  </main>
 </body>
 </html>
