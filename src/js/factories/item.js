@@ -4,7 +4,7 @@ angular
 
 Item.$inject = ['$resource'];
 function Item($resource){
-  return new $resource('api/items/:id',
+  return new $resource('api/item/:id',
   { id: '@id'},
     { update: { method: 'PUT'}
     });

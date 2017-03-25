@@ -4,7 +4,7 @@ angular
 
 Comment.$inject = ['$resource'];
 function Comment($resource){
-  return new $resource('api/items/:id/comments/:commentId', { id: '@id'},
+  return new $resource('api/item/:id/comments/:commentId', { id: '@id'},
     { update: { method: 'PUT'}
     });
 }
