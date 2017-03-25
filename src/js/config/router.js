@@ -21,7 +21,7 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
    .state('itemsShow', {
      url: '/show/:id',
      templateUrl: 'js/views/items/show.html',
-     controller: 'itemsShowCtrl as show'
+     controller: 'itemShowCtrl as show'
    })
    .state('itemEdit', {
      url: '/show/:id/edit',
