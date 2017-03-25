@@ -10,7 +10,6 @@ function MainCtrl($rootScope, $state, $auth) {
 
   vm.logout = logout;
 
-
   function logout() {
     $auth.logout(); //remove the token
     $state.go('login');
