@@ -1,7 +1,8 @@
 angular
   .module('rentApp')
-  .controller('itemsShowCtrl', itemsShowCtrl)
-  .controller('itemsEditCtrl', itemsEditCtrl);
+  .controller('itemShowCtrl', itemShowCtrl)
+  .controller('itemEditCtrl', itemEditCtrl);
+
 
 itemsShowCtrl.$inject = ['Item', '$stateParams', '$state'];
 function itemsShowCtrl(Item, $stateParams, $state){
@@ -19,8 +20,8 @@ function itemsShowCtrl(Item, $stateParams, $state){
 
 }
 
-itemsEditCtrl.$inject = ['Item', '$stateParams', '$state'];
-function itemsEditCtrl(Item, $stateParams, $state) {
+itemEditCtrl.$inject = ['Item', '$stateParams', '$state'];
+function itemEditCtrl(Item, $stateParams, $state) {
   const vm = this;
 
   vm.item = Item.get($stateParams);
