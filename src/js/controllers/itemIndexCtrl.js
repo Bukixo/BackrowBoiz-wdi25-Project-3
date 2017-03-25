@@ -1,10 +1,10 @@
 angular
   .module('rentApp')
-  .controller( 'IndexCtrl', IndexCtrl);
+  .controller( 'itemIndexCtrl', itemIndexCtrl);
 
 
-IndexCtrl.$inject = ['Item','User'];
-function IndexCtrl(Item, User) {
+itemIndexCtrl.$inject = ['Item','User'];
+function itemIndexCtrl(Item, User) {
   const vm = this;
 
   vm.all = Item.query();
