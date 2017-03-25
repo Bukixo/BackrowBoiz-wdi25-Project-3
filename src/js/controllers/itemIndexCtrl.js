@@ -1,6 +1,6 @@
 angular
   .module('rentApp')
-  .controller( 'itemsIndexCtrl', itemsIndexCtrl);
+  .controller( 'itemIndexCtrl', itemIndexCtrl);
 
 itemIndexCtrl.$inject = ['Item','User', 'Request'];
 function itemIndexCtrl(Item, User, Request) {
