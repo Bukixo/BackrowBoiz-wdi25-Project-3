@@ -8,4 +8,9 @@ const requestSchema = new mongoose.Schema({
   accepted: {type: Boolean}
 });
 
+requestSchema.methods.belongsTo = function requestItemBelongsTo(item) {
+  if(typeof this.item.id === 'string') return this.item.id === item.id;
+  return item.id === this.item.toString();
+};
+
 module.exports = mongoose.model('Request', requestSchema);

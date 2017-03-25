@@ -1,10 +1,10 @@
-const Request = ('../models/request');
+const Request = require('../models/request');
 
 // indexRequestRoute Grabs all the requests and sends it to the Client, which will be filtered in the front-end
 function indexRequestRoute(req, res, next){
   Request
   .find()
-  .populuate('createdBy')
+  .populuate('item')
   .exec()
   .then((requests)=>{
     res.json(requests);
@@ -15,7 +15,7 @@ function indexRequestRoute(req, res, next){
 function showRequestRoute(req, res, next){
   Request
   .findById(req.params.id)
-  .populate('createdBy')
+  .populate('item')
   .then((request)=>{
     if(!request) return res.notFound();
     res.json(request);
