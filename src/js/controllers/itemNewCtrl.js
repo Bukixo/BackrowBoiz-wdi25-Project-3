@@ -1,15 +1,17 @@
 angular
   .module('rentApp')
-  .controller('itemNewCtrl', itemNewCtrl);
+  .controller('itemsNewCtrl', itemsNewCtrl);
 
-itemNewCtrl.$inject = ['Item', '$state'];
-function itemNewCtrl(Item, $state){
+itemsNewCtrl.$inject = ['Item', '$state'];
+function itemsNewCtrl(Item, $state){
   const vm = this;
-
+  console.log('wors');
   vm.item = {};
 
   function itemsCreate() {
+    console.log(vm.item);
     if(vm.newForm.$valid) {
+      console.log(vm.item);
       Item
         .save(vm.item)
         .$promise

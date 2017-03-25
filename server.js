@@ -8,13 +8,15 @@ const routes = require('./config/routes');
 const errorHandler = require('./lib/errorHandler');
 const customResponses = require('./lib/customResponses');
 
+
 const { port, env, dbURI } = require('./config/environment');
 
 const app = express();
 
 mongoose.connect(dbURI);
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '5mb'}));
 app.use(express.static(`${__dirname}/public`));
+
 
 
 

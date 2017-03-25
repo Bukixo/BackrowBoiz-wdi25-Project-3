@@ -42,11 +42,11 @@ beforeEach((done)=>{
 });
 //<------------------TEST SETUP OVER NOW WE CAN WRITE SOME TEST-------------->
 //Describes what we are going to test in this describe block
-describe('Get /api/item', ()=>{
+describe('Get api/item', ()=>{
 // it describes what is going to be logged in the terminal , app.get is the function we testing and expect is the result we expect to get
   it('should return a 200 response', (done)=>{
     chai.request(server)
-    .get('/api/item')
+    .get('api/item')
     .end((err, res)=>{
       res.should.have.status(200);
       done();
@@ -65,7 +65,7 @@ describe('Get /api/item', ()=>{
 
   it('should render Json, return the length and be an array', (done)=>{
     chai.request(server)
-    .get('/api/item')
+    .get('api/item')
     .end((err,res)=>{
       res.should.have.status(200);
       res.should.be.json;
@@ -77,7 +77,7 @@ describe('Get /api/item', ()=>{
 
   it('should dig down to one of the Objects in the array', (done)=>{
     chai.request(server)
-    .get('/api/item')
+    .get('api/item')
   .end((err, res)=>{
     expect(res.body[1]).to.be.a('Object');
   });
@@ -85,7 +85,7 @@ describe('Get /api/item', ()=>{
   });
 });
 
-describe('Post /api/item', ()=>{
+describe('Post api/item', ()=>{
   // beforeEach((done)=>{
   // //  Item.collection.drop();
   // //  Item.create(data, done);
@@ -93,7 +93,7 @@ describe('Post /api/item', ()=>{
 
   it('should return a 201status and have all the properties',(done)=>{
     chai.request(server)
-  .post('/api/item')
+  .post('api/item')
   .send({
     name: 'Bacon',
     createdBy: '58d54d45f028b0f6b0375803',
@@ -117,7 +117,7 @@ describe('Post /api/item', ()=>{
   });
 });
 
-describe('PUT /api/item/:id', ()=>{
+describe('PUT api/item/:id', ()=>{
   let oneItem;
   beforeEach((done)=>{
     ItemList.findOne({name: 'Ball'}, (err, item)=>{
@@ -127,7 +127,7 @@ describe('PUT /api/item/:id', ()=>{
   });
   it('should return one item', ()=>{
       //chai.request(server)
-    app.get(`/api/item/${oneItem.id}`)
+    app.get(`api/item/${oneItem.id}`)
       .end((err, respo)=>{
         respo.should.have.status(200);
         respo.should.be.json;
@@ -139,7 +139,7 @@ describe('PUT /api/item/:id', ()=>{
   });
 
   it('should update our selected item',(done)=>{
-    app.put(`/api/item/${oneItem.id}`)
+    app.put(`api/item/${oneItem.id}`)
     .type('form')
     .send({'name': 'Miachel Jordan'})
     .end((err, respo)=>{

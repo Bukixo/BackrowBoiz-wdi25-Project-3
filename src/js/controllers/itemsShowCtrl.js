@@ -3,6 +3,7 @@ angular
   .controller('itemShowCtrl', itemShowCtrl)
   .controller('itemEditCtrl', itemEditCtrl);
 
+
 itemShowCtrl.$inject = ['Item', '$stateParams', '$state'];
 function itemShowCtrl(Item, $stateParams, $state){
   const vm = this;

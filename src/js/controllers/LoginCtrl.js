@@ -11,7 +11,7 @@ function LoginCtrl($auth, $state) {
   function submit() {
     if(vm.loginForm.$valid){
       $auth.login(vm.credentials)
-      .then(() => $state.go('itemIndex'));
+      .then(() => $state.go('itemsIndex'));
     }
   }
 
