@@ -16,17 +16,17 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
    .state('itemNew', {
      url: '/new',
      templateUrl: 'js/views/items/new.html',
-     controller: 'NewCtrl as new'
+     controller: 'itemNewCtrl as new'
    })
    .state('itemShow', {
      url: '/show/:id',
      templateUrl: 'js/views/items/show.html',
-     controller: 'ShowCtrl as show'
+     controller: 'itemShowCtrl as show'
    })
    .state('itemEdit', {
      url: '/show/:id/edit',
      templateUrl: 'js/views/items/edit.html',
-     controller: 'ShowCtrl as show'
+     controller: 'itemShowCtrl as show'
    })
    .state('login', {
      url: '/login',
