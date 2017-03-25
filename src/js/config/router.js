@@ -8,25 +8,25 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
 
   $stateProvider
-   .state('itemIndex', {
+   .state('itemsIndex', {
      url: '/',
      templateUrl: 'js/views/items/index.html',
-     controller: 'itemIndexCtrl as index'
+     controller: 'itemsIndexCtrl as index'
    })
-   .state('itemNew', {
+   .state('itemsNew', {
      url: '/new',
      templateUrl: 'js/views/items/new.html',
-     controller: 'itemNewCtrl as new'
+     controller: 'itemsNewCtrl as itemsNew'
    })
-   .state('itemShow', {
+   .state('itemsShow', {
      url: '/show/:id',
      templateUrl: 'js/views/items/show.html',
-     controller: 'itemShowCtrl as show'
+     controller: 'itemsShowCtrl as show'
    })
    .state('itemEdit', {
      url: '/show/:id/edit',
      templateUrl: 'js/views/items/edit.html',
-     controller: 'itemShowCtrl as show'
+     controller: 'itemsShowCtrl as show'
    })
    .state('login', {
      url: '/login',

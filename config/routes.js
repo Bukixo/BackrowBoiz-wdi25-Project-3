@@ -22,8 +22,8 @@ router.route('/login')
   .post(auth.login);
 
 router.route('/item')
-  .get(imageUpload, itemController.index)
-  .post(itemController.create);
+  .get(itemController.index)
+  .post(secureRoute, imageUpload, itemController.create);
 
 router.route('/request')
   .get(requestController.index)

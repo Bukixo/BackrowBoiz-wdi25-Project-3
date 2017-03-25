@@ -1,1 +1,9 @@
 <h1>Show</h1>
+
+<img ng-src="{{ itemsShow.item.imageSRC }}">
+
+<h2>{{ itemsShow.item.name }}</h2>
+
+
+<a ui-sref="itemsEdit({ id: itemsShow.bird.id })" class="btn btn-primary">Edit</a>
+<button ng-click="itemsShow.delete()" class="btn btn-danger">Delete</button>

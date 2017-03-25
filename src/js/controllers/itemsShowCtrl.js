@@ -1,10 +1,10 @@
 angular
   .module('rentApp')
-  .controller('itemShowCtrl', itemShowCtrl)
+  .controller('itemsShowCtrl', itemsShowCtrl)
   .controller('itemsEditCtrl', itemsEditCtrl);
 
-itemShowCtrl.$inject = ['Item', '$stateParams', '$state'];
-function itemShowCtrl(Item, $stateParams, $state){
+itemsShowCtrl.$inject = ['Item', '$stateParams', '$state'];
+function itemsShowCtrl(Item, $stateParams, $state){
   const vm = this;
   // vm.newComment = {};
   vm.item = Item.get($stateParams);

@@ -32,7 +32,7 @@ itemSchema.methods.belongsTo = function itemBelongsTo(user) {
 itemSchema
   .path('image')
   .set(function getPreviousImage(image){
-    this.image = this.image;
+    this._image = this.image;
     return image;
   });
 
