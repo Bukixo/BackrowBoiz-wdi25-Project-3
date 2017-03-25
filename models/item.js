@@ -20,7 +20,8 @@ const itemSchema = new mongoose.Schema({
   description: {type: String, required: true},
   rating: {type: String},
   comments: [commentSchema],
-  size: {type: String, required: true}
+  size: {type: String, required: true},
+  category: {type: String}
 });
 
 itemSchema.methods.belongsTo = function itemBelongsTo(user) {

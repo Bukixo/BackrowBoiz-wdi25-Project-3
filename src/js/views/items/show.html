@@ -4,13 +4,17 @@
 
 <h2>{{ show.item.name }}</h2>
 
+<a ui-sref="profile({ id: item.createdBy.id})">{{show.item.createdBy.username}}</a>
+
 <ul>
-  <li>{{ show.item.createdBy }}</li>
   <li>{{ show.item.price }}</li>
   <li>{{ show.item.description }}</li>
-  <li>{{ show.item.rating }}</li>
   <li>{{ show.item.size }}</li>
+  <li>{{ show.item.category }}</li>
 </ul>
+
+  <p>{{ show.item.rating }}</p>
+  <p>{{ show.item.comments }}</p>
 
 <a ui-sref="itemEdit({ id: itemsShow.item.id })">Edit</a>
 

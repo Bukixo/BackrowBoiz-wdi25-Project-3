@@ -1,10 +1,11 @@
 <h1>index Page</h1>
 <!--- Renders all Items from the GET request in the Controller REMOVE THIS LATER -->
-
-<div ng-repeat="item in index.all" class="col-md-3 col-sm-4">
-  <div class="l-box">
-    <p><strong>{{ item.name }}</strong></p>
-    <img ng-src="{{ item.image }}" alt="{{ item.name }}" class="pure-img" ui-sref="itemShow({ id: item.id })">
-    <a ui-sref="profile({ id: item.createdBy.id})">{{item.createdBy.username}}</a>
+<div class="bigDiv">
+  <div ng-repeat="item in index.all" class="col-md-3 col-sm-4">
+    <div class="l-box">
+      <h3><strong>{{ item.name }}</strong></h3>
+      <img ng-src="{{ item.image }}" alt="{{ item.name }}" class="pure-img" ui-sref="itemShow({ id: item.id })">
+      <a ui-sref="profile({ id: item.createdBy.id})">{{item.createdBy.username}}</a>
+    </div>
   </div>
 </div>
