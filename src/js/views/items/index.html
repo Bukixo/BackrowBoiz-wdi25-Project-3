@@ -1,5 +1,10 @@
-<h1>index</h1>
+<h1>index Page</h1>
 <!--- Renders all Items from the GET request in the Controller REMOVE THIS LATER -->
-<h2>{{index.items}}</h2>
 
-<h3>{{index.profiles}}</h3>
+<ul>
+  <li ng-repeat="item in itemIndexCtrl.all">
+    <img ng-src="{{ item.image }}">
+
+    <a ui-sref="itemShowCtrl({ id: item.id })"><h2>{{ item.name }}</h2></a>
+  </li>
+</ul>

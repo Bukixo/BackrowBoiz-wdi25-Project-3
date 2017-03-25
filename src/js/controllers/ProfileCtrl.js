@@ -1,3 +1,5 @@
+//for editing and deleting profile
+
 angular
   .module('rentApp')
   .controller('ProfileCtrl', ProfileCtrl);

@@ -46,7 +46,7 @@ itemSchema
 itemSchema.pre('save', function checkPreviousImage(next) {
   if(this.isModified('image') && this._image) {
     return s3.deleteObject({ Key: this._image }, next);
-      }
+  }
   next();
 });
 

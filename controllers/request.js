@@ -1,0 +1,54 @@
+const Request = ('../models/request');
+
+// indexRequestRoute Grabs all the requests and sends it to the Client, which will be filtered in the front-end
+function indexRequestRoute(req, res, next){
+  Request
+  .find()
+  .populuate('createdBy')
+  .exec()
+  .then((requests)=>{
+    res.json(requests);
+  })
+  .catch(next);
+}
+
+function showRequestRoute(req, res, next){
+  Request
+  .findById(req.params.id)
+  .populate('createdBy')
+  .then((request)=>{
+    if(!request) return res.notFound();
+    res.json(request);
+  })
+  .catch(next);
+}
+
+//Creates a new request route ==> Someone makes a request to create a user
+function createRequestRoute(req, res, next){
+  Request
+  .create(req.body)
+  .then((request)=>{
+    res.status(201).json(request);
+  })
+  .catch(next);
+}
+
+//deleteRequestRoute Deletes the request only used by the owner of the request
+function deleteRequestRoute(req, res, next){
+  Request
+  .findById(req.params.id)
+  .exec()
+  .then((request)=>{
+    if(!request) return res.notFound();
+    return request.remove();
+  })
+  .then(()=> res.status(204).end())
+  .catch(next);
+}
+
+module.exports = {
+  index: indexRequestRoute,
+  show: showRequestRoute,
+  create: createRequestRoute,
+  delete: deleteRequestRoute
+};
