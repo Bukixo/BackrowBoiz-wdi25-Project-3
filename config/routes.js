@@ -3,6 +3,8 @@ const userController = require('../controllers/user');
 const itemController = require('../controllers/item');
 const auth = require('../controllers/auth');
 const secureRoute = require('../lib/secureRoute');
+const imageUpload = require('../lib/imageUpload');
+
 
 router.route('/users')
   .get(userController.index); //landing page
@@ -20,12 +22,12 @@ router.route('/login')
   .post(auth.login);
 
 router.route('/item')
-  .get(itemController.index)
+  .get(imageUpload, itemController.index)
   .post(itemController.create);
 
 router.route('/item/:id')
   .get(itemController.show)
-  .put(itemController.update)
+  .put(imageUpload, itemController.update)
   .delete(itemController.delete);
 
 router.route('/item/:id/comments')

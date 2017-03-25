@@ -9,6 +9,7 @@ function indexRoute(req, res, next) {
 }
 
 function createRoute(req, res, next) {
+  if(req.file) req.body.image = req.file.filename;
   Item
     .create(req.body)
     .then((item) => res.status(201).json(item))
@@ -27,6 +28,9 @@ function showRoute(req, res, next) {
 }
 
 function updateRoute(req, res, next) {
+
+  if(req.file) req.body.image = req.file.filename;
+
   Item
     .findById(req.params.id)
     .then((item) => {
