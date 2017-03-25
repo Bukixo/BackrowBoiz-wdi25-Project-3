@@ -6,8 +6,10 @@ mongoose.connect(dbURI);
 
 const User = require('../models/user');
 const Item = require('../models/item');
-
+const Request = require('../models/request');
 User.collection.drop();
+Item.collection.drop();
+Request.collection.drop();
 
 User
   .create([{
@@ -284,10 +286,22 @@ User
       rating: '',
       size: 'M',
       createdBy: users[1]
-    }]);
+    }])
+    .then((items) => {
+      console.log(`${items.length} items created!`);
+
+      return Request
+        .create([{
+          numberOfDays: 12,
+          item: items[0],
+          requester: users[0],
+          message: 'ITEMPOPULATE',
+          accepted: false
+        }]);
+    });
   })
-  .then((items) => {
-    console.log(`${items.length} items created!`);
+  .then((requests) => {
+    console.log(`${requests.length} requests created!`);
   })
   .catch((err) => {
     console.log(err);

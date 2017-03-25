@@ -4,7 +4,7 @@ const Request = require('../models/request');
 function indexRequestRoute(req, res, next){
   Request
   .find()
-  .populuate('item')
+  .populate('item requester')
   .exec()
   .then((requests)=>{
     res.json(requests);
@@ -15,7 +15,7 @@ function indexRequestRoute(req, res, next){
 function showRequestRoute(req, res, next){
   Request
   .findById(req.params.id)
-  .populate('item')
+  .populate('item requester')
   .then((request)=>{
     if(!request) return res.notFound();
     res.json(request);
