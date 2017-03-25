@@ -1,18 +1,4 @@
 <h1>index Page</h1>
 <!--- Renders all Items from the GET request in the Controller REMOVE THIS LATER -->
 
-<ul>
-  <li ng-repeat="item in itemIndex.all">
-    <img ng-src="{{ item.image }}">
-
-    <!-- <a ui-sref="itemShow({ id: item.id })"><h2>{{ item.name }}</h2></a> -->
-  </li>
-</ul>
-
-
-<div ng-repeat="item in itemIndex.all" class="col-md-3 col-sm-4">
-
-    <div ui-sref="itemsShow({ id: item.id })"></div>
-    <p><strong>{{ item.name }}</strong></p>
-
-</div>
+{{index.request}}
