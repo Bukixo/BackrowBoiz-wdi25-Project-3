@@ -8,10 +8,10 @@ function RegisterCtrl($auth, $state){
   vm.user = {};
 
   function createUser(){
-    console.log('here', vm.user);
-    console.log('CreateUser exectues');
-    $auth.signup(vm.user)
-    .then(()=> $state.go('login'));
+    if(vm.registerForm.$valid){
+      $auth.signup(vm.user)
+      .then(()=> $state.go('login'));
+    }
   }
   vm.createUser = createUser;
 }
