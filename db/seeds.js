@@ -48,7 +48,7 @@ User
       name: 'Black Evening Dress',
       price: 10,
       image: '/images/seed-pics/black.jpg',
-      description: 'Stunning fit and covering the shoulders. Extreamly popular from a smoke free home',
+      description: 'Stunning fit and covering the shoulders. Extremely popular from a smoke free home',
       rating: '',
       size: 'S',
       createdBy: users[1]
@@ -72,12 +72,12 @@ User
       name: 'Cream Cardigan',
       price: 4,
       image: '/images/seed-pics/cardy.jpg',
-      description: 'Obviously a typical part of any mans wardrobe, never be without it again. Not to be worn by women, super edgy and alternative',
+      description: 'Obviously a typical part of any man’s wardrobe never be without it again. Not to be worn by women, super edgy and alternative',
       rating: '',
       size: 'M',
-      createdBy: users[1]
+      createdBy: users[0]
     }, {
-      name: 'Long Grey Caridigan',
+      name: 'Long Grey Cardigan',
       price: 4,
       image: '/images/seed-pics/cardy2.jpg',
       description: 'Not to be worn by women, super edgy and alternative',
@@ -88,7 +88,7 @@ User
       name: 'Burberry Coat',
       price: 21,
       image: '/images/seed-pics/coat.jpg',
-      description: 'Classic long trenchcoat',
+      description: 'Classic long trench coat',
       rating: '',
       size: 'M',
       createdBy: users[1]
@@ -96,7 +96,7 @@ User
       name: 'Vintage bomber jacket',
       price: 15,
       image: '/images/seed-pics/coat2.jpg',
-      description: 'Classic style, well-worn and loved - keep cozy this winter!',
+      description: 'Classic style, well-worn and loved - keep cosy this winter!',
       rating: '',
       size: 'M',
       createdBy: users[1]
@@ -104,7 +104,7 @@ User
       name: 'Burberry coat',
       price: 22,
       image: '/images/seed-pics/coat3.jpg',
-      description: 'Short burberry trenchcoat - limited edition',
+      description: 'Short Burberry trench coat - limited edition',
       rating: '',
       size: 'M',
       createdBy: users[1]
@@ -115,9 +115,9 @@ User
       description: 'Japanese detail, slim fit, limited edition',
       rating: '',
       size: 'S',
-      createdBy: users[1]
+      createdBy: users[0]
     }, {
-      name: 'Long Floweral Dress',
+      name: 'Long Floral Dress',
       price: 15,
       image: '/images/seed-pics/flowers.jpg',
       description: 'Floaty, summer dress, blue and white flowers.',
@@ -125,26 +125,26 @@ User
       size: 'L',
       createdBy: users[1]
     }, {
-      name: 'Childs floweral dress',
+      name: 'Childs floral dress',
       price: 9,
       image: '/images/seed-pics/flowers2.jpg',
-      description: 'Short red flowery dress with ruffels.',
+      description: 'Short red flowery dress with ruffles.',
       rating: '',
       size: 'M',
-      createdBy: users[1]
+      createdBy: users[0]
     }, {
       name: 'Tudor style dress',
       price: 25,
       image: '/images/seed-pics/gold.jpg',
-      description: 'Long tudor style dress covering shoulders and arms, glamourous and elegant with empire line.',
+      description: 'Long Tudor style dress covering shoulders and arms, glamourous and elegant with empire line.',
       rating: '',
       size: 'L',
-      createdBy: users[1]
+      createdBy: users[2]
     }, {
       name: 'Purple jeans',
       price: 15,
       image: '/images/seed-pics/jeans.jpg',
-      description: 'Vinatage jeans, Levis, classic fit',
+      description: 'Vintage jeans, Levis, classic fit',
       rating: '',
       size: 'L',
       createdBy: users[1]
@@ -160,7 +160,7 @@ User
       name: 'Vintage Jumper',
       price: 8,
       image: '/images/seed-pics/jumper.jpg',
-      description: 'Colourful and well loved, stand ut from the corwd and keep cosy warm.',
+      description: 'Colourful and well loved, stand out from the crowd and keep cosy warm.',
       rating: '',
       size: 'M',
       createdBy: users[1]
@@ -168,10 +168,10 @@ User
       name: 'Micky Mouse t-shirt',
       price: 8,
       image: '/images/seed-pics/mcky.jpg',
-      description: 'Fun kid\'s t-shirt, ligth pink',
+      description: 'Fun kid\'s t-shirt, light pink',
       rating: '',
       size: 'S',
-      createdBy: users[1]
+      createdBy: users[2]
     }, {
       name: 'Short pink shiny dress',
       price: 4,
@@ -184,7 +184,7 @@ User
       name: 'Child\'s light pink summer dress',
       price: 10,
       image: '/images/seed-pics/pink2.jpg',
-      description: 'Playful and flowey, ideal for weddings or summer gatherings',
+      description: 'Playful and flowery, ideal for weddings or summer gatherings',
       rating: '',
       size: 'M',
       createdBy: users[1]
@@ -192,7 +192,7 @@ User
       name: 'Pink patterned trousers',
       price: 5,
       image: '/images/seed-pics/pinkt.jpg',
-      description: 'Great for littel girls - super cute!',
+      description: 'Great for little girls - super cute!',
       rating: '',
       size: 'L',
       createdBy: users[1]
@@ -200,7 +200,7 @@ User
       name: 'Gold evening dress',
       price: 18,
       image: '/images/seed-pics/gold2.jpg',
-      description: 'Fitted elegant dress, stand out from the crowd with this metalic gold dazzler ',
+      description: 'Fitted elegant dress, stand out from the crowd with this metallic gold dazzler ',
       rating: '',
       size: 'S',
       createdBy: users[1]
@@ -211,7 +211,7 @@ User
       description: 'Cute light pink skirt with patterned flowers detail',
       rating: '',
       size: 'L',
-      createdBy: users[1]
+      createdBy: users[2]
     }, {
       name: 'Hugo Boss Suit',
       price: 25,
@@ -229,7 +229,7 @@ User
       size: 'M',
       createdBy: users[1]
     }, {
-      name: 'Clavin Klein Suit',
+      name: 'Calvin Klein Suit',
       price: 35,
       image: '/images/seed-pics/suit3.jpg',
       description: 'Very high quality, has been looked after very well',
@@ -240,7 +240,7 @@ User
       name: 'Tiger jumper',
       price: 6,
       image: '/images/seed-pics/tiger.jpg',
-      description: 'Cute jumper for littel girls, sequins are a nice touch',
+      description: 'Cute jumper for little girls, sequins are a nice touch',
       rating: '',
       size: 'L',
       createdBy: users[1]
@@ -275,7 +275,7 @@ User
       description: 'Cute girl\'s T-shirt',
       rating: '',
       size: 'M',
-      createdBy: users[1]
+      createdBy: users[2]
     }, {
       name: 'Gucci red dress',
       price: 40,
