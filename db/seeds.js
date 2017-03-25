@@ -45,6 +45,7 @@ User
       description: 'Vinateg, mens jumper in perfect conditon - well loved!',
       rating: '',
       size: 'M',
+      category: 'Men',
       createdBy: users[1]
     }, {
       name: 'Black Evening Dress',
@@ -53,6 +54,7 @@ User
       description: 'Stunning fit and covering the shoulders. Extremely popular from a smoke free home',
       rating: '',
       size: 'S',
+      category: 'Women',
       createdBy: users[1]
     }, {
       name: 'Chic Chiffon Dress',
@@ -61,6 +63,7 @@ User
       description: 'A real show-stopper, black chiffon and netting with pink roses.',
       rating: '',
       size: 'S',
+      category: 'Women',
       createdBy: users[1]
     }, {
       name: 'Blue dress with diamond waistband',
@@ -69,6 +72,7 @@ User
       description: 'Glamourous long blue dress with diamond detail',
       rating: '',
       size: 'L',
+      category: 'Women',
       createdBy: users[1]
     }, {
       name: 'Cream Cardigan',
@@ -77,6 +81,7 @@ User
       description: 'Obviously a typical part of any man’s wardrobe never be without it again. Not to be worn by women, super edgy and alternative',
       rating: '',
       size: 'M',
+      category: 'Men',
       createdBy: users[0]
     }, {
       name: 'Long Grey Cardigan',
@@ -85,6 +90,7 @@ User
       description: 'Not to be worn by women, super edgy and alternative',
       rating: '',
       size: 'M',
+      category: 'Men',
       createdBy: users[1]
     }, {
       name: 'Burberry Coat',
@@ -93,6 +99,7 @@ User
       description: 'Classic long trench coat',
       rating: '',
       size: 'M',
+      category: 'Men',
       createdBy: users[1]
     }, {
       name: 'Vintage bomber jacket',
@@ -101,6 +108,7 @@ User
       description: 'Classic style, well-worn and loved - keep cosy this winter!',
       rating: '',
       size: 'M',
+      category: 'Men',
       createdBy: users[1]
     }, {
       name: 'Burberry coat',
@@ -108,7 +116,9 @@ User
       image: '/images/seed-pics/coat3.jpg',
       description: 'Short Burberry trench coat - limited edition',
       rating: '',
-      size: 'M',
+      size: 's',
+      category: 'Men',
+
       createdBy: users[1]
     }, {
       name: 'Burberry coat',
@@ -117,6 +127,7 @@ User
       description: 'Japanese detail, slim fit, limited edition',
       rating: '',
       size: 'S',
+      category: 'Men',
       createdBy: users[0]
     }, {
       name: 'Long Floral Dress',
@@ -125,6 +136,7 @@ User
       description: 'Floaty, summer dress, blue and white flowers.',
       rating: '',
       size: 'L',
+      category: 'Women',
       createdBy: users[1]
     }, {
       name: 'Childs floral dress',
@@ -133,6 +145,7 @@ User
       description: 'Short red flowery dress with ruffles.',
       rating: '',
       size: 'M',
+      category: 'Child',
       createdBy: users[0]
     }, {
       name: 'Tudor style dress',
@@ -141,6 +154,7 @@ User
       description: 'Long Tudor style dress covering shoulders and arms, glamourous and elegant with empire line.',
       rating: '',
       size: 'L',
+      category: 'Women',
       createdBy: users[2]
     }, {
       name: 'Purple jeans',
@@ -149,6 +163,7 @@ User
       description: 'Vintage jeans, Levis, classic fit',
       rating: '',
       size: 'L',
+      category: 'Men',
       createdBy: users[1]
     }, {
       name: 'Painty jeans',
@@ -157,6 +172,7 @@ User
       description: 'Children\'s jeans, super fun with paint splatters',
       rating: '',
       size: 'S',
+      category: 'Child',
       createdBy: users[1]
     }, {
       name: 'Vintage Jumper',
@@ -165,6 +181,7 @@ User
       description: 'Colourful and well loved, stand out from the crowd and keep cosy warm.',
       rating: '',
       size: 'M',
+      category: 'Men',
       createdBy: users[1]
     }, {
       name: 'Micky Mouse t-shirt',
@@ -173,6 +190,7 @@ User
       description: 'Fun kid\'s t-shirt, light pink',
       rating: '',
       size: 'S',
+      category: 'Child',
       createdBy: users[2]
     }, {
       name: 'Short pink shiny dress',
@@ -181,6 +199,7 @@ User
       description: 'Sexy pink dress, show-stopper.',
       rating: '',
       size: 'M',
+      category: 'Women',
       createdBy: users[1]
     }, {
       name: 'Child\'s light pink summer dress',
@@ -189,6 +208,7 @@ User
       description: 'Playful and flowery, ideal for weddings or summer gatherings',
       rating: '',
       size: 'M',
+      category: 'Child',
       createdBy: users[1]
     }, {
       name: 'Pink patterned trousers',
@@ -197,6 +217,7 @@ User
       description: 'Great for little girls - super cute!',
       rating: '',
       size: 'L',
+      category: 'Child',
       createdBy: users[1]
     }, {
       name: 'Gold evening dress',
@@ -205,6 +226,7 @@ User
       description: 'Fitted elegant dress, stand out from the crowd with this metallic gold dazzler ',
       rating: '',
       size: 'S',
+      category: 'Women',
       createdBy: users[1]
     }, {
       name: 'Patterned girl\'s skirt',
@@ -213,6 +235,7 @@ User
       description: 'Cute light pink skirt with patterned flowers detail',
       rating: '',
       size: 'L',
+      category: 'Child',
       createdBy: users[2]
     }, {
       name: 'Hugo Boss Suit',
@@ -221,6 +244,7 @@ User
       description: 'Tight fit, long trouser length, includes jacket and trousers, but not the shirt',
       rating: '',
       size: 'S',
+      category: 'Men',
       createdBy: users[1]
     }, {
       name: 'Linen Zara men\'s suit',
@@ -229,6 +253,7 @@ User
       description: 'Great for summer, neat little suit - not too hot.  Shirt not included.',
       rating: '',
       size: 'M',
+      category: 'Men',
       createdBy: users[1]
     }, {
       name: 'Calvin Klein Suit',
@@ -237,6 +262,7 @@ User
       description: 'Very high quality, has been looked after very well',
       rating: '',
       size: 'M',
+      category: 'Men',
       createdBy: users[1]
     }, {
       name: 'Tiger jumper',
@@ -245,6 +271,7 @@ User
       description: 'Cute jumper for little girls, sequins are a nice touch',
       rating: '',
       size: 'L',
+      category: 'Child',
       createdBy: users[1]
     }, {
       name: 'Pink kid\'s t-shirt',
@@ -253,6 +280,7 @@ User
       description: 'Great with jeans for children',
       rating: '',
       size: 'M',
+      category: 'Child',
       createdBy: users[1]
     }, {
       name: 'Edgy Unicorn T-shirt',
@@ -261,6 +289,7 @@ User
       description: 'Limited edition hipster t-shirt',
       rating: '',
       size: 'L',
+      category: 'Men',
       createdBy: users[1]
     }, {
       name: 'Vintage sequined dress',
@@ -269,6 +298,7 @@ User
       description: 'Perfect for Gatsby themed events, glitzy and glamourous.  Silver',
       rating: '',
       size: 'M',
+      category: 'Women',
       createdBy: users[1]
     }, {
       name: 'Watermelon T-shirt',
@@ -277,6 +307,7 @@ User
       description: 'Cute girl\'s T-shirt',
       rating: '',
       size: 'M',
+      category: 'Child',
       createdBy: users[2]
     }, {
       name: 'Gucci red dress',
@@ -285,6 +316,7 @@ User
       description: 'Stunning backless Gucci dress, absolute show-stopper.  Sexy, long and silk.',
       rating: '',
       size: 'M',
+      category: 'Women',
       createdBy: users[1]
     }])
     .then((items) => {

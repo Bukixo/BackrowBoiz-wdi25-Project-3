@@ -1,6 +1,5 @@
 <h1>Edit Item</h1>
-
-<form ng-submit="edit.update()">
+<form name="edit.itemForm" ng-submit="edit.update()" novalidate>
   <div class="form-group">
     <label for="name">Name</label>
     <input type="text" name="name" id="name" ng-model="edit.item.name" class="form-control">
@@ -10,21 +9,25 @@
     <input type="text" name="price" id="price" ng-model="edit.item.price" class="form-control">
   </div>
   <div class="form-group">
-    <label for="description">Description</label>
-    <input type="text" name="description" id="description" ng-model="edit.item.description" class="form-control">
+    <label for="numberOfDays">Number of Days</label>
+    <input type="text" name="numberOfDays" id="numberOfDays" ng-model="edit.item.numberOfDays" class="form-control">
   </div>
   <div class="form-group">
     <label for="size">Size</label>
     <input type="text" name="size" id="size" ng-model="edit.item.size" class="form-control">
   </div>
   <div class="form-group">
+    <label for="description">Description</label>
+    <input type="text" name="description" id="description" ng-model="edit.item.description" class="form-control">
+  </div>
+  <div class="form-group">
     <label for="category">Category</label>
     <input type="text" name="category" id="category" ng-model="edit.item.category" class="form-control">
   </div>
-  <!-- <div class="form-group">
+  <div class="form-group">
     <label for="base64">Image</label>
     <input type="file" base64 name="base64" id="base64" ng-model="edit.item.base64">
-  </div> -->
+  </div>
 
   <button class="btn btn-primary">Update</button>
 </form>
