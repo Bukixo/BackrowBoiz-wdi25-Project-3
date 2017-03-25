@@ -1,10 +1,10 @@
 angular
   .module('rentApp')
-  .controller( 'IndexCtrl', IndexCtrl);
+  .controller( 'itemIndexCtrl', itemIndexCtrl);
 
 
-IndexCtrl.$inject = ['Item','User'];
-function IndexCtrl(Item, User) {
+itemIndexCtrl.$inject = ['Item','User'];
+function itemIndexCtrl(Item, User) {
   const vm = this;
   vm.items = Item.query();
   vm.profiles = User.query(); // Remove this later it's just to see if the HTTP works

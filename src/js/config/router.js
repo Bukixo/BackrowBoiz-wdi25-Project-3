@@ -11,7 +11,7 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
    .state('itemIndex', {
      url: '/',
      templateUrl: 'js/views/items/index.html',
-     controller: 'IndexCtrl as index'
+     controller: 'itemIndexCtrl as index'
    })
    .state('itemNew', {
      url: '/new',
