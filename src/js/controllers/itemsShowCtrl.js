@@ -4,8 +4,8 @@ angular
   .controller('itemEditCtrl', itemEditCtrl);
 
 
-itemsShowCtrl.$inject = ['Item', '$stateParams', '$state'];
-function itemsShowCtrl(Item, $stateParams, $state){
+itemShowCtrl.$inject = ['Item', '$stateParams', '$state'];
+function itemShowCtrl(Item, $stateParams, $state){
   const vm = this;
   // vm.newComment = {};
   vm.item = Item.get($stateParams);
