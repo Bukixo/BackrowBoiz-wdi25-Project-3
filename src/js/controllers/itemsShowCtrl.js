@@ -43,7 +43,7 @@ function itemShowCtrl(Item, $stateParams, $state, $scope, $http){
       if(!cityArr.length===1 ){
         cityArr.setMap(null);
       }
-      }
+    }
       // if(cityCircle){
       //    cityCircle.setMap(null);
       //  }else {
