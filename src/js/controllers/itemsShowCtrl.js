@@ -1,24 +1,75 @@
+/* global google*/
 angular
   .module('rentApp')
   .controller('itemShowCtrl', itemShowCtrl)
   .controller('itemEditCtrl', itemEditCtrl);
 
 
-itemShowCtrl.$inject = ['Item', '$stateParams', '$state'];
-function itemShowCtrl(Item, $stateParams, $state){
+itemShowCtrl.$inject = ['Item', '$stateParams', '$state', '$scope'];
+function itemShowCtrl(Item, $stateParams, $state, $scope){
   const vm = this;
+  vm.range = {};
+  //vm.range.radius = 7;
   // vm.newComment = {};
   vm.item = Item.get($stateParams);
-
+  vm.delete = itemsDelete;
+  initMap();
   function itemsDelete() {
     vm.item
       .$remove()
       .then(() => $state.go('itemsIndex'));
   }
 
-  vm.delete = itemsDelete;
+//<------------GOOGLE MAPS ------------------->
 
+  function initMap() {
+     // Creates The actual Map
+    const map = new google.maps.Map(document.getElementById('maps'), {
+      center: { lat: 51.5073509, lng: -0.12775829999998223 },
+      zoom: 8
+    });
+    //marker puts marker on the screen with a animation
+    const locationOfItem = { lat: 51.5073509, lng: -0.12775829999998223 }
+    const marker = new google.maps.Marker({
+      animation: google.maps.Animation.BOUNCE,
+      position: locationOfItem,
+      draggable: true,
+      map: map
+    });
+    function clearMap(cityArr, cityCircle){
+      if(!cityArr.length===1 ){
+        cityArr.setMap(null);
+      } else{
+        console.log(cityArr[0]);
+      }
+    }
+    //const radius = vm.range.radius * 1000;
+    function createRadius(radius){
+      const cityCircle = new google.maps.Circle({
+        strokeColor: '#FF0000',
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: '#FF0000',
+        fillOpacity: 0.35,
+        map: map,
+        center: locationOfItem,
+        radius: radius * 1000
+      });
+      const cityArr = [];
+      cityArr.push(cityCircle);
+      clearMap(cityArr, cityCircle);
+    }
+    $scope.$watch(()=> vm.range.radius, ()=> {
+      const radius = vm.range.radius;
+      console.log(radius);
+      createRadius(radius);
+    });
+  }
 }
+
+
+
+//<----------------ITEM EDIT CTRL----------------------------->
 
 itemEditCtrl.$inject = ['Item', '$stateParams', '$state'];
 function itemEditCtrl(Item, $stateParams, $state) {
