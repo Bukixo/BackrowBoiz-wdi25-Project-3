@@ -1,1 +1,34 @@
-<h1>Edit User profile</h1>
+<div class="modal-header">  </div>
+<div class="modal-title">
+  <h1>Edit User profile</h1>
+</div>
+<div class="modal-body">
+  <form name="profile.editProfileForm" ng-submit="profile.update()" novalidate> <!-- Hook up the profile.createUser() from the CTRL --->
+
+  <label for="username">Username</label>
+  <input type="text" name="username" ng-model="profile.user.username" required>
+  <div ng-messages="profile.editProfileForm.username.$error" role="alert" ng-show="(profile.editProfileForm.$submitted)||(profile.editProfileForm.username.$touched) &&(profile.editProfileForm.username.$invalid)">
+    <div ng-message="required"> this field is required </div>
+  </div>
+
+  <label for="email">Email</label>
+  <input type="text" name="email" ng-model="profile.user.email" required>
+  <div ng-messages="profile.editProfileForm.email.$error" role="alert" ng-show="(profile.editProfileForm.$submitted)||(profile.editProfileForm.email.$touched) &&(profile.editProfileForm.email.$invalid)">
+    <div ng-message="required"> this field is required </div>
+  </div>
+
+  <label for="location">Location</label>
+  <input type="text" name="location" ng-model="profile.user.location" required>
+  <div ng-messages="profile.editProfileForm.location.$error" role="alert" ng-show="(profile.editProfileForm.$submitted)||(profile.editProfileForm.location.$touched) &&(profile.editProfileForm.location.$invalid)">
+    <div ng-message="required"> this field is required </div>
+  </div>
+<!-- UPDATE EDIT PROFILE AND REGISTER TO IMG UPLAOD -->
+<label for="password">Password</label>
+<input type="password" name="password" ng-model="profile.user.password" required>
+<label for="passwordConfirmation">PasswordConfirmation</label>
+<input type="password" name="passwordConfirmation" ng-model="profile.user.passwordConfirmation" required>
+
+<div class="modal-footer">
+<button>Update</button>
+<button ng-click="profile.close()">Close</button>
+</div>

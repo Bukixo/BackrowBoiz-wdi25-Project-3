@@ -12,7 +12,7 @@ router.route('/users')
 
 router.route('/users/:id')
   .get(userController.show)
-  .put(secureRoute, userController.update)
+  .put(userController.update)
   .delete(userController.delete);
 
 router.route('/register')

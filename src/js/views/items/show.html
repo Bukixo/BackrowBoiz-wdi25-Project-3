@@ -4,7 +4,7 @@
 
 <h2>{{ show.item.name }}</h2>
 
-<a ui-sref="profile({ id: item.createdBy.id})">{{show.item.createdBy.username}}</a>
+<a ui-sref="profile({ id: show.item.createdBy.id})">{{show.item.createdBy.username}}</a>
 
 <ul>
   <li>{{ show.item.price }}</li>
@@ -19,3 +19,10 @@
 <a ui-sref="itemEdit({ id: show.item.id })">Edit</a>
 
 <button ng-click="show.delete()">Delete</button>
+{{show.range}}
+<form>
+<input type="range" min="0" max="10" name="radius" ng-model="show.range.radius">
+</form>
+<div id="maps">
+
+</div>
