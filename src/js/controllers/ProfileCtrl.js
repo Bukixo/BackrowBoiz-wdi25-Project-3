@@ -29,23 +29,23 @@ function ProfileCtrl(User, $stateParams, $uibModal){
 
 }
 
-EditCtrl.$inject = ['User', '$state','$uibModalInstance', '$stateParams' ];
-function EditCtrl(User, $state, $uibModalInstance, $stateParams){
+EditCtrl.$inject = ['user', '$state','$uibModalInstance', '$stateParams' ];
+function EditCtrl(user, $state, $uibModalInstance, $stateParams){
+  //gets the user from the profile passed in
   const vm = this;
-  vm.user = User.get($stateParams);
+  vm.user = user;
 
-
+//hooks up all the UI functionality
   vm.close = closeEditModal;
   vm.update= updateUser;
 
-
+//closes the Modal
   function closeEditModal(){
     $uibModalInstance.close();
   }
-
+//updates the user
   function updateUser(){
     if(vm.editProfileForm.$valid){
-      console.log('skd',vm.user.password);
       vm.user
       .$update()
       .then(()=> {
