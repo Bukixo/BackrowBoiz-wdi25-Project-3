@@ -17,7 +17,7 @@ const itemSchema = new mongoose.Schema({
   name: {type: String, required: true},
   createdBy: {type: mongoose.Schema.ObjectId, ref: 'User', required: true},
   price: {type: Number, required: true},
-  image: {type: String, required: true},
+  image: {type: String},
   description: {type: String, required: true},
   rating: {type: String},
   comments: [commentSchema],

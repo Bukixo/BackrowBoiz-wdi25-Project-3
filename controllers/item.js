@@ -12,7 +12,7 @@ function createRoute(req, res, next) {
 
   if(req.file) req.body.image = req.file.filename;
   req.body.createdBy = req.user;
-  
+
   Item
     .create(req.body)
     .then((item) => res.status(201).json(item))
@@ -33,9 +33,9 @@ function showRoute(req, res, next) {
 function updateRoute(req, res, next) {
 
   if(req.file) req.body.image = req.file.filename;
-
   Item
     .findById(req.params.id)
+    .exec()
     .then((item) => {
       if(!item) return res.notFound();
 
@@ -52,6 +52,7 @@ function updateRoute(req, res, next) {
 function deleteRoute(req, res, next) {
   Item
     .findById(req.params.id)
+    .exec()
     .then((item) => {
       if(!item) return res.notFound();
       return item.remove();

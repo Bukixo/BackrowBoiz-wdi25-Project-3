@@ -9,10 +9,6 @@
     <input type="text" name="price" id="price" ng-model="edit.item.price" class="form-control">
   </div>
   <div class="form-group">
-    <label for="numberOfDays">Number of Days</label>
-    <input type="text" name="numberOfDays" id="numberOfDays" ng-model="edit.item.numberOfDays" class="form-control">
-  </div>
-  <div class="form-group">
     <label for="size">Size</label>
     <input type="text" name="size" id="size" ng-model="edit.item.size" class="form-control">
   </div>
@@ -28,6 +24,7 @@
     <label for="base64">Image</label>
     <input type="file" base64 name="base64" id="base64" ng-model="edit.item.base64">
   </div>
-
+  <input type="hidden" name="createdBy" ng-model="edit.item.createdBy.id">
   <button class="btn btn-primary">Update</button>
 </form>
+{{edit.item.createdBy.id}}

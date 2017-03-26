@@ -21,10 +21,6 @@ router.route('/register')
 router.route('/login')
   .post(auth.login);
 
-router.route('/item')
-  .get(itemController.index)
-  .post(secureRoute, imageUpload, itemController.create);
-
 router.route('/request')
   .get(requestController.index)
   .post(requestController.create);
@@ -32,6 +28,10 @@ router.route('/request')
 router.route('/request/:id')
   .get(requestController.show)
   .delete(requestController.delete);
+
+router.route('/item')
+  .get(itemController.index)
+  .post(secureRoute, imageUpload, itemController.create);
 
 router.route('/item/:id')
   .get(itemController.show)

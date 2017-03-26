@@ -27,6 +27,9 @@ function itemEditCtrl(Item, $stateParams, $state) {
   vm.item = Item.get($stateParams);
 
   function itemsUpdate() {
+    // The vm.item gives us the full object user so I had to reassign the createdBy to an single Object.id inorder for the form to work because it only takes a Singledatavalue
+    vm.item.createdBy = vm.item.createdBy.id;
+    console.log(vm.item);
     vm.item
       .$update()
       .then(() => $state.go('itemsShow', $stateParams));
