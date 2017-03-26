@@ -4,7 +4,15 @@ angular
 
 Item.$inject = ['$resource'];
 function Item($resource){
-  return new $resource('api/item/:id', { id: '@id'},
+  const Item = new $resource('api/item/:id', { id: '@id'},
     { update: { method: 'PUT'}
     });
+
+  Item.prototype.location = function(){
+    if(this.location){
+      console.log(this.location);
+      return this.location;
+    }
+  };
+  return Item;
 }

@@ -35,6 +35,7 @@ function updateRoute(req, res, next) {
   if(req.file) req.body.image = req.file.filename;
   Item
     .findById(req.params.id)
+    .populate('createdBy')
     .exec()
     .then((item) => {
       if(!item) return res.notFound();

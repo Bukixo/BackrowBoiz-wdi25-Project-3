@@ -5,13 +5,14 @@ angular
   .controller('itemEditCtrl', itemEditCtrl);
 
 
-itemShowCtrl.$inject = ['Item', '$stateParams', '$state', '$scope'];
-function itemShowCtrl(Item, $stateParams, $state, $scope){
+itemShowCtrl.$inject = ['Item', '$stateParams', '$state', '$scope', '$http'];
+function itemShowCtrl(Item, $stateParams, $state, $scope, $http){
   const vm = this;
   vm.range = {};
-  //vm.range.radius = 7;
+
   // vm.newComment = {};
-  vm.item = Item.get($stateParams);
+  const item = Item.get($stateParams);
+  vm.item = item;
   vm.delete = itemsDelete;
   initMap();
   function itemsDelete() {
@@ -21,8 +22,9 @@ function itemShowCtrl(Item, $stateParams, $state, $scope){
   }
 
 //<------------GOOGLE MAPS ------------------->
-
   function initMap() {
+//$http.get(`https://maps.googleapis.com/maps/api/geocode/json?address=London&key=AIzaSyAEi_tighHwZ4dswlQz7CWXWxpHZ17LzoM`)
+  //  .then((data)=> console.log(data));
      // Creates The actual Map
     const map = new google.maps.Map(document.getElementById('maps'), {
       center: { lat: 51.5073509, lng: -0.12775829999998223 },
@@ -30,7 +32,7 @@ function itemShowCtrl(Item, $stateParams, $state, $scope){
       scrollwheel: false
     });
     //marker puts marker on the screen with a animation
-    const locationOfItem = { lat: 51.5073509, lng: -0.12775829999998223 }
+    const locationOfItem = { lat: 51.5073509, lng: -0.12775829999998223 };
     const marker = new google.maps.Marker({
       animation: google.maps.Animation.BOUNCE,
       position: locationOfItem,
@@ -40,15 +42,14 @@ function itemShowCtrl(Item, $stateParams, $state, $scope){
     function clearMap(cityArr, cityCircle){
       if(!cityArr.length===1 ){
         cityArr.setMap(null);
-      } else{
-        console.log(cityArr[0]);
+      }
       }
       // if(cityCircle){
       //    cityCircle.setMap(null);
       //  }else {
       //    createRadius();
       //  }
-    }
+
     let noOfCircle = 0;
     //const radius = vm.range.radius * 1000;
     function createRadius(radius){
@@ -77,9 +78,10 @@ function itemShowCtrl(Item, $stateParams, $state, $scope){
       createRadius(radius);
 
     });
-
   }
+
 }
+
 
 
 
