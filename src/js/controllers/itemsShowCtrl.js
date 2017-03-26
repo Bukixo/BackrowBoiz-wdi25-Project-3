@@ -26,7 +26,8 @@ function itemShowCtrl(Item, $stateParams, $state, $scope){
      // Creates The actual Map
     const map = new google.maps.Map(document.getElementById('maps'), {
       center: { lat: 51.5073509, lng: -0.12775829999998223 },
-      zoom: 8
+      zoom: 10,
+      scrollwheel: false
     });
     //marker puts marker on the screen with a animation
     const locationOfItem = { lat: 51.5073509, lng: -0.12775829999998223 }
@@ -42,14 +43,21 @@ function itemShowCtrl(Item, $stateParams, $state, $scope){
       } else{
         console.log(cityArr[0]);
       }
+      // if(cityCircle){
+      //    cityCircle.setMap(null);
+      //  }else {
+      //    createRadius();
+      //  }
     }
+    let noOfCircle = 0;
     //const radius = vm.range.radius * 1000;
     function createRadius(radius){
+      noOfCircle++;
       const cityCircle = new google.maps.Circle({
         strokeColor: '#FF0000',
         strokeOpacity: 0.8,
         strokeWeight: 2,
-        fillColor: '#FF0000',
+        fillColor: '#AA0000',
         fillOpacity: 0.35,
         map: map,
         center: locationOfItem,
@@ -58,12 +66,18 @@ function itemShowCtrl(Item, $stateParams, $state, $scope){
       const cityArr = [];
       cityArr.push(cityCircle);
       clearMap(cityArr, cityCircle);
+      // if(noOfCircle > 2){
+      //   cityCircle.setMap(null);
+      // }
     }
+
     $scope.$watch(()=> vm.range.radius, ()=> {
       const radius = vm.range.radius;
-      console.log(radius);
+      //console.log(radius);
       createRadius(radius);
+
     });
+
   }
 }
 
