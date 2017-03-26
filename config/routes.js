@@ -27,11 +27,11 @@ router.route('/request')
 
 router.route('/request/:id')
   .get(requestController.show)
-  .delete(requestController.delete);
+  .delete(secureRoute, requestController.delete);
 
 router.route('/item')
   .get(itemController.index)
-  .post(secureRoute, imageUpload, itemController.create);
+  .post(imageUpload, itemController.create);
 
 router.route('/item/:id')
   .get(itemController.show)
