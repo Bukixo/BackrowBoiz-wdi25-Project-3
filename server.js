@@ -11,8 +11,9 @@ const customResponses = require('./lib/customResponses');
 const { port, env, dbURI } = require('./config/environment');
 
 const app = express();
-const http =require('http').Server(app);
-const io = require('socket.io')(http,()=>{
+const http =require('http').createServer(app);
+
+const io = require('socket.io').listen(http,()=>{
   console.log('socket server');
 });
 
@@ -36,5 +37,10 @@ io.on('connection', function(socket){
 app.use(errorHandler);
 
 app.listen(port, () => console.log(`Express is listening on port ${port}`));
-
+io.sockets.on('connection', function(socket){
+  console.log('user');
+  socket.on('chat message', function(msg){
+    io.emit('chat message', msg);
+  });
+});
 module.exports = app; // Exports the app to import in when we run our tests
