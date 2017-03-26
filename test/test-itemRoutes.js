@@ -36,17 +36,14 @@ const testData = [{
 beforeEach((done)=>{
   ItemList.collection.drop();
   ItemList.create(testData, done);
-  ItemList.findOne({price: 160}, (err, item)=>{
-    console.log(item);
-  });
+  app.get('/api/item').end((err, res)=> console.log(res.body));
 });
 //<------------------TEST SETUP OVER NOW WE CAN WRITE SOME TEST-------------->
 //Describes what we are going to test in this describe block
 describe('Get api/item', ()=>{
 // it describes what is going to be logged in the terminal , app.get is the function we testing and expect is the result we expect to get
   it('should return a 200 response', (done)=>{
-    chai.request(server)
-    .get('api/item')
+    app.get('/api/item')
     .end((err, res)=>{
       res.should.have.status(200);
       done();
@@ -55,8 +52,7 @@ describe('Get api/item', ()=>{
 
   //Should gives a 404 not found because our URL is false
   it('should return a 404 not found', (done)=>{
-    chai.request(server)
-    .get('/api/THISISNOTAURL')
+    app.get('/api/THISISNOTAURL')
     .end((err, res)=>{
       res.should.have.status(404);
       done();
@@ -64,11 +60,11 @@ describe('Get api/item', ()=>{
   });
 
   it('should render Json, return the length and be an array', (done)=>{
-    chai.request(server)
-    .get('api/item')
+    app.get('api/item')
     .end((err,res)=>{
-      res.should.have.status(200);
-      res.should.be.json;
+      //res.should.have.status(200);
+      expect(res.status).to.equal(200);
+      expect(res.body).to.be.json;
       expect(res.body.length).to.equal(3);
       expect(res.body).to.be.a('Array');
       done();
@@ -86,10 +82,6 @@ describe('Get api/item', ()=>{
 });
 
 describe('Post api/item', ()=>{
-  // beforeEach((done)=>{
-  // //  Item.collection.drop();
-  // //  Item.create(data, done);
-  // });
 
   it('should return a 201status and have all the properties',(done)=>{
     chai.request(server)
@@ -117,7 +109,7 @@ describe('Post api/item', ()=>{
   });
 });
 
-describe('PUT api/item/:id', ()=>{
+xdescribe('PUT api/item/:id', ()=>{
   let oneItem;
   beforeEach((done)=>{
     ItemList.findOne({name: 'Ball'}, (err, item)=>{
