@@ -29,7 +29,7 @@ function itemShowCtrl(Item, $stateParams, $state, $scope){
       zoom: 8
     });
     //marker puts marker on the screen with a animation
-    const locationOfItem = { lat: 51.5073509, lng: -0.12775829999998223 }
+    const locationOfItem = { lat: 51.5073509, lng: -0.12775829999998223 };
     const marker = new google.maps.Marker({
       animation: google.maps.Animation.BOUNCE,
       position: locationOfItem,
@@ -37,7 +37,7 @@ function itemShowCtrl(Item, $stateParams, $state, $scope){
       map: map
     });
     function clearMap(cityArr, cityCircle){
-      if(!cityArr.length===1 ){
+      if(cityArr.length===1 ){
         cityArr.setMap(null);
       } else{
         console.log(cityArr[0]);

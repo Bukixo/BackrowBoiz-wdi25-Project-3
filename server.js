@@ -8,10 +8,13 @@ const routes = require('./config/routes');
 const errorHandler = require('./lib/errorHandler');
 const customResponses = require('./lib/customResponses');
 
-
 const { port, env, dbURI } = require('./config/environment');
 
 const app = express();
+const http =require('http').Server(app);
+const io = require('socket.io')(http,()=>{
+  console.log('socket server');
+});
 
 mongoose.connect(dbURI);
 app.use(bodyParser.json({limit: '5mb'}));
@@ -23,6 +26,12 @@ app.use(express.static(`${__dirname}/public`));
 app.use(customResponses);
 app.use('/api', routes);
 app.get('/*', (req, res) => res.sendFile(`${__dirname}/public/index.html`));
+
+io.on('connection', function(socket){
+  socket.on('chat message', function(msg){
+    io.emit('chat message', msg);
+  });
+});
 
 app.use(errorHandler);
 
