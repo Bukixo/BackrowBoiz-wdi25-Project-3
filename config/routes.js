@@ -6,7 +6,6 @@ const auth = require('../controllers/auth');
 const secureRoute = require('../lib/secureRoute');
 const imageUpload = require('../lib/imageUpload');
 
-
 router.route('/users')
   .get(userController.index); //landing page
 
@@ -40,7 +39,7 @@ router.route('/item/:id')
   .delete(itemController.delete);
 
 router.route('/item/:id/comments')
-  .post(itemController.createComment);
+  .post(secureRoute, itemController.createComment);
 
 router.route('/item/:id/comments/:commentId')
   .delete(itemController.deleteComment);
