@@ -18,11 +18,12 @@ function itemIndexCtrl(Item, User, Request, filterFilter, orderByFilter, $scope)
     vm.filtered = filterFilter(vm.all, params);
     vm.filtered = orderByFilter(vm.filtered, vm.sort);
   }
-
+  
   $scope.$watchGroup([
     ()=> vm.q,
     ()=> vm.sort
   ],filterItems);
+
 
 
 }

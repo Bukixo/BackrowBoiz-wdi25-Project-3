@@ -6,16 +6,6 @@ MainCtrl.$inject = ['$rootScope', '$state', '$auth', 'filterFilter', 'orderByFil
 function MainCtrl($rootScope, $state, $auth, filterFilter, orderByFilter, $scope) {
   const vm = this;
 
-  function filterItems(){
-    const params = { name: vm.q };
-    vm.filtered = filterFilter(vm.all, params);
-    vm.filtered = orderByFilter(vm.filtered, vm.sort);
-  }
-
-  $scope.$watchGroup([
-    ()=> vm.q,
-    ()=> vm.sort
-  ],filterItems);
 
   vm.isAuthenticated = $auth.isAuthenticated;
 
