@@ -14,13 +14,24 @@
 </ul>
 
   <p>{{ show.item.rating }}</p>
-  <p>{{ show.item.comments }}</p>
-  {{show.item.id}}
-  <input type="hidden" ng-model="show.item.createdBy.location">
+
+
+
 <a ui-sref="itemEdit({ id: show.item.id })">Edit</a>
 
 <button ng-click="show.delete()">Delete</button>
-{{show.range}}
+
+  <ul>
+    <li ng-repeat="comment in show.item.comments track by $index"><p>{{ comment.content }}</p><small>{{comment.createdBy.email}}</small>
+    <button ng-click="show.deleteComment(comment)">Delete</button></li>
+  </ul>
+
+<form ng-submit="show.addComment()">
+        <label>Add comment</label>
+        <textarea ng-model="show.newComment.content"></textarea>
+        <button class="btn">Comment</button>
+      </form>
+
 <form>
 <input type="range" min="0" max="10" name="radius" ng-model="show.range.radius">
 </form>
