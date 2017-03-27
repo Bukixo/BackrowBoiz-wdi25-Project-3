@@ -8,18 +8,16 @@ angular
 ProfileCtrl.$inject = ['User','$stateParams','$uibModal', '$http', '$state', '$auth'];
 function ProfileCtrl(User, $stateParams, $uibModal, $http, $state, $auth){
   const vm = this;
-  //Grabs the User factory and assign the one user with the ID equal to the url ID to the user variable
-  vm.user = User.get($stateParams);
 //defines all functions that is going be interact directly with the UI
   vm.open = openEditModal;
 // Grabs Request info from back end
-  function giveMeTheFuckingData(){
-    $http.get('/api/profile').then((data)=>{
-      console.log(data);
-    });
-  }
 
-  giveMeTheFuckingData();
+  $http.get('/api/profile')
+  .then((response)=> {
+    vm.user = response.data.user;
+    vm.pending = response.data.pending;
+    vm.requested = response.data.requested;
+  });
 
   // Opens the Modal assign controller and template to our edit
   function openEditModal(){
