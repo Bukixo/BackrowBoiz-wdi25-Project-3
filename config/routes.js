@@ -31,12 +31,12 @@ router.route('/request/:id')
 
 router.route('/item')
   .get(itemController.index)
-  .post(imageUpload, itemController.create);
+  .post(secureRoute, imageUpload, itemController.create);
 
 router.route('/item/:id')
   .get(itemController.show)
   .put(imageUpload, itemController.update)
-  .post(requestController.create)
+  // .post(requestController.create)
   .delete(itemController.delete);
 
 router.route('/item/:id/comments')
