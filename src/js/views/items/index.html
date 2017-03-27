@@ -1,13 +1,28 @@
 <h1>Fashionista</h1>
-<input type="text" class="search" ng-model="main.q" placeholder="Search...">
+<div ng-controller="itemIndexCtrl as items">
+
+<input type="text" class="search" ng-model="items.q" placeholder="Search...">
+<select ng-model="items.sort">
+  <option value="+price">Price ascending</option>
+  <option value="-price">Price descending</option>
+</select>
+
+<select ng-model="items.catagory">
+  <option>Male</option>
+  <option>Female</option>
+  <option>Children</option>
+</select>
 
 <!--- Renders all Items from the GET request in the Controller REMOVE THIS LATER -->
 <div class="bigDiv">
-  <div ng-repeat="item in index.all | filter: main.q" class="col-lg-3 col-md-4 col-sm-6">
+  <div ng-repeat="item in index.all | filter: items.q | filter: items.sort" class="col-lg-3 col-md-4 col-sm-6">
     <div class="l-box">
+      {{item}}
       <h3 ui-sref="itemsShow({ id: item.id })"><strong>{{ item.name }}</strong></h3>
-      <img ng-src="{{ item.imageSRC }}" alt="{{ item.name }}" class="img-responsive img-thumbnail pure-img" ui-sref="itemsShow({ id: item.id })">
+      <img ng-src="{{ item.image }}" alt="{{ item.name }}" class="img-responsive img-thumbnail pure-img" ui-sref="itemsShow({ id: item.id })">
+      <p>Price <strong>{{ item.price | currency: '£ ' }}/day</strong></p>
       <a ui-sref="profile({ id: item.createdBy.id})">{{item.createdBy.username}}</a>
     </div>
   </div>
+</div>
 </div>
