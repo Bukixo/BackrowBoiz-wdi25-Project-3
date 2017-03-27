@@ -1,7 +1,7 @@
 const request = require('request-promise');
 
 function getLocation(req, res){
-  const url = 'https://maps.googleapis.com/maps/api/geocode/json?';
+  //const url = 'https://maps.googleapis.com/maps/api/geocode/json?';
 
   request({
     method: 'GET',
