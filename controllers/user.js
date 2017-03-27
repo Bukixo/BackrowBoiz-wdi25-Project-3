@@ -1,4 +1,19 @@
 const User = require('../models/user');
+const Promise = require('bluebird');
+const Request = require('../models/request');
+
+function profileRoute(req, res, next){
+  return Promise.props({
+    pending: Request.find({'item.createdBy': req.user, accepted: true}).exec(),
+    requested: Request.find({requester: req.user}).populate('requester item').exec(),
+    user: User.findById(req.user.id).exec()
+  })
+    .then((data)=> {
+      return res.json(data);
+    })
+    .catch(next);
+}
+
 
 function indexRoute(req, res, next) {
   User
@@ -58,5 +73,6 @@ module.exports = {
 //  create: createRoute,
   show: showRoute,
   update: updateRoute,
-  delete: deleteRoute
+  delete: deleteRoute,
+  profile: profileRoute
 };
