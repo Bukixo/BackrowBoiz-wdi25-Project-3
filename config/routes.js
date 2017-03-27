@@ -39,7 +39,7 @@ router.route('/item/:id')
   .delete(itemController.delete);
 
 router.route('/item/:id/comments')
-  .post(itemController.createComment);
+  .post(secureRoute, itemController.createComment);
 
 router.route('/item/:id/comments/:commentId')
   .delete(itemController.deleteComment);
