@@ -107,17 +107,8 @@ nav {
   width: 400px;
 }
 
-///////// Item show /////////////
-
-.item-show {
-  .row{
-    border: 2px solid black;
-  }
-  img{
-    height: 30em;
 
 
-}
 input{
   color:black;
   &:focus {
@@ -159,7 +150,5 @@ input{
       color:black;
       background: $light-blue;
     }
-
   }
-}
 }
