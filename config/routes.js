@@ -6,7 +6,6 @@ const auth = require('../controllers/auth');
 const secureRoute = require('../lib/secureRoute');
 const imageUpload = require('../lib/imageUpload');
 
-
 router.route('/users')
   .get(userController.index); //landing page
 
