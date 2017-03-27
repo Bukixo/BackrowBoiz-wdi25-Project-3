@@ -2,7 +2,8 @@
 <div ng-controller="itemIndexCtrl as items">
 
 <input type="text" class="search" ng-model="items.q" placeholder="Search...">
-<select ng-model="items.price">
+{{items.all[0].price}}
+<select ng-model="items.all[0].price">
   <option value="+price">Price ascending</option>
   <option value="-price">Price descending</option>
 </select>
