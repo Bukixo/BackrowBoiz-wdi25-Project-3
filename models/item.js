@@ -41,7 +41,7 @@ itemSchema
     .virtual('imageSRC')
     .get(function getImageSRC() {
       if(!this.image) return null;
-      return `https://s3-eu-west-1.amazonaws.com/wdi-london-buki/${this.image}`;
+      return `https://s3-eu-west-1.amazonaws.com/${process.env.AWS_BUCKET_NAME}/${this.image}`;
     });
 
 itemSchema.pre('save', function checkPreviousImage(next) {
