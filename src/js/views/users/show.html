@@ -1,33 +1,30 @@
-<div class="container">
+<div class="profile-show">
+  <h1>Profile Page</h1>
 
   <div class="row">
-    <div class="col-lg-6 col-md-8 col-sm-6">
-      <div class="profile-show">
-      <h1>Profile Page</h1>
-
-      <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-12">
-          <img ng-src="{{ profile.user.profileImage }}">
-        </div>
-
-        <div class="row">
-          <div class="col-lg-4 col-md-4 col-sm-12">
-            <h2> Name : {{ profile.user.username }}</h2>
-            <h2>Email: {{ profile.user.email }}</h2>
-            <h2>Location: {{ profile.user.location }}</h2>
-          </div>
-
-      <div class="row">
-        <div class="col-lg-3 col-md-4 col-sm-12">
-          <button ng-click="profile.open()">EDIT USER</button>
-          <button type="button" name="button">My requests</button>
-          <button type="button" name="button">Items Requested</button>
-          <button  ng-click="profile.delete()">Delete Profile</button>
-        </div>
-      </div>
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <img ng-src="{{ profile.user.profileImage }}">
+      <h2> Name : {{ profile.user.username }}</h2>
+      <h2>Email: {{ profile.user.email }}</h2>
+      <h2>Location: {{ profile.user.location }}</h2>
+      <button ng-click="profile.open()">EDIT USER</button>
+      <button ng-click="profile.delete()">Delete Profile</button>
     </div>
-  </div>
-      </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <h2>My Requests</h2>
+
+      <ul>
+        <li ng-repeat="item in profile.pending">{{ item }}</li>
+      </ul>
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <h2>Items Requested</h2>
+
+      <ul>
+        <li ng-repeat="request in profile.requested">{{ request }}</li>
+      </ul>
     </div>
   </div>
 </div>
