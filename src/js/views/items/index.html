@@ -22,11 +22,10 @@
   <div ng-repeat="item in index.all | filter: index.q | filter: index.sort | filter: index.catagory" class="col-lg-3 col-md-4 col-sm-6">
     <div class="l-box">
 
-      <h3 ui-sref="indexShow({ id: item.id })"><strong>{{ item.name }}</strong></h3>
+      <h3 ui-sref="itemsShow({ id: item.id })"><strong>{{ item.name }}</strong></h3>
       <!--<img ng-src="{{ item.imageSRC }}" alt="{{ item.name }}" class="img-responsive img-thumbnail pure-img" ui-sref="indexShow({ id: item.id })">-->
       <p>Price <strong>{{ item.price | currency: '£ ' }}/day</strong></p>
       <a ui-sref="profile({ id: item.createdBy.id})">{{item.createdBy.username}}</a>
     </div>
   </div>
-</div>
 </div>

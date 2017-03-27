@@ -25,6 +25,7 @@ function showRequestRoute(req, res, next){
 
 //Creates a new request route ==> Someone makes a request to create a user
 function createRequestRoute(req, res, next){
+  console.log(req.body);
   Request
   .create(req.body)
   .then((request)=>{

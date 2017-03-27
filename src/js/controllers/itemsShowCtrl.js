@@ -1,13 +1,25 @@
-/* global google*/
+/* global google, marker*/
 angular
   .module('rentApp')
   .controller('itemShowCtrl', itemShowCtrl)
   .controller('itemEditCtrl', itemEditCtrl);
 
-itemShowCtrl.$inject = ['Item', '$stateParams', '$state', '$scope', '$http', 'Comments', 'geoCoder'];
-function itemShowCtrl(Item, $stateParams, $state, $scope, $http, Comments, geoCoder){
+itemShowCtrl.$inject = ['Item', '$stateParams', '$state', '$scope', '$http', 'Comments', 'geoCoder', '$auth'];
+function itemShowCtrl(Item, $stateParams, $state, $scope, $http, Comments, geoCoder, $auth){
   const vm = this;
   vm.range = {};
+
+  function sendRequest(){
+    vm.request.item =  vm.item.id;
+    vm.request.requester = $auth.getPayload().userId;
+    console.log(vm.request);
+    $http
+      .post('/api/request', vm.request)
+      .then(()=>{
+        $state.go('itemsIndex');
+      });
+  }
+  vm.sendRequest = sendRequest;
 
   vm.newComment = {};
   Item.get($stateParams,(data)=>{

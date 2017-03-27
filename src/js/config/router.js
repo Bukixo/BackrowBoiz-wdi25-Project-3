@@ -39,12 +39,12 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
      controller: 'RegisterCtrl as register'
    })
    .state('profile', {
-     url: '/profile/:id',
+     url: '/user/:id',
      templateUrl: 'js/views/users/show.html',
      controller: 'ProfileCtrl as profile'
    })
    .state('editProfile', {
-     url: '/profile/:id/edit',
+     url: '/user/:id/edit',
      templateUrl: 'js/views/users/edit.html',
      controller: 'ProfileCtrl as profile'
    });

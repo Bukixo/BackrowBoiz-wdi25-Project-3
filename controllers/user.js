@@ -5,7 +5,7 @@ const Request = require('../models/request');
 function profileRoute(req, res, next){
   return Promise.props({
     pending: Request.find({'item.createdBy': req.user, accepted: true}).exec(),
-    requested: Request.find({requester: req.user}).populate('requester item').exec(),
+    requested: Request.find().populate('requester item').exec(),
     user: User.findById(req.user.id).exec()
   })
     .then((data)=> {
