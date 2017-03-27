@@ -41,8 +41,8 @@ User
     return Item.create([{
       name: 'Addidas Jumper',
       price: 3,
-      image: '/images/seed-pics/Addidas.jpg',
-      description: 'Vintage, mens jumper in perfect conditon - well loved!',
+      imageSRC: '/images/seed-pics/Addidas.jpg',
+      description: 'Vinateg, mens jumper in perfect conditon - well loved!',
       rating: '',
       size: 'M',
       catagory: 'Men',
@@ -50,7 +50,7 @@ User
     }, {
       name: 'Black Evening Dress',
       price: 10,
-      image: '/images/seed-pics/black.jpg',
+      imageSRC: '/images/seed-pics/black.jpg',
       description: 'Stunning fit and covering the shoulders. Extremely popular from a smoke free home',
       rating: '',
       size: 'S',

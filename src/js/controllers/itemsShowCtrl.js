@@ -5,22 +5,15 @@ angular
   .controller('itemEditCtrl', itemEditCtrl);
 
 
-itemShowCtrl.$inject = ['Item', '$stateParams', '$state', '$scope', '$http'];
-function itemShowCtrl(Item, $stateParams, $state, $scope, $http){
+itemShowCtrl.$inject = ['Item', '$stateParams', '$state', '$scope', '$http', 'Comments'];
+function itemShowCtrl(Item, $stateParams, $state, $scope, $http, Comments){
   const vm = this;
   vm.range = {};
 
-  // vm.newComment = {};
+  vm.newComment = {};
   Item.get($stateParams,(data)=>{
     vm.item = data;
-
-    $http.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${data.createdBy.location}&key=AIzaSyAEi_tighHwZ4dswlQz7CWXWxpHZ17LzoM`)
-      .then((data)=>{
-        const latlng = data.data.results[0].geometry.location;
-
-        initMap(latlng);
-      });
-
+    getLocationOfUser(data);
   });
   vm.delete = itemsDelete;
   function itemsDelete() {
@@ -28,11 +21,40 @@ function itemShowCtrl(Item, $stateParams, $state, $scope, $http){
       .$remove()
       .then(() => $state.go('itemsIndex'));
   }
+//<------------ COMMENTS ------------------->>>
+  vm.addComment = addComment;
+  function addComment(){
+    Comments
+    .save( {itemId: vm.item.id}, vm.newComment)
+    .$promise
+    .then((comment)=>{
+      vm.item.comments.push(comment);
+      vm.newComment = {};
+    });
+  }
+  vm.deleteComment = deleteComment;
+  function deleteComment(comment){
+    Comments
+    .delete({itemId: vm.item.id, id: comment.id})
+    .$promise
+    .then(()=>{
+      const index = vm.item.comments.indexOf(comment);
+      vm.item.comments.splice(index, 1);
+    });
+  }
+
+
 
 
 //<------------GOOGLE MAPS ------------------->
+  function getLocationOfUser(data){
+    $http.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${data.createdBy.location}&key=AIzaSyAEi_tighHwZ4dswlQz7CWXWxpHZ17LzoM`)
+  .then((data)=>{
+    const latlng = data.data.results[0].geometry.location;
+    initMap(latlng);
+  });
+  }
   function initMap(latlng) {
-    console.log(latlng);
      // Creates The actual Map
     const map = new google.maps.Map(document.getElementById('maps'), {
       center: latlng,
@@ -40,7 +62,7 @@ function itemShowCtrl(Item, $stateParams, $state, $scope, $http){
       scrollwheel: false
     });
     //marker puts marker on the screen with a animation
-    const locationOfItem = { lat: 51.5073509, lng: -0.12775829999998223 };
+
     const marker = new google.maps.Marker({
       animation: google.maps.Animation.BOUNCE,
       position: latlng,
@@ -69,7 +91,7 @@ function itemShowCtrl(Item, $stateParams, $state, $scope, $http){
         fillColor: '#AA0000',
         fillOpacity: 0.35,
         map: map,
-        center: locationOfItem,
+        center: latlng,
         radius: radius * 1000
       });
       const cityArr = [];
@@ -84,7 +106,6 @@ function itemShowCtrl(Item, $stateParams, $state, $scope, $http){
       const radius = vm.range.radius;
       //console.log(radius);
       createRadius(radius);
-
     });
   }
 

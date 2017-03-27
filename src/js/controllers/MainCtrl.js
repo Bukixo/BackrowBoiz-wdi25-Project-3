@@ -8,8 +8,6 @@ function MainCtrl($rootScope, $state, $auth, filterFilter, orderByFilter, $scope
 
   function filterItems(){
     const params = { name: vm.q };
-    //  if(vm.useStrength) params.strength = vm.strength;
-    //  if(vm.useRoast) params.roast = vm.roast;
     vm.filtered = filterFilter(vm.all, params);
     vm.filtered = orderByFilter(vm.filtered, vm.sort);
   }
