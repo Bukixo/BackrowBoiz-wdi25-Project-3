@@ -5,8 +5,8 @@ angular
   .controller('ProfileCtrl', ProfileCtrl)
   .controller('ProfileEditModalCtrl', EditCtrl);
 
-ProfileCtrl.$inject = ['User','$stateParams','$uibModal', '$http'];
-function ProfileCtrl(User, $stateParams, $uibModal, $http){
+ProfileCtrl.$inject = ['User','$stateParams','$uibModal', '$http', '$state', '$auth'];
+function ProfileCtrl(User, $stateParams, $uibModal, $http, $state, $auth){
   const vm = this;
   //Grabs the User factory and assign the one user with the ID equal to the url ID to the user variable
   vm.user = User.get($stateParams);
@@ -32,11 +32,24 @@ function ProfileCtrl(User, $stateParams, $uibModal, $http){
         }
       }
     });
+  }
+  vm.delete = profileDelete;
+  function profileDelete() {
+    $auth.logout();
+    vm.user
+      .$remove()
+      .then(() => $state.go('itemsIndex'));
+      // vm.logout = logout;
+      //
+      // function logout() {
+      //    //remove the token
+      //   location.reload();
+      //   $state.go('login');
+      // }
+
 
   }
-
 }
-
 
 EditCtrl.$inject = ['user', '$state','$uibModalInstance', '$stateParams' ];
 function EditCtrl(user, $state, $uibModalInstance, $stateParams){
