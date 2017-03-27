@@ -14,17 +14,25 @@
     <input type="text" name="numberOfDays" id="numberOfDays" ng-model="itemsNew.item.numberOfDays" class="form-control">
   </div>
   <div class="form-group">
-    <label for="size">size</label>
-    <input type="text" name="numberOfDays" id="size" ng-model="itemsNew.item.size" class="form-control">
+    <label for="Size">Size</label><br>
+      <select name="size" id="size" ng-model="itemsNew.item.size">
+        <option value="extra-small">x-small</option>
+        <option value="small">small</option>
+        <option value="medium">medium</option>
+        <option value="large">large</option>
+        <option value="extra-large">x-large</option>
+      </select>
   </div>
   <div class="form-group">
     <label for="description">description</label>
     <input type="textarea" name="description" id="description" ng-model="itemsNew.item.description" class="form-control">
   </div>
-
-
-    <label for="category">Category</label>
-    <input type="textarea" name="category" id="category" ng-model="itemsNew.item.category" class="form-control">
+    <label for="category">Category</label><br>
+      <select name="category" id="category" ng-model="itemsNew.item.category">
+        <option value="Men">Men</option>
+        <option value="Women">Women</option>
+        <option value="Children">Children</option>
+      </select>
   </div>
   <div class="form-group">
     <label for="base64">Image</label>
