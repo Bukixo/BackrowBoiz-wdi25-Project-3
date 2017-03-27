@@ -3,8 +3,12 @@ const userController = require('../controllers/user');
 const itemController = require('../controllers/item');
 const requestController = require('../controllers/request');
 const auth = require('../controllers/auth');
+const geoCoder = require('../controllers/geoCoder');
 const secureRoute = require('../lib/secureRoute');
 const imageUpload = require('../lib/imageUpload');
+
+router.route('/location')
+.get(geoCoder.getLocation);
 
 router.route('/users')
   .get(userController.index); //landing page

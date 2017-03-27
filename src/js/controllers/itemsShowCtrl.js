@@ -4,15 +4,16 @@ angular
   .controller('itemShowCtrl', itemShowCtrl)
   .controller('itemEditCtrl', itemEditCtrl);
 
-itemShowCtrl.$inject = ['Item', '$stateParams', '$state', '$scope', '$http', 'Comments'];
-function itemShowCtrl(Item, $stateParams, $state, $scope, $http, Comments){
+itemShowCtrl.$inject = ['Item', '$stateParams', '$state', '$scope', '$http', 'Comments', 'geoCoder'];
+function itemShowCtrl(Item, $stateParams, $state, $scope, $http, Comments, geoCoder){
   const vm = this;
   vm.range = {};
 
   vm.newComment = {};
   Item.get($stateParams,(data)=>{
+    const location = data.createdBy.location;
     vm.item = data;
-    getLocationOfUser(data);
+    getLocationOfUser(location);
   });
   vm.delete = itemsDelete;
   function itemsDelete() {
@@ -20,26 +21,7 @@ function itemShowCtrl(Item, $stateParams, $state, $scope, $http, Comments){
       .$remove()
       .then(() => $state.go('itemsIndex'));
   }
-  //
-  // function openModal() {
-  //   $uibModal.open({
-  //     templateUrl: 'src/js/views/partials/areYouSure.html',
-  //     controller: 'ProfileCtrl as profile'
-  //     // resolve: {
-  //     //   request: () => {
-  //     //     return vm.bird;
-  //     //   }
-  //     //}
-  //   });
-  // }
-  //
-  // vm.open = openModal;
-  //
-  // function closeModal() {
-  //   $uibModalInstance.close();
-  // }
-  //
-  // vm.close = closeModal;
+
 //<------------ COMMENTS ------------------->>>
   vm.addComment = addComment;
   function addComment(){
@@ -65,12 +47,12 @@ function itemShowCtrl(Item, $stateParams, $state, $scope, $http, Comments){
 
 
 //<------------GOOGLE MAPS ------------------->
-  function getLocationOfUser(data){
-    $http.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${data.createdBy.location}&key=AIzaSyAEi_tighHwZ4dswlQz7CWXWxpHZ17LzoM`)
-  .then((data)=>{
-    const latlng = data.data.results[0].geometry.location;
-    initMap(latlng);
-  });
+  function getLocationOfUser(location){
+    geoCoder.getLocation(location)
+    .then((data)=>{
+      const latlng = data;
+      initMap(latlng);
+    });
   }
   function initMap(latlng) {
      // Creates The actual Map
@@ -87,46 +69,28 @@ function itemShowCtrl(Item, $stateParams, $state, $scope, $http, Comments){
       draggable: true,
       map: map
     });
-    function clearMap(cityArr, cityCircle){
-      if(!cityArr.length===1 ){
-        cityArr.setMap(null);
-      }
-    }
-      // if(cityCircle){
-      //    cityCircle.setMap(null);
-      //  }else {
-      //    createRadius();
-      //  }
 
-    let noOfCircle = 0;
-    //const radius = vm.range.radius * 1000;
-    function createRadius(radius){
-      noOfCircle++;
-      const cityCircle = new google.maps.Circle({
-        strokeColor: '#FF0000',
-        strokeOpacity: 0.8,
-        strokeWeight: 2,
-        fillColor: '#AA0000',
-        fillOpacity: 0.35,
-        map: map,
-        center: latlng,
-        radius: radius * 1000
-      });
-      const cityArr = [];
-      cityArr.push(cityCircle);
-      clearMap(cityArr, cityCircle);
-      // if(noOfCircle > 2){
-      //   cityCircle.setMap(null);
-      // }
+    const cityCircle = new google.maps.Circle({
+      strokeColor: '#FF0000',
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      fillColor: '#AA0000',
+      fillOpacity: 0.35,
+      map: map,
+      center: latlng,
+      radius: 5000
+    });
+
+    function editRadius(radius){
+      cityCircle.setRadius(radius*1000);
     }
 
     $scope.$watch(()=> vm.range.radius, ()=> {
       const radius = vm.range.radius;
-      //console.log(radius);
-      createRadius(radius);
+      editRadius(radius);
     });
-  }
 
+  }
 }
 
 
