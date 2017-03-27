@@ -17,7 +17,7 @@
     <ul>
       <li><a ui-sref="itemsIndex">index</a></li>
       <li><a ui-sref="itemsNew">New</a></li>
-      <li ng-if="main.isAuthenticated()"><a ui-sref="profile ({id: main.profilePageId})">My profile</a></li>
+      <li ng-if="main.isAuthenticated()"><a ui-sref="profile({id: main.profilePageId})">My profile</a></li>
       <li ng-if="!main.isAuthenticated()"><a ui-sref="login">Login</a></li>
       <li ng-if="!main.isAuthenticated()"><a ui-sref="register">Register</a></li>
       <li ng-if="main.isAuthenticated()"><a ng-click="main.logout()" href="#">Logout</a></li>
@@ -25,8 +25,6 @@
   </div>
   </nav>
   <div class="message" ng-if="main.message">{{ main.message }}</div>
-
-
 
   <main ui-view>
 
