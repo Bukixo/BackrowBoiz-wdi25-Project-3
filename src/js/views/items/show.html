@@ -15,7 +15,7 @@
 
   <p>{{ show.item.rating }}</p>
   <p>{{ show.item.comments }}</p>
-  {{show.item.createdBy.location}}
+  {{show.item.id}}
   <input type="hidden" ng-model="show.item.createdBy.location">
 <a ui-sref="itemEdit({ id: show.item.id })">Edit</a>
 

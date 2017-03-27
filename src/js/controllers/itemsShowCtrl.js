@@ -11,23 +11,31 @@ function itemShowCtrl(Item, $stateParams, $state, $scope, $http){
   vm.range = {};
 
   // vm.newComment = {};
-  const item = Item.get($stateParams);
-  vm.item = item;
+  Item.get($stateParams,(data)=>{
+    vm.item = data;
+
+    $http.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${data.createdBy.location}&key=AIzaSyAEi_tighHwZ4dswlQz7CWXWxpHZ17LzoM`)
+      .then((data)=>{
+        const latlng = data.data.results[0].geometry.location;
+
+        initMap(latlng);
+      });
+
+  });
   vm.delete = itemsDelete;
-  initMap();
   function itemsDelete() {
     vm.item
       .$remove()
       .then(() => $state.go('itemsIndex'));
   }
 
+
 //<------------GOOGLE MAPS ------------------->
-  function initMap() {
-//$http.get(`https://maps.googleapis.com/maps/api/geocode/json?address=London&key=AIzaSyAEi_tighHwZ4dswlQz7CWXWxpHZ17LzoM`)
-  //  .then((data)=> console.log(data));
+  function initMap(latlng) {
+    console.log(latlng);
      // Creates The actual Map
     const map = new google.maps.Map(document.getElementById('maps'), {
-      center: { lat: 51.5073509, lng: -0.12775829999998223 },
+      center: latlng,
       zoom: 10,
       scrollwheel: false
     });
@@ -35,7 +43,7 @@ function itemShowCtrl(Item, $stateParams, $state, $scope, $http){
     const locationOfItem = { lat: 51.5073509, lng: -0.12775829999998223 };
     const marker = new google.maps.Marker({
       animation: google.maps.Animation.BOUNCE,
-      position: locationOfItem,
+      position: latlng,
       draggable: true,
       map: map
     });
