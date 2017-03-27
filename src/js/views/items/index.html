@@ -5,6 +5,7 @@
 <div class="bigDiv">
   <div ng-repeat="item in index.all | filter: main.q" class="col-lg-3 col-md-4 col-sm-6">
     <div class="l-box">
+      {{item}}
       <h3 ui-sref="itemsShow({ id: item.id })"><strong>{{ item.name }}</strong></h3>
       <img ng-src="{{ item.imageSRC }}" alt="{{ item.name }}" class="img-responsive img-thumbnail pure-img" ui-sref="itemsShow({ id: item.id })">
       <a ui-sref="profile({ id: item.createdBy.id})">{{item.createdBy.username}}</a>
