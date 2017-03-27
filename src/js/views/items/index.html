@@ -8,6 +8,7 @@
 </select>
 
 <select ng-model="items.catagory">
+  <option>All</option>
   <option>Male</option>
   <option>Female</option>
   <option>Children</option>
@@ -19,7 +20,7 @@
     <div class="l-box">
       {{item}}
       <h3 ui-sref="itemsShow({ id: item.id })"><strong>{{ item.name }}</strong></h3>
-      <img ng-src="{{ item.image }}" alt="{{ item.name }}" class="img-responsive img-thumbnail pure-img" ui-sref="itemsShow({ id: item.id })">
+      <img ng-src="{{ item.imageSRC }}" alt="{{ item.name }}" class="img-responsive img-thumbnail pure-img" ui-sref="itemsShow({ id: item.id })">
       <p>Price <strong>{{ item.price | currency: '£ ' }}/day</strong></p>
       <a ui-sref="profile({ id: item.createdBy.id})">{{item.createdBy.username}}</a>
     </div>
