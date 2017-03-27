@@ -14,7 +14,15 @@ function itemsNewCtrl(Item, $state){
         .$promise
         .then(() => $state.go('itemsIndex'));
     }
+
   }
 
   vm.create = itemsCreate;
 }
+
+// angular.module('ui.bootstrap.demo').controller('PopoverDemoCtrl', function ($scope, $sce) {
+//   $scope.dynamicPopover = {
+//     content: 'Hello, World!',
+//     templateUrl: 'myPopoverTemplate.html',
+//     title: 'Title'
+//   };

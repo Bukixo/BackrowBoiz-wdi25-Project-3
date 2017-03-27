@@ -1,10 +1,10 @@
 angular
   .module('rentApp')
-  .factory('Comment', Comment);
+  .factory('Comments', Comments);
 
-Comment.$inject = ['$resource'];
-function Comment($resource){
-  return new $resource('api/item/:id/comments/:commentId', { id: '@id'},
+Comments.$inject = ['$resource'];
+function Comments($resource){
+  return new $resource('/api/item/:itemId/comments/:id', { id: '@id'},
     { update: { method: 'PUT'}
     });
 }
