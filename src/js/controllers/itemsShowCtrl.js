@@ -4,7 +4,6 @@ angular
   .controller('itemShowCtrl', itemShowCtrl)
   .controller('itemEditCtrl', itemEditCtrl);
 
-
 itemShowCtrl.$inject = ['Item', '$stateParams', '$state', '$scope', '$http', 'Comments', 'geoCoder'];
 function itemShowCtrl(Item, $stateParams, $state, $scope, $http, Comments, geoCoder){
   const vm = this;
@@ -12,7 +11,7 @@ function itemShowCtrl(Item, $stateParams, $state, $scope, $http, Comments, geoCo
 
   vm.newComment = {};
   Item.get($stateParams,(data)=>{
-    const location = data.createdBy.location
+    const location = data.createdBy.location;
     vm.item = data;
     getLocationOfUser(location);
   });
@@ -22,6 +21,7 @@ function itemShowCtrl(Item, $stateParams, $state, $scope, $http, Comments, geoCo
       .$remove()
       .then(() => $state.go('itemsIndex'));
   }
+
 //<------------ COMMENTS ------------------->>>
   vm.addComment = addComment;
   function addComment(){
@@ -43,7 +43,6 @@ function itemShowCtrl(Item, $stateParams, $state, $scope, $http, Comments, geoCo
       vm.item.comments.splice(index, 1);
     });
   }
-
 
 
 
@@ -71,16 +70,16 @@ function itemShowCtrl(Item, $stateParams, $state, $scope, $http, Comments, geoCo
       map: map
     });
 
-      const cityCircle = new google.maps.Circle({
-        strokeColor: '#FF0000',
-        strokeOpacity: 0.8,
-        strokeWeight: 2,
-        fillColor: '#AA0000',
-        fillOpacity: 0.35,
-        map: map,
-        center: latlng,
-        radius: 5000
-      });
+    const cityCircle = new google.maps.Circle({
+      strokeColor: '#FF0000',
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      fillColor: '#AA0000',
+      fillOpacity: 0.35,
+      map: map,
+      center: latlng,
+      radius: 5000
+    });
 
     function editRadius(radius){
       cityCircle.setRadius(radius*1000);
@@ -93,8 +92,6 @@ function itemShowCtrl(Item, $stateParams, $state, $scope, $http, Comments, geoCo
 
   }
 }
-
-
 
 
 //<----------------ITEM EDIT CTRL----------------------------->
