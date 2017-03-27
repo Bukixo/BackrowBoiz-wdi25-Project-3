@@ -44,6 +44,10 @@ router.route('/item/:id/comments')
 router.route('/item/:id/comments/:commentId')
   .delete(itemController.deleteComment);
 
+router.route('/profile')
+  .get(secureRoute, userController.profile);
+
+
 // catch all 404 response
 router.all('*', (req, res) => res.notFound());
 

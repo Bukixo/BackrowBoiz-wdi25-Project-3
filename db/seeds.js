@@ -326,7 +326,7 @@ User
         .create([{
           numberOfDays: 12,
           item: items[0],
-          requester: users[0],
+          requester: users[1],
           message: 'ITEMPOPULATE',
           accepted: false
         }]);

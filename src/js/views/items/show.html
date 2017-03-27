@@ -20,6 +20,8 @@
 <a ui-sref="itemEdit({ id: show.item.id })">Edit</a>
 
 <button ng-click="show.delete()">Delete</button>
+
+<button class="btn btn-danger">Request item</button>
 {{show.range}}
 <form>
 <input type="range" min="0" max="10" name="radius" ng-model="show.range.radius">

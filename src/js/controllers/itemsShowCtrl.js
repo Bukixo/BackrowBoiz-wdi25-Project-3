@@ -4,7 +4,6 @@ angular
   .controller('itemShowCtrl', itemShowCtrl)
   .controller('itemEditCtrl', itemEditCtrl);
 
-
 itemShowCtrl.$inject = ['Item', '$stateParams', '$state', '$scope', '$http'];
 function itemShowCtrl(Item, $stateParams, $state, $scope, $http){
   const vm = this;
@@ -28,6 +27,26 @@ function itemShowCtrl(Item, $stateParams, $state, $scope, $http){
       .$remove()
       .then(() => $state.go('itemsIndex'));
   }
+  //
+  // function openModal() {
+  //   $uibModal.open({
+  //     templateUrl: 'src/js/views/partials/areYouSure.html',
+  //     controller: 'ProfileCtrl as profile'
+  //     // resolve: {
+  //     //   request: () => {
+  //     //     return vm.bird;
+  //     //   }
+  //     //}
+  //   });
+  // }
+  //
+  // vm.open = openModal;
+  //
+  // function closeModal() {
+  //   $uibModalInstance.close();
+  // }
+  //
+  // vm.close = closeModal;
 
 
 //<------------GOOGLE MAPS ------------------->
@@ -89,8 +108,6 @@ function itemShowCtrl(Item, $stateParams, $state, $scope, $http){
   }
 
 }
-
-
 
 
 //<----------------ITEM EDIT CTRL----------------------------->
