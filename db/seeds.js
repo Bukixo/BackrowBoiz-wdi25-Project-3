@@ -50,7 +50,7 @@ User
     }, {
       name: 'Black Evening Dress',
       price: 10,
-      image: '/images/seed-pics/black.jpg',
+      imageSRC: '/images/seed-pics/black.jpg',
       description: 'Stunning fit and covering the shoulders. Extremely popular from a smoke free home',
       rating: '',
       size: 'S',
