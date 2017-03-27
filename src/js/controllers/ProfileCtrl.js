@@ -29,6 +29,7 @@ function ProfileCtrl(User, $stateParams, $uibModal){
 
 }
 
+
 EditCtrl.$inject = ['user', '$state','$uibModalInstance', '$stateParams' ];
 function EditCtrl(user, $state, $uibModalInstance, $stateParams){
   //gets the user from the profile passed in
