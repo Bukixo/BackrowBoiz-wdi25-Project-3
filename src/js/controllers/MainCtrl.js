@@ -21,6 +21,10 @@ function MainCtrl($rootScope, $state, $auth, filterFilter, orderByFilter, $scope
 
   vm.isAuthenticated = $auth.isAuthenticated;
 
+  vm.profilePageId = ($auth.getPayload().userId);
+
+  console.log(vm.profilePageId);
+
   vm.logout = logout;
 
   function logout() {
