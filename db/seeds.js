@@ -38,6 +38,19 @@ User
   .then((users) => {
     console.log(`${users.length} users created!`);
 
+    return Item.create([{
+          name: 'Addidas Jumper',
+          price: 3,
+          image: '/images/seed-pics/Addidas.jpg',
+          description: 'Vinateg, mens jumper in perfect conditon - well loved!',
+          rating: '',
+          size: 'M',
+          createdBy: users[1]
+        }]);
+      })
+      .then((items) => {
+        console.log(`${items.length} items created!`);
+
     return Request
       .create([{
         numberOfDays: 12,
