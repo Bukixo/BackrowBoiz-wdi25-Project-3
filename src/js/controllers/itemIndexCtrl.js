@@ -17,7 +17,6 @@ function itemIndexCtrl(Item, User, Request, filterFilter, orderByFilter, $scope)
     //  if(vm.useRoast) params.roast = vm.roast;
     vm.filtered = filterFilter(vm.all, params);
     vm.filtered = orderByFilter(vm.filtered, vm.sort);
-  
   }
 
   $scope.$watchGroup([

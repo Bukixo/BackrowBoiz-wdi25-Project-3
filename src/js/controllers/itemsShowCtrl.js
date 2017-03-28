@@ -10,6 +10,7 @@ function itemShowCtrl(Item, $stateParams, $state, $scope, $http, Comments, geoCo
   vm.range = {};
 
   function sendRequest(){
+    vm.request.accepted = false;
     vm.request.item =  vm.item.id;
     vm.request.requester = $auth.getPayload().userId;
     console.log(vm.request);
