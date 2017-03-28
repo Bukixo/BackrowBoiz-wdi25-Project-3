@@ -4,7 +4,7 @@ angular
 
 itemIndexCtrl.$inject = ['Item','User', 'Request', 'filterFilter', 'orderByFilter', '$scope'];
 function itemIndexCtrl(Item, User, Request, filterFilter, orderByFilter, $scope) {
-  
+
   const vm = this;
 
   vm.all = Item.query();
@@ -24,6 +24,17 @@ function itemIndexCtrl(Item, User, Request, filterFilter, orderByFilter, $scope)
     ()=> vm.sort
   ],filterItems);
 
+  //  function($scope) {
+  //     $scope.filters = { };
+  //
+  //     $scope.links = [
+  //         {name: 'Apple', category: 'Fruit'},
+  //         {name: 'Pear', category: 'Fruit'},
+  //         {name: 'Almond', category: 'Nut'},
+  //         {name: 'Mango', category: 'Fruit'},
+  //         {name: 'Cashew', category: 'Nut'}
+  //     ];
+  // });
 
 
 }

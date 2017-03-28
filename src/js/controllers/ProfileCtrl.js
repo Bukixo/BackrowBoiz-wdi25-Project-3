@@ -13,13 +13,15 @@ function ProfileCtrl(User, $stateParams, $uibModal, $http){
 //defines all functions that is going be interact directly with the UI
   vm.open = openEditModal;
 // Grabs Request info from back end
-  function giveMeTheFuckingData(){
+
+
+  function getProfileData(){
     $http.get('/api/profile').then((data)=>{
       console.log(data);
     });
   }
 
-  giveMeTheFuckingData();
+  getProfileData();
 
   // Opens the Modal assign controller and template to our edit
   function openEditModal(){
