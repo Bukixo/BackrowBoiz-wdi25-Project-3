@@ -20,6 +20,7 @@ function ProfileCtrl(User, $stateParams, $uibModal, $http, $state, $auth){
     vm.activeUser = response.data.user; // den som är inloggad
     vm.pending = response.data.pending;
     vm.requested = response.data.requested;
+
   //  vm.myRequest= if(vm.requested)
 
     vm.requested.forEach((request)=>{
