@@ -134,7 +134,9 @@ nav {
 
 #maps {
   height:400px;
-  width: 400px;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 50px;
 }
 
 .title{
@@ -148,6 +150,20 @@ nav {
 ///////// Item show /////////////
 
 .item-show {
+  .location-title{
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+  }
+  p {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    font-weight: 700;
+    font-size: 20px;
+  }
+  form {
+    margin: 60px 0;
+  }
+
   .comments {
     margin: 0 50px;
 
@@ -170,6 +186,7 @@ nav {
     h2 {
       font-family: 'Playfair Display', serif;
       font-size: 50px;
+      
     }
   }
   img{
