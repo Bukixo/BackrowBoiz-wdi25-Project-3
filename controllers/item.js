@@ -71,18 +71,22 @@ function createCommentRoute(req, res, next) {
     .then((item) => {
       if(!item) return res.notFound();
 
-      item.comments.push(req.body); // create an embedded record
-      return item.save();
+      const comment = item.comments.create(req.body);
+      item.comments.push(comment); // create an embedded record
+      return item.save()
+      .then(()=> res.json(comment));
     })
     .then((item) => res.redirect(`/items/${item.id}`))
     .catch(next);
 }
 
 function deleteCommentRoute(req, res, next) {
+
   Item
     .findById(req.params.id)
     .exec()
     .then((item) => {
+
       if(!item) return res.notFound();
       // get the embedded record by it's id
       const comment = item.comments.id(req.params.commentId);
@@ -90,7 +94,7 @@ function deleteCommentRoute(req, res, next) {
 
       return item.save();
     })
-    .then((item) => res.redirect(`/items/${item.id}`))
+    .then(() => res.status(204).end())
     .catch(next);
 }
 

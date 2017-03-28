@@ -2,13 +2,13 @@ angular
   .module('rentApp')
   .controller( 'MainCtrl', MainCtrl);
 
-MainCtrl.$inject = ['$rootScope', '$state', '$auth'];
-function MainCtrl($rootScope, $state, $auth) {
+MainCtrl.$inject = ['$rootScope', '$state', '$auth', 'filterFilter', 'orderByFilter'];
+function MainCtrl($rootScope, $state, $auth, filterFilter, orderByFilter) {
   const vm = this;
 
   //const socket = io.connect('http://localhost:4001');
   const socket = io('http://localhost:4001');
-  socket.emit("yo");
+  socket.emit('yo');
   // vm.send = sendMsg;
   // function sendMsg(){
   //   socket.emit('chat message', document.getElementById('m').value);
@@ -36,6 +36,7 @@ function MainCtrl($rootScope, $state, $auth) {
 
   function logout() {
     $auth.logout(); //remove the token
+    location.reload();
     $state.go('login');
   }
 
@@ -48,6 +49,7 @@ function MainCtrl($rootScope, $state, $auth) {
   $rootScope.$on('$stateChangeSuccess', () => {
     if(vm.stateHasChanged) vm.message = null;
     if(!vm.stateHasChanged) vm.stateHasChanged = true;
+    if($auth.getPayload()) vm.profilePageId = $auth.getPayload().userId;
   });
 
 }

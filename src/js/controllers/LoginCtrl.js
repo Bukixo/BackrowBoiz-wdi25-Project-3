@@ -15,5 +15,11 @@ function LoginCtrl($auth, $state) {
     }
   }
 
+  function authenticate(provider) {
+    $auth.authenticate(provider)
+      .then(() => $state.go('itemsIndex'));
+  }
+
+  vm.authenticate = authenticate;
   vm.submit = submit;
 }

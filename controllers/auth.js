@@ -4,7 +4,9 @@ const { secret } = require('../config/environment');
 
 
 function register(req, res, next) {
-  console.log(req.body);
+
+  if(req.file) req.body.image = req.file.filename;
+  
   User
     .create(req.body)
     .then(() => res.json({ message: 'Registration successful'}))
@@ -20,7 +22,7 @@ function login(req, res, next) {
       if(!user || !user.validatePassword(req.body.password)) return res.unauthorized();
 
       const token = jwt.sign({ userId: user.id }, secret, { expiresIn: '1hr' });
-      res.json({ token, message: `Welcome back ${user.username}` });
+      res.json({ token, user, message: `Welcome back ${user.username}` });
     })
     .catch(next);
 }

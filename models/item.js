@@ -22,7 +22,7 @@ const itemSchema = new mongoose.Schema({
   rating: {type: String},
   comments: [commentSchema],
   size: {type: String, required: true},
-  category: {type: String}
+  catagory: {type: String}
 });
 
 itemSchema.methods.belongsTo = function itemBelongsTo(user) {
@@ -41,7 +41,7 @@ itemSchema
     .virtual('imageSRC')
     .get(function getImageSRC() {
       if(!this.image) return null;
-      return `https://s3-eu-west-1.amazonaws.com/wdi-london-buki/${this.image}`;
+      return `https://s3-eu-west-1.amazonaws.com/${process.env.AWS_BUCKET_NAME}/${this.image}`;
     });
 
 itemSchema.pre('save', function checkPreviousImage(next) {

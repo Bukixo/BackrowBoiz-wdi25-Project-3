@@ -1,4 +1,18 @@
 const User = require('../models/user');
+const Promise = require('bluebird');
+const Request = require('../models/request');
+
+function profileRoute(req, res, next){
+  return Promise.props({
+    pending: Request.find({'item.createdBy': req.user, accepted: true}).exec(),
+    requested: Request.find().populate('requester item').exec(),
+    user: User.findById(req.user.id).exec()
+  })
+    .then((data)=> {
+      return res.json(data);
+    })
+    .catch(next);
+}
 
 function indexRoute(req, res, next) {
   User
@@ -7,12 +21,14 @@ function indexRoute(req, res, next) {
     .catch(next);
 }
 
-// function createRoute(req, res, next) {
-//   User
-//     .create(req.body)
-//     .then((user) => res.status(201).json(user))
-//     .catch(next);
-// }
+function createRoute(req, res, next) {
+  if(req.file) req.body.imageSRC = req.file.filename;
+  //req.body.imageSRC = req.file.filename;
+  User
+    .create(req.body)
+    .then((user) => res.status(201).json(user))
+    .catch(next);
+}
 
 function showRoute(req, res, next) {
   User
@@ -55,8 +71,9 @@ function deleteRoute(req, res, next) {
 
 module.exports = {
   index: indexRoute,
-//  create: createRoute,
+  create: createRoute,
   show: showRoute,
   update: updateRoute,
-  delete: deleteRoute
+  delete: deleteRoute,
+  profile: profileRoute
 };

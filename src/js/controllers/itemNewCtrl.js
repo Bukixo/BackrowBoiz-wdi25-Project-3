@@ -14,6 +14,7 @@ function itemsNewCtrl(Item, $state){
         .$promise
         .then(() => $state.go('itemsIndex'));
     }
+
   }
 
   vm.create = itemsCreate;

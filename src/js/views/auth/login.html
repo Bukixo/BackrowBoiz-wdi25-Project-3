@@ -1,22 +1,25 @@
+<div class="form">
+
 <h1>Login page</h1>
 
 <form name="login.loginForm" ng-submit="login.submit()" novalidate>
-  <div>
-    <label for="email">Email</label>
-    <input type="text" name="email" id="email" ng-model="login.credentials.email" required>
-    <div ng-messages="login.loginForm.email.$error" role="alert" ng-show="(login.loginForm.$submitted)||(login.loginForm.email.$touched) &&(login.loginForm.email.$invalid)">
-      <div ng-message="required"> this field is required </div>
-    </div>
+  <div ng-messages="login.loginForm.email.$error" role="alert" ng-show="(login.loginForm.$submitted)||(login.loginForm.email.$touched) &&(login.loginForm.email.$invalid)">
+    <div ng-message="required">Email is required </div>
+    <div ng-message="pattern">Please enter a valid email.</div>
+  </div>
+  <div ng-messages="login.loginForm.password.$error" role="alert" ng-show="(login.loginForm.$submitted)||(login.loginForm.password.$touched) &&(login.loginForm.password.$invalid)">
+    <div ng-message="required">Password is required </div>
   </div>
 
+    <label for="email">Email</label>
+    <input type="text" name="email" id="email" ng-pattern="/@/" ng-model="login.credentials.email" required>
 
-  <div>
     <label for="password">Password</label>
     <input type="password" name="password" id="password" ng-model="login.credentials.password" required>
-    <div ng-messages="login.loginForm.password.$error" role="alert" ng-show="(login.loginForm.$submitted)||(login.loginForm.password.$touched) &&(login.loginForm.password.$invalid)">
-      <div ng-message="required"> this field is required </div>
-    </div>
-  </div>
 
   <button>Login</button>
 </form>
+
+<button ng-click="login.authenticate('github')">Sign in with GitHub</button>
+
+</div>
