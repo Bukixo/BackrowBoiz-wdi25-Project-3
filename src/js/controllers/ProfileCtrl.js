@@ -8,9 +8,6 @@ ProfileCtrl.$inject = ['User','$stateParams', '$http', '$state', '$auth'];
 function ProfileCtrl(User, $stateParams, $http, $state, $auth){
   const vm = this;
 
-  const { userId } = $auth.getPayload();
-
-  if(userId) vm.user = User.get({ id: userId });
 
 //defines all functions that is going be interact directly with the UI
   // vm.open = openEditModal;

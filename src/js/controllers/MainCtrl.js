@@ -6,7 +6,6 @@ MainCtrl.$inject = ['$rootScope', '$state', '$auth', 'filterFilter', 'orderByFil
 function MainCtrl($rootScope, $state, $auth, filterFilter, orderByFilter) {
   const vm = this;
 
-
   vm.isAuthenticated = $auth.isAuthenticated;
 
   vm.logout = logout;
