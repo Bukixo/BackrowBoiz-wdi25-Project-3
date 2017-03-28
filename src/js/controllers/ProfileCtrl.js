@@ -7,6 +7,11 @@ angular
 ProfileCtrl.$inject = ['User','$stateParams', '$http', '$state', '$auth'];
 function ProfileCtrl(User, $stateParams, $http, $state, $auth){
   const vm = this;
+
+  const { userId } = $auth.getPayload();
+
+  if(userId) vm.user = User.get({ id: userId });
+
 //defines all functions that is going be interact directly with the UI
   // vm.open = openEditModal;
 // Grabs Request info from back end
@@ -39,8 +44,6 @@ function ProfileCtrl(User, $stateParams, $http, $state, $auth){
         vm.activeRequests.push(request);
       }
     });
-
-
 
     vm.mine = vm.activeUser.id === vm.user.id; // berkänar om den inloggade.id är samma som profilens .id
     vm.accept = acceptRequest;
