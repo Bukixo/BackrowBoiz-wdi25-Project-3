@@ -83,7 +83,6 @@ function itemShowCtrl(Item, $stateParams, $state, $scope, $http, Comments, geoCo
       map: map
     });
 
-
     const cityCircle = new google.maps.Circle({
       strokeColor: '#FF0000',
       strokeOpacity: 0.8,
@@ -95,6 +94,8 @@ function itemShowCtrl(Item, $stateParams, $state, $scope, $http, Comments, geoCo
       radius: 5000
     });
 
+    function editRadius(radius){
+      cityCircle.setRadius(radius*1000);
     }
 
     $scope.$watch(()=> vm.range.radius, ()=> {
@@ -103,6 +104,9 @@ function itemShowCtrl(Item, $stateParams, $state, $scope, $http, Comments, geoCo
     });
 
   }
+
+
+
 }
 
 

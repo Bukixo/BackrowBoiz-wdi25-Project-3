@@ -1,5 +1,5 @@
 const express = require('express');
-const io = require('socket.io')(4001);
+
 
 
 const morgan = require('morgan');
@@ -15,7 +15,7 @@ const { port, env, dbURI } = require('./config/environment');
 
 const app = express();
 const http =require('http').createServer(app);
-
+const io = require('socket.io')(4001);
 
 
 mongoose.connect(dbURI);
@@ -37,17 +37,24 @@ const server = app.listen(port, () => console.log(`Express is listening on port 
 app.io = io;
 
 
-io.on('connection', function(socket){
-  console.log("new connection");
-  // socket.on('chat message', function(msg){
-  //   io.emit('chat message', msg);
-  // });
-});
 
-io.sockets.on('connection', function(socket){
-  console.log('user');
+
+io.on('connection', function(socket){
+  console.log('user connected');
+
+
   socket.on('chat message', function(msg){
+    console.log('message: ' + msg);
     io.emit('chat message', msg);
+  });
+
+  //socket.broadcast.emit('user connected');
+
+
+
+  socket.on('disconnect', function () {
+    socket.disconnect();
+    console.log('disconnected');
   });
 });
 
