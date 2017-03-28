@@ -6,21 +6,22 @@ MainCtrl.$inject = ['$rootScope', '$state', '$auth', 'filterFilter', 'orderByFil
 function MainCtrl($rootScope, $state, $auth, filterFilter, orderByFilter) {
   const vm = this;
 
-  //const socket = io.connect('http://localhost:4001');
-  const socket = io('http://localhost:4001');
-  // socket.emit('yo');
-  vm.send = sendMsg;
-  function sendMsg(){
-    socket.emit('chat message', vm.socketMessage);
-    vm.socketMessage = '';
-    return false;
-  }
 
-  socket.on('chat message', function(msg){
-    var mess = document.createElement('div');
-    mess.innerHTML = msg;
-    console.log(msg);
-  });
+  // const socket = io('http://localhost:4001');
+  // socket.emit('yo');
+  // vm.send = sendMsg;
+  // function sendMsg(){
+  //   socket.emit('chat message', vm.socketMessage);
+  //   vm.socketMessage = '';
+  //   return false;
+  // }
+  //
+  // socket.on('chat message', function(msg){
+  //   // var mess = document.createElement('div');
+  //   // mess.innerHTML = msg;
+  //   vm.message = msg;
+  //   console.log('works');
+  // });
 
   vm.isAuthenticated = $auth.isAuthenticated;
 

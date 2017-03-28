@@ -42,8 +42,11 @@ app.io = io;
 
 
 io.on('connection', function(socket){
-  console.log('user connected');
-
+  let numClients = 0;
+  numClients++;
+  io.emit('stats', { numClients });
+  console.log('Connected clients:', numClients);
+  console.log(`${socket.id} connected`);
 
   socket.on('chat message', function(msg){
     console.log('message: ' + msg);
@@ -51,12 +54,12 @@ io.on('connection', function(socket){
   });
 
   //socket.broadcast.emit('user connected');
-
+  socket.emit('announcements', { message: 'you are now connected!'});
 
 
   socket.on('disconnect', function () {
     socket.disconnect();
-    console.log('disconnected');
+    console.log(`${socket.id}disconnected`);
   });
 });
 

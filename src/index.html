@@ -20,20 +20,16 @@
     <ul>
       <li><a ui-sref="itemsIndex">index</a></li>
       <li><a ui-sref="itemsNew">New</a></li>
+      <li ng-if="main.isAuthenticated()"><a ui-sref="chatState">Chat</a></li>
       <li ng-if="main.isAuthenticated()"><a ui-sref="profile({id: main.profilePageId})">My profile</a></li>
       <li ng-if="!main.isAuthenticated()"><a ui-sref="login">Login</a></li>
       <li ng-if="!main.isAuthenticated()"><a ui-sref="register">Register</a></li>
       <li ng-if="main.isAuthenticated()"><a ng-click="main.logout()" href="#">Logout</a></li>
     </ul>
-{{main.socketMessage}}
-  <form>
-    <input type="text" ng-model="main.socketMessage">
-    <button type="button" ng-click="main.send()">send</button>
-  </form>
   </div>
   </nav>
   <div class="message" ng-if="main.message">{{ main.message }}</div>
-  <main ui-view class="container">
+  <main ui-view class="container"  ng-controller="ChatCtrl as chat">
 
   </main>
 </body>

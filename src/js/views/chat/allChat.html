@@ -1,0 +1,12 @@
+<h1>Chat</h1>
+
+{{chat.socketMessage}}
+  <form novalidate>
+      <input type="text" ng-model="chat.socketMessage.message" required>
+    <button type="button" ng-click="chat.send()">send</button>
+  </form>
+
+<h2>chat</h2>
+<ul>
+  <li ng-repeat="message in chat.messages">{{ message.message}} <br><small>{{message.user}}</small></li>
+</ul>
