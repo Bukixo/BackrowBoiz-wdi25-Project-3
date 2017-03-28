@@ -19,6 +19,7 @@ function ProfileCtrl(User, $stateParams, $http, $state, $auth){
   vm.incomingRequests = [];
   vm.activeRequests = [];
   vm.myRequests = [];
+  vm.accepted = [];
   $http.get('/api/profile')
   .then((response)=> {
     //console.log(response);
@@ -42,6 +43,8 @@ function ProfileCtrl(User, $stateParams, $http, $state, $auth){
       //  console.log(request);
       }else if(request.accepted === true && vm.user.id !== request.requester[0].id){
         vm.activeRequests.push(request);
+      } else if(request.accepted === true && vm.user.id === request.requester[0].id){
+        vm.accepted.push(request);
       }
     });
 
