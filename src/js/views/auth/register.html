@@ -11,7 +11,7 @@
     <div ng-message="required"> Email is required </div>
     <div ng-message="pattern">Please enter a valid email.</div>
   </div>
-  <div ng-messages="register.registerForm.postcode.$error" role="alert" ng-show="(register.registerForm.$submitted)||(register.registerForm.postcode.$touched) &&(register.registerForm.postcode.$invalid)">
+  <div ng-messages="register.registerForm.location.$error" role="alert" ng-show="(register.registerForm.$submitted)||(register.registerForm.location.$touched) &&(register.registerForm.location.$invalid)">
     <div ng-message="required">Postcode is required </div>
   </div>
   <div ng-messages="register.registerForm.image.$error" role="alert" ng-show="(register.registerForm.$submitted)||(register.registerForm.image.$touched) &&(register.registerForm.image.$invalid)">
@@ -32,8 +32,8 @@
 <label for="email">Email</label>
 <input type="text" name="email" id="email" ng-model="register.user.email" ng-pattern="/@/" required>
 
-<label for="postcode">Postcode</label>
-<input type="text" name="postcode" ng-model="register.user.postcode" required>
+<label for="location">Enter your adress</label>
+<input type="text" name="location" ng-model="register.user.location" required>
 
 <label for="base64">Profile image</label>
 <input type="file" base64 name="image" id="image" ng-model="register.user.base64" required>
