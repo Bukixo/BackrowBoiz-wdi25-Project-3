@@ -17,6 +17,9 @@ function ProfileCtrl(User, $stateParams, $uibModal, $http, $state, $auth){
     vm.user = response.data.user;
     vm.pending = response.data.pending;
     vm.requested = response.data.requested;
+    console.log(response);
+    console.log(response.data.requested.item.message)
+    console.log(vm.requested)
   });
 
   // Opens the Modal assign controller and template to our edit

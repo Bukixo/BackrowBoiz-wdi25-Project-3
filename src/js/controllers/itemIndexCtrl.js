@@ -4,7 +4,7 @@ angular
 
 itemIndexCtrl.$inject = ['Item','User', 'Request', 'filterFilter', 'orderByFilter', '$scope'];
 function itemIndexCtrl(Item, User, Request, filterFilter, orderByFilter, $scope) {
-  
+
   const vm = this;
 
   vm.all = Item.query();
@@ -17,6 +17,7 @@ function itemIndexCtrl(Item, User, Request, filterFilter, orderByFilter, $scope)
     //  if(vm.useRoast) params.roast = vm.roast;
     vm.filtered = filterFilter(vm.all, params);
     vm.filtered = orderByFilter(vm.filtered, vm.sort);
+    console.log(price)
   }
 
   $scope.$watchGroup([

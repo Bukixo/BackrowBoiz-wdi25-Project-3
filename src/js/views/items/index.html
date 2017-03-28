@@ -2,18 +2,17 @@
 <div ng-controller="itemIndexCtrl as items">
 
 <input type="text" class="search" ng-model="items.q" placeholder="Search...">
-<select ng-model="items.price">
+
+<select ng-model="items.all.price">
   <option value="+price">Price ascending</option>
   <option value="-price">Price descending</option>
 </select>
 
 <select ng-model="items.catagory">
-
   <option>All</option>
   <option>Men</option>
   <option>Women</option>
   <option>Child</option>
-
 </select>
 
 <!--- Renders all Items from the GET request in the Controller REMOVE THIS LATER -->
