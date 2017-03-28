@@ -132,17 +132,42 @@ nav {
   width: 400px;
 }
 
+.title{
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 15px;
+  color: grey;
+  font-size: 16px;
+  font-weight: 700;
+  padding-top: 5px;
+}
 ///////// Item show /////////////
 
 .item-show {
   .row{
     border: 2px solid black;
+    padding-left: 50px;
+    font-family: 'Poppins', sans-serif;
   }
   img{
-    height: 30em;
+    height: 350px;
+    padding-top: 10px;
+    padding-bottom: 20px;
 
 }
+.toggle{
+  border: 1px solid grey;
+}
+.item-info{
+  border: 7px solid grey;
+  padding: 20px;
+  width: 500px;
+  p {
+    font-size: 20px;
+    padding: 0 10px;
+    letter-spacing: 1px;
 
+  }
+}
 
   }
 

@@ -1,6 +1,6 @@
 <div class="container item-show">
   <div class="nav-extension">
-    <h1>Fabric</h1>
+    <h1 class="title">FABRIC</h1>
   </div>
 
   <div class="row">
@@ -8,7 +8,7 @@
       <img ng-src="{{ show.item.image }}">
 
 
-      <button ng-click="showDiv = !showDiv">Request Item </button>
+      <button class ="btn-primary" ng-click="showDiv = !showDiv">Request Item </button>
       <div ng-hide="!showDiv" >
           <div class="toggle">
 
@@ -16,9 +16,10 @@
 
               <label for="numberOfDays">Days to rent</label>
               <input type="number" name="numberOfDays" ng-model="show.request.numberOfDays">
+              <br>
 
               <label for="message"> Message</label>
-              <textarea name="message" ng-model="show.request.message"></textarea>
+              <textarea name="message" ng-model="show.request.message"></textarea><br>
             <button class="btn btn-danger">Request item</button>
             </form>
           </div>
@@ -26,7 +27,7 @@
 
         <a ui-sref="itemEdit({ id: show.item.id})">Edit Profile</a> <br>
 
-      <button ng-click="show.delete()">Delete</button> <br>
+      <button class="btn-primary" ng-click="show.delete()">Delete</button> <br>
     </div>
 
     <div class="col-lg-4 col-md-4 col-sm-12">
@@ -67,13 +68,13 @@
 
   <ul>
     <li ng-repeat="comment in show.item.comments track by $index"><p>{{ comment.content }}</p><small>{{comment.createdBy.email}}</small>
-    <button ng-click="show.deleteComment(comment)">Delete</button></li>
+    <button class = "btn-primary" ng-click="show.deleteComment(comment)">Delete</button></li>
   </ul>
 
 <form ng-submit="show.addComment()">
         <label>Add comment</label>
         <textarea ng-model="show.newComment.content"></textarea>
-        <button class="btn">Comment</button>
+        <button class="btn btn-primary">Comment</button>
       </form>
 
 <form>
