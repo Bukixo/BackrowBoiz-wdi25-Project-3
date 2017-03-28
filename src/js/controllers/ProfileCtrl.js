@@ -2,13 +2,13 @@
 angular
   .module('rentApp')
   .controller('ProfileCtrl', ProfileCtrl)
-  .controller('ProfileEditModalCtrl', EditCtrl);
+  .controller('EditCtrl', EditCtrl);
 
-ProfileCtrl.$inject = ['User','$stateParams','$uibModal', '$http', '$state', '$auth'];
-function ProfileCtrl(User, $stateParams, $uibModal, $http, $state, $auth){
+ProfileCtrl.$inject = ['User','$stateParams', '$http', '$state', '$auth'];
+function ProfileCtrl(User, $stateParams, $http, $state, $auth){
   const vm = this;
 //defines all functions that is going be interact directly with the UI
-  vm.open = openEditModal;
+  // vm.open = openEditModal;
 // Grabs Request info from back end
   vm.user = User.get($stateParams);
   vm.incomingRequests = [];
@@ -71,17 +71,17 @@ function ProfileCtrl(User, $stateParams, $uibModal, $http, $state, $auth){
   }
 
   // Opens the Modal assign controller and template to our edit
-  function openEditModal(){
-    $uibModal.open({
-      templateUrl: 'js/views/users/edit.html',
-      controller: 'ProfileEditModalCtrl as profile',
-      resolve: {
-        user: ()=> {
-          return vm.user;
-        }
-      }
-    });
-  }
+  // function openEditModal(){
+  //   $uibModal.open({
+  //     templateUrl: 'js/views/users/edit.html',
+  //     controller: 'ProfileEditModalCtrl as profile',
+  //     resolve: {
+  //       user: ()=> {
+  //         return vm.user;
+  //       }
+  //     }
+  //   });
+  // }
   vm.delete = profileDelete;
   function profileDelete() {
     $auth.logout();
@@ -91,29 +91,31 @@ function ProfileCtrl(User, $stateParams, $uibModal, $http, $state, $auth){
   }
 }
 
-EditCtrl.$inject = ['user', '$state','$uibModalInstance', '$stateParams' ];
-function EditCtrl(user, $state, $uibModalInstance, $stateParams){
+EditCtrl.$inject = ['User', '$state', '$stateParams'];
+function EditCtrl(User, $state, $stateParams){
   //gets the user from the profile passed in
+
   const vm = this;
-  vm.user = user;
+
+  vm.user = User.get($stateParams);
 
 //hooks up all the UI functionality
-  vm.close = closeEditModal;
-  vm.update= updateUser;
+  // vm.close = closeEditModal;
+  // vm.update= updateUser;
 
 //closes the Modal
-  function closeEditModal(){
-    $uibModalInstance.close();
-  }
+  // function closeEditModal(){
+  //   $uibModalInstance.close();
+  // }
 //updates the user
   function updateUser(){
-    if(vm.editProfileForm.$valid){
-      vm.user
-      .$update()
-      .then(()=> {
-        closeEditModal();
-        $state.go('itemsIndex');
-      });
-    }
+    // if(vm.editProfileForm){
+    vm.user
+    .$update()
+    .then(()=> {
+      // closeEditModal();
+      $state.go('itemsIndex', $stateParams);
+    });
   }
+  vm.update= updateUser;
 }
