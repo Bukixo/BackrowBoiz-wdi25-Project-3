@@ -4,7 +4,9 @@
   <div class="row">
     <div class="col-lg-4 col-md-4 col-sm-12">
       <img ng-src="{{ profile.user.profileImage }}">
+      <img ng-src="{{ profile.user.image }}">
       <h2> Name : {{ profile.user.username }}</h2>
+      <p>Github Id: <strong>{{ profile.user.githubId }}</strong></p>
       <h2>Email: {{ profile.user.email }}</h2>
       <h2>Location: {{ profile.user.location }}</h2>
 

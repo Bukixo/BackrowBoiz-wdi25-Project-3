@@ -6,7 +6,9 @@ const userSchema = new mongoose.Schema({
   password: {type: String},
   email: {type: String},
   location: {type: String},
-  profileImage: {type: String}
+  profileImage: {type: String},
+  image: { type: String }, //from github
+  githubId: { type: Number }
 });
 
 userSchema
@@ -16,10 +18,11 @@ userSchema
   });
 
 userSchema.pre('validate', function checkPassword(next) {
-  if(this.isNew){
-    if(!this._passwordConfirmation || this._passwordConfirmation !== this.password) {
-      this.invalidate('passwordConfirmation', 'does not match');
-    }
+  if(!this.password && !this.githubId) {
+    this.invalidate('password', 'required');
+  }
+  if(this.isModified('password') && this._passwordConfirmation !== this.password){
+    this.invalidate('passwordConfirmation', 'does not match');
   }
   next();
 });
