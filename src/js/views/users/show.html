@@ -39,8 +39,9 @@
         <li ng-repeat="request in profile.activeRequests">requested Item:{{ request.item[0].name }}<br>num of days{{request.numberOfDays}}<br>
         requested By: {{request.requester[0].username}}</li>
       </ul>
-
-
+      <h2>Accepted</h2>
+      <li ng-repeat="request in profile.accepted">requested Item:{{ request.item[0].name }}<br>num of days{{request.numberOfDays}}<br>
+      requested By: {{request.requester[0].username}}</li>
     </div>
   </div>
 </div>

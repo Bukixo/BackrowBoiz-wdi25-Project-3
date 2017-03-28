@@ -26,7 +26,6 @@ function itemShowCtrl(Item, $stateParams, $state, $scope, $http, Comments, geoCo
   Item.get($stateParams,(data)=>{
     const location = data.createdBy.location;
     vm.item = data;
-    console.log(data.createdBy);
     getLocationOfUser(location);
   });
   vm.delete = itemsDelete;
