@@ -30,6 +30,7 @@ router.route('/request')
 
 router.route('/request/:id')
   .get(requestController.show)
+  .put(requestController.update)
   .delete(secureRoute, requestController.delete);
 
 router.route('/item')

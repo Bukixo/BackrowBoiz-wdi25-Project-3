@@ -10,6 +10,7 @@ function itemShowCtrl(Item, $stateParams, $state, $scope, $http, Comments, geoCo
   vm.range = {};
 
   function sendRequest(){
+    vm.request.accepted = false;
     vm.request.item =  vm.item.id;
     vm.request.requester = $auth.getPayload().userId;
     console.log(vm.request);
@@ -25,6 +26,7 @@ function itemShowCtrl(Item, $stateParams, $state, $scope, $http, Comments, geoCo
   Item.get($stateParams,(data)=>{
     const location = data.createdBy.location;
     vm.item = data;
+    console.log(data.createdBy);
     getLocationOfUser(location);
   });
   vm.delete = itemsDelete;
