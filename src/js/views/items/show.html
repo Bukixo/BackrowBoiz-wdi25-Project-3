@@ -33,18 +33,19 @@
     <!-- </div>
   </div> -->
 
-      <form>
-      <input type="range" min="0" max="10" name="radius" ng-model="show.range.radius">
-      </form>
       <div id="maps">
       </div>
     </div>
   </div>
 
 <button ng-click="show.delete()">Delete</button>
-
+{{show.request}}
+<form name="show.makeRequest" ng-submit="show.sendRequest()" method="post">
+  <label for="numberOfDays">Days to rent</label>
+  <input type="number" name="numberOfDays" ng-model="show.request.numberOfDays">
+  <textarea name="message" ng-model="show.request.message"></textarea>
 <button class="btn btn-danger">Request item</button>
-
+</form>
 
   <ul>
     <li ng-repeat="comment in show.item.comments track by $index"><p>{{ comment.content }}</p><small>{{comment.createdBy.email}}</small>
@@ -56,11 +57,11 @@
         <textarea ng-model="show.newComment.content"></textarea>
         <button class="btn">Comment</button>
       </form>
-      
+
 <form>
 <input type="range" min="0" max="10" name="radius" ng-model="show.range.radius">
 </form>
-<div id="maps">
+
 
 
 </div>

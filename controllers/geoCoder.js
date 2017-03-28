@@ -5,7 +5,7 @@ function getLocation(req, res){
 
   request({
     method: 'GET',
-    url: `https://maps.googleapis.com/maps/api/geocode/json?address=Paris${req.query.location}&key=AIzaSyAEi_tighHwZ4dswlQz7CWXWxpHZ17LzoM`,
+    url: `https://maps.googleapis.com/maps/api/geocode/json?address=${req.query.location}&key=AIzaSyAEi_tighHwZ4dswlQz7CWXWxpHZ17LzoM`,
     json: true
   })
   .then((data)=>{
