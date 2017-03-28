@@ -22,7 +22,6 @@ function MainCtrl($rootScope, $state, $auth, filterFilter, orderByFilter) {
     console.log(msg);
   });
 
-
   vm.isAuthenticated = $auth.isAuthenticated;
 
   vm.logout = logout;

@@ -18,6 +18,8 @@ const http =require('http').createServer(app);
 const io = require('socket.io')(4001);
 
 
+app.use(morgan('dev'));
+
 mongoose.connect(dbURI);
 app.use(bodyParser.json({limit: '5mb'}));
 app.use(express.static(`${__dirname}/public`));
