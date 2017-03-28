@@ -62,10 +62,10 @@
         <td>RATING </td>
         <td><span>{{ show.item.rating }}</span></td>
       </tr>
-      <tr>
+      <!-- <tr>
         <td>COMMENTS:</td>
         <td><span>{{ show.item.comments }} </span></td>
-      </tr>
+      </tr> -->
       <tr>
         <td>LOCATION:</td>
         <td><span>{{ show.item.createdBy.location }} </span></td>
@@ -75,20 +75,22 @@
     </div>
     </div>
   </div>
+  <div class ="comments">
+    <h2>User comments</h2>
+      <ul>
+        <li ng-repeat="comment in show.item.comments track by $index"><p>{{ comment.content }}</p><small>{{comment.createdBy.email}}</small>
+        <button class = "btn-primary" ng-click="show.deleteComment(comment)">Delete</button></li>
+      </ul>
 
+    <form ng-submit="show.addComment()">
 
-    <ul>
-      <li ng-repeat="comment in show.item.comments track by $index"><p>{{ comment.content }}</p><small>{{comment.createdBy.email}}</small>
-      <button class = "btn-primary" ng-click="show.deleteComment(comment)">Delete</button></li>
-    </ul>
-
-  <form ng-submit="show.addComment()">
-          <label>Add comment</label>
-          <textarea ng-model="show.newComment.content"></textarea>
-          <button class="btn btn-primary">Comment</button>
-        </form>
+            <textarea ng-model="show.newComment.content">totally fab</textarea>
+            <button class="btn btn-primary">Comment</button>
+          </form>
+  </div>
 
 </div>
+
 
 <!--{{show.range}}
 
