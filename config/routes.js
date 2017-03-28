@@ -19,7 +19,7 @@ router.route('/users/:id')
   .delete(userController.delete);
 
 router.route('/register')
-  .post(auth.register);
+  .post(imageUpload, auth.register);
 
 router.route('/login')
   .post(auth.login);
