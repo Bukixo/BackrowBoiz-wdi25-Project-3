@@ -1,5 +1,9 @@
 <div class="profile-show">
 
+      <img ng-src="{{ profile.user.imageSRC }}" alt="{{profile.user.username}}">
+
+        <img ng-src="{{ profile.user.image }}" alt="{{profile.user.username}}">
+
 
   <div class="row show-row">
     <div class="col-lg-4 col-md-4 col-sm-12">
@@ -10,6 +14,7 @@
     <div class="col-lg-4 col-md-4 col-sm-12">
 
       <p>Github Id: <strong>{{ profile.user.githubId }}</strong></p>
+      <p>Facebook Id: <strong>{{ profile.user.facebookId }}</strong></p>
       <h2>Email: {{ profile.user.email }}</h2>
       <h2>Location: {{ profile.user.location }}</h2>
     </div>

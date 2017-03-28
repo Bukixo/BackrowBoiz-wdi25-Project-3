@@ -13,6 +13,8 @@ const { port, env, dbURI } = require('./config/environment');
 
 const app = express();
 
+app.use(morgan('dev'));
+
 mongoose.connect(dbURI);
 app.use(bodyParser.json({limit: '5mb'}));
 app.use(express.static(`${__dirname}/public`));

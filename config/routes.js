@@ -56,6 +56,9 @@ router.route('/profile')
 router.route('/oauth/github')
   .post(oauth.github);
 
+router.route('/oauth/facebook')
+  .post(oauth.facebook);
+
 // catch all 404 response
 router.all('*', (req, res) => res.notFound());
 
