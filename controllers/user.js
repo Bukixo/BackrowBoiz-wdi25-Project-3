@@ -22,12 +22,6 @@ function indexRoute(req, res, next) {
     .catch(next);
 }
 
-// function createRoute(req, res, next) {
-//   User
-//     .create(req.body)
-//     .then((user) => res.status(201).json(user))
-//     .catch(next);
-// }
 
 function showRoute(req, res, next) {
   User

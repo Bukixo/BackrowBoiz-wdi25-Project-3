@@ -47,9 +47,27 @@ function deleteRequestRoute(req, res, next){
   .catch(next);
 }
 
+function updateRequestRoute(req, res, next){
+  console.log(req.body);
+  Request
+  .findById(req.params.id)
+  .exec()
+  .then((request)=>{
+    if(!request) return res.notFound();
+
+    for(const field in req.body){
+      request[field] = req.body[field];
+    }
+    return request.save();
+  })
+  .then((request)=> res.status(302).json(request))
+  .catch(next);
+}
+
 module.exports = {
   index: indexRequestRoute,
   show: showRequestRoute,
   create: createRequestRoute,
-  delete: deleteRequestRoute
+  delete: deleteRequestRoute,
+  update: updateRequestRoute
 };

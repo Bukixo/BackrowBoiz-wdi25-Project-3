@@ -13,23 +13,45 @@ function ProfileCtrl(User, $stateParams, $uibModal, $http, $state, $auth){
   vm.user = User.get($stateParams);
   vm.incomingRequests = [];
   vm.activeRequests = [];
+  vm.myRequests = [];
   $http.get('/api/profile')
   .then((response)=> {
-    console.log(response);
+    //console.log(response);
     vm.activeUser = response.data.user; // den som är inloggad
     vm.pending = response.data.pending;
     vm.requested = response.data.requested;
   //  vm.myRequest= if(vm.requested)
-    vm.requested.forEach((request)=>{// vill räkna ut ifall requesten är min, genom att jämföra createdBy.id med user.id isåfall visa den
-      if(request.item[0].createdBy === vm.user.id && request.requester[0].id !== vm.user.id){
-        vm.incomingRequests.push(request);
-        console.log(request);
+
+    vm.requested.forEach((request)=>{
+      if(request.requester[0].id === vm.user.id){
+        vm.myRequests.push(request);
+      } else{
+        console.log(request.requester[0].id);
       }
     });
 
+    vm.requested.forEach((request)=>{// vill räkna ut ifall requesten är min, genom att jämföra createdBy.id med user.id isåfall visa den
+      if(request.item[0].createdBy === vm.user.id && request.requester[0].id !== vm.user.id && request.accepted === false){
+        vm.incomingRequests.push(request);
+      //  console.log(request);
+      }else if(request.accepted === true && vm.user.id !== request.requester[0].id){
+        vm.activeRequests.push(request);
+      }
+    });
+
+
+
     vm.mine = vm.activeUser.id === vm.user.id; // berkänar om den inloggade.id är samma som profilens .id
-    vm.accept =acceptRequest;
+    vm.accept = acceptRequest;
     function acceptRequest(request){
+      request.accepted = true;
+      request.requester = request.requester[0].id;
+      request.item = request.item[0].id;
+      console.log(request);
+      $http
+      .put(`/api/request/${request.id}`,request)
+      .then(()=> $state.go('profile', $stateParams));
+
       vm.activeRequests.push(request);
       const index = vm.incomingRequests.indexOf(request);
       vm.incomingRequests.splice(index, 1);
@@ -44,7 +66,7 @@ function ProfileCtrl(User, $stateParams, $uibModal, $http, $state, $auth){
       const index = vm.incomingRequests.indexOf(request);
       vm.incomingRequests.splice(index, 1);
     });
-    console.log(request);
+
   }
 
   // Opens the Modal assign controller and template to our edit
