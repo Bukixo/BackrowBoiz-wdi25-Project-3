@@ -1,48 +1,60 @@
 <div class="profile-show">
-  <h1>Profile Page</h1>
-{{ profile.user}}
-  <div class="row">
-    <div class="col-lg-4 col-md-4 col-sm-12">
 
       <img ng-src="{{ profile.user.imageSRC }}" alt="{{profile.user.username}}">
 
         <img ng-src="{{ profile.user.image }}" alt="{{profile.user.username}}">
 
+
+  <div class="row show-row">
+    <div class="col-lg-4 col-md-4 col-sm-12">
       <h2> Name : {{ profile.user.username }}</h2>
+      <img ng-src="{{ profile.user.imageSRC }}" alt="{{profile.user.username}}">
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-12">
+
       <p>Github Id: <strong>{{ profile.user.githubId }}</strong></p>
       <p>Facebook Id: <strong>{{ profile.user.facebookId }}</strong></p>
       <h2>Email: {{ profile.user.email }}</h2>
       <h2>Location: {{ profile.user.location }}</h2>
-
-      <button ui-sref="editProfile({id: main.profilePageId})">EDIT USER</button>
-
-      <button ng-click="profile.delete()">Delete Profile</button>
     </div>
 
     <div class="col-lg-4 col-md-4 col-sm-12">
       <h2> Requests sent</h2>
-      <ul>
-        <li ng-repeat="myReq in profile.myRequests"><p ng-if="profile.mine">
-          requested:{{ myReq.item[0].name}}</p></li>
-      </ul>
+        <ul>
+          <li ng-repeat="myReq in profile.myRequests"><p ng-if="profile.mine">
+            requested:{{ myReq.item[0].name}}</p></li>
+        </ul>
 
-          <h2>pending requests</h2>  <ul>
-            {{profile.request}}
-            <li ng-repeat="request in profile.incomingRequests">requested Item:{{ request.item[0].name }}<br>num of days{{request.numberOfDays}}<br>
-            requested By: {{request.requester[0].username}}<button ng-click="profile.accept(request)">Accept</button><button ng-click="profile.decline(request)">Decline</button>
+        <h2>pending requests</h2>
+        <ul>
+          {{profile.request}}
+            <li ng-repeat="request in profile.incomingRequests">requested Item:{{ request.item[0].name }}<br>num of   days{{request.numberOfDays}}<br>
+              requested By: {{request.requester[0].username}}<button ng-click="profile.accept(request)">Accept</button><button ng-click="profile.decline(request)">Decline</button>
             <input type="hidden" ng-model="profile.request">
-</li>
+          </li>
           </ul>
     </div>
 
     <div class="col-lg-4 col-md-4 col-sm-12">
       <h2>Active Requests</h2>
       <ul>
-        <li ng-repeat="request in profile.activeRequests">requested Item:{{ request.item[0].name }}<br>num of days{{request.numberOfDays}}<br>
-        requested By: {{request.requester[0].username}}</li>
+        <li ng-repeat="request in profile.activeRequests">
+          requested Item:{{ request.item[0].name }}<br>
+          num of days{{request.numberOfDays}}<br>
+          requested By: {{request.requester[0].username}}
+        </li>
       </ul>
 
+      <h2>Accepted</h2>
+      <li ng-repeat="request in profile.accepted">
+        requested Item:{{ request.item[0].name }}<br>
+        num of days{{request.numberOfDays}}<br>
+        requested By: {{request.requester[0].username}}
+      </li>
 
+      <button ui-sref="editProfile({id: main.profilePageId})">EDIT USER</button>
+      <button ng-click="profile.delete()">Delete Profile</button>
     </div>
   </div>
 </div>

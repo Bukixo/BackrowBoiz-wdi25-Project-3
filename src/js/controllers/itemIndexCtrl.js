@@ -7,15 +7,19 @@ function itemIndexCtrl(Item, User, Request, filterFilter, orderByFilter, $scope)
 
   const vm = this;
 
-  vm.all = Item.query();
+  Item.query().$promise.then((items) => {
+    vm.all = items;
+    filterItems();
+  });
+
   vm.request = Request.query();
 
-
   function filterItems(){
-    const params =  { name: vm.q};
+    const params =  { name: vm.q };
     if(vm.catagory) params.catagory = vm.catagory;
     vm.filtered = filterFilter(vm.all, params);
-    //vm.filtered = orderByFilter(vm.filtered, vm.sort);
+
+    vm.filtered = orderByFilter(vm.filtered, vm.sort);
   }
 
   $scope.$watchGroup([
@@ -23,8 +27,6 @@ function itemIndexCtrl(Item, User, Request, filterFilter, orderByFilter, $scope)
     ()=> vm.q,
     ()=> vm.sort
   ],filterItems);
-
-
 
 }
 // Item is injected from our Factory and makeing a GET request from the API api/item to find all the items

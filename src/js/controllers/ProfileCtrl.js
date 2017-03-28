@@ -12,10 +12,14 @@ function ProfileCtrl(User, $stateParams, $http, $state, $auth){
 //defines all functions that is going be interact directly with the UI
   // vm.open = openEditModal;
 // Grabs Request info from back end
+
+
+
   vm.user = User.get($stateParams);
   vm.incomingRequests = [];
   vm.activeRequests = [];
   vm.myRequests = [];
+  vm.accepted = [];
   $http.get('/api/profile')
   .then((response)=> {
     //console.log(response);
@@ -39,8 +43,14 @@ function ProfileCtrl(User, $stateParams, $http, $state, $auth){
       //  console.log(request);
       }else if(request.accepted === true && vm.user.id !== request.requester[0].id){
         vm.activeRequests.push(request);
+      } else if(request.accepted === true && vm.user.id === request.requester[0].id){
+        vm.accepted.push(request);
       }
+
     });
+
+
+  getProfileData();
 
     vm.mine = vm.activeUser.id === vm.user.id; // berkänar om den inloggade.id är samma som profilens .id
     vm.accept = acceptRequest;
@@ -69,6 +79,7 @@ function ProfileCtrl(User, $stateParams, $http, $state, $auth){
     });
 
   }
+
 
   // Opens the Modal assign controller and template to our edit
   // function openEditModal(){
