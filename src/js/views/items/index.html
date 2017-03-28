@@ -1,14 +1,21 @@
 <h1>Fashionista</h1>
-<div ng-controller="itemIndexCtrl as items">
+
 
 <input type="text" class="search" ng-model="items.q" placeholder="Search...">
 
 <select ng-model="items.all.price">
+
+<input type="text" class="search" ng-model="index.q" placeholder="Search...">
+{{index.all[5].price}}
+<select ng-model="index.all[0].price">
+
   <option value="+price">Price ascending</option>
   <option value="-price">Price descending</option>
 </select>
 
-<select ng-model="items.catagory">
+<select ng-model="index.catagory">
+
+
   <option>All</option>
   <option>Men</option>
   <option>Women</option>
@@ -17,14 +24,13 @@
 
 <!--- Renders all Items from the GET request in the Controller REMOVE THIS LATER -->
 <div class="bigDiv">
-  <div ng-repeat="item in index.all | filter: items.q | filter: items.sort | filter: items.catagory" class="col-lg-3 col-md-4 col-sm-6">
+  <div ng-repeat="item in index.all | filter: index.q | filter: index.sort | filter: index.catagory" class="col-lg-3 col-md-4 col-sm-6">
     <div class="l-box">
 
       <h3 ui-sref="itemsShow({ id: item.id })"><strong>{{ item.name }}</strong></h3>
-      <!--<img ng-src="{{ item.imageSRC }}" alt="{{ item.name }}" class="img-responsive img-thumbnail pure-img" ui-sref="itemsShow({ id: item.id })">-->
+      <!--<img ng-src="{{ item.imageSRC }}" alt="{{ item.name }}" class="img-responsive img-thumbnail pure-img" ui-sref="indexShow({ id: item.id })">-->
       <p>Price <strong>{{ item.price | currency: '£ ' }}/day</strong></p>
       <a ui-sref="profile({ id: item.createdBy.id})">{{item.createdBy.username}}</a>
     </div>
   </div>
-</div>
 </div>

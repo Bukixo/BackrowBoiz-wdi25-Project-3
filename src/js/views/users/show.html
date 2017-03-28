@@ -12,19 +12,26 @@
     </div>
 
     <div class="col-lg-4 col-md-4 col-sm-12">
-      <h2>My Requests</h2>
-
+      <h2> Requests sent</h2>
       <ul>
-        <li ng-repeat="item in profile.pending">{{ item }}</li>
+        <li ng-repeat="myReq in profile.requested"><p ng-if="profile.mine">
+          requested:{{ myReq.item[0].name}}</p></li>
       </ul>
+
+          <h2>pending requests</h2>  <ul>
+            <li ng-repeat="request in profile.incomingRequests">requested Item:{{ request.item[0].name }}<br>num of days{{request.numberOfDays}}<br>
+            requested By: {{request.requester[0].username}}<button ng-click="profile.accept(request)">Accept</button><button ng-click="profile.decline(request)">Decline</button></li>
+          </ul>
     </div>
 
     <div class="col-lg-4 col-md-4 col-sm-12">
-      <h2>Items Requested</h2>
-
+      <h2>Active Requests</h2>
       <ul>
-        <li ng-repeat="request in profile.requested">{{ request }}</li>
+        <li ng-repeat="request in profile.activeRequests">requested Item:{{ request.item[0].name }}<br>num of days{{request.numberOfDays}}<br>
+        requested By: {{request.requester[0].username}}</li>
       </ul>
+
+
     </div>
   </div>
 </div>
