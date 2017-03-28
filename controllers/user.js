@@ -14,7 +14,6 @@ function profileRoute(req, res, next){
     .catch(next);
 }
 
-
 function indexRoute(req, res, next) {
   User
     .find()
@@ -22,12 +21,14 @@ function indexRoute(req, res, next) {
     .catch(next);
 }
 
-// function createRoute(req, res, next) {
-//   User
-//     .create(req.body)
-//     .then((user) => res.status(201).json(user))
-//     .catch(next);
-// }
+function createRoute(req, res, next) {
+  if(req.file) req.body.imageSRC = req.file.filename;
+  //req.body.imageSRC = req.file.filename;
+  User
+    .create(req.body)
+    .then((user) => res.status(201).json(user))
+    .catch(next);
+}
 
 function showRoute(req, res, next) {
   User
@@ -70,7 +71,7 @@ function deleteRoute(req, res, next) {
 
 module.exports = {
   index: indexRoute,
-//  create: createRoute,
+  create: createRoute,
   show: showRoute,
   update: updateRoute,
   delete: deleteRoute,

@@ -9,7 +9,6 @@ function MainCtrl($rootScope, $state, $auth, filterFilter, orderByFilter) {
 
   vm.isAuthenticated = $auth.isAuthenticated;
 
-
   vm.logout = logout;
 
   function logout() {

@@ -1,36 +1,27 @@
-<div class="modal-header">  </div>
-<div class="modal-title">
-  <h1>Edit User profile</h1>
-</div>
+<div class="form2">
 
-<div class="modal-body">
-  <form name="profile.editProfileForm" ng-submit="profile.update()" novalidate> <!-- Hook up the profile.createUser() from the CTRL --->
-
-  <label for="username">Username</label>
-  <input type="text" name="username" ng-model="profile.user.username" required>
-  <div ng-messages="profile.editProfileForm.username.$error" role="alert" ng-show="(profile.editProfileForm.$submitted)||(profile.editProfileForm.username.$touched) &&(profile.editProfileForm.username.$invalid)">
-    <div ng-message="required"> this field is required </div>
+<h1>Edit User</h1>
+<form name="editProfile.editProfileForm" ng-submit="editProfile.update()" novalidate>
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" username="username" id="username" ng-model="editProfile.user.username" class="form-control">
   </div>
 
-  <label for="email">Email</label>
-  <input type="text" name="email" ng-model="profile.user.email" required>
-  <div ng-messages="profile.editProfileForm.email.$error" role="alert" ng-show="(profile.editProfileForm.$submitted)||(profile.editProfileForm.email.$touched) &&(profile.editProfileForm.email.$invalid)">
-    <div ng-message="required"> this field is required </div>
-  </div>
-
-  <label for="location">Location</label>
-  <input type="text" name="location" ng-model="profile.user.location" required>
-  <div ng-messages="profile.editProfileForm.location.$error" role="alert" ng-show="(profile.editProfileForm.$submitted)||(profile.editProfileForm.location.$touched) &&(profile.editProfileForm.location.$invalid)">
-    <div ng-message="required"> this field is required </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="text" name="email" id="email" ng-model="editProfile.user.email" class="form-control">
   </div>
   <div class="form-group">
-    <label for="base64">Image</label>
-    <input type="file" base64 name="base64" id="base64" ng-model="edit.item.base64">
+    <label for="location">Location</label>
+    <input type="text" name="location" id="location" ng-model="editProfile.user.location" class="form-control">
   </div>
-<!-- UPDATE EDIT PROFILE AND REGISTER TO IMG UPLAOD -->
 
+  <div class="form-group">
+    <label for="base64">Image</label>
+    <input type="file" base64 name="base64" id="base64" ng-model="editProfile.user.base64">
+  </div>
 
-<div class="modal-footer">
-<button>Update</button>
-<button ng-click="profile.close()">Close</button>
+  <button class="btn btn-primary">Update</button>
+</form>
+{{profile.user.createdBy.id}}
 </div>

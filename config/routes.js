@@ -3,6 +3,7 @@ const userController = require('../controllers/user');
 const itemController = require('../controllers/item');
 const requestController = require('../controllers/request');
 const auth = require('../controllers/auth');
+const oauth = require('../controllers/oauth');
 const geoCoder = require('../controllers/geoCoder');
 const secureRoute = require('../lib/secureRoute');
 const imageUpload = require('../lib/imageUpload');
@@ -19,7 +20,7 @@ router.route('/users/:id')
   .delete(userController.delete);
 
 router.route('/register')
-  .post(auth.register);
+  .post(imageUpload, auth.register);
 
 router.route('/login')
   .post(auth.login);
@@ -30,6 +31,7 @@ router.route('/request')
 
 router.route('/request/:id')
   .get(requestController.show)
+  .put(requestController.update)
   .delete(secureRoute, requestController.delete);
 
 router.route('/item')
@@ -51,6 +53,8 @@ router.route('/item/:id/comments/:commentId')
 router.route('/profile')
   .get(secureRoute, userController.profile);
 
+router.route('/oauth/github')
+  .post(oauth.github);
 
 // catch all 404 response
 router.all('*', (req, res) => res.notFound());
