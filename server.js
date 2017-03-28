@@ -1,4 +1,7 @@
 const express = require('express');
+const io = require('socket.io')(4001);
+
+
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -13,9 +16,7 @@ const { port, env, dbURI } = require('./config/environment');
 const app = express();
 const http =require('http').createServer(app);
 
-const io = require('socket.io').listen(http,()=>{
-  console.log('socket server');
-});
+
 
 mongoose.connect(dbURI);
 app.use(bodyParser.json({limit: '5mb'}));
@@ -28,19 +29,26 @@ app.use(customResponses);
 app.use('/api', routes);
 app.get('/*', (req, res) => res.sendFile(`${__dirname}/public/index.html`));
 
-io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
-  });
-});
+
 
 app.use(errorHandler);
 
-app.listen(port, () => console.log(`Express is listening on port ${port}`));
+const server = app.listen(port, () => console.log(`Express is listening on port ${port}`));
+app.io = io;
+
+
+io.on('connection', function(socket){
+  console.log("new connection");
+  // socket.on('chat message', function(msg){
+  //   io.emit('chat message', msg);
+  // });
+});
+
 io.sockets.on('connection', function(socket){
   console.log('user');
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
   });
 });
+
 module.exports = app; // Exports the app to import in when we run our tests
