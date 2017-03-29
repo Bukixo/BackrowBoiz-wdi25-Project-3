@@ -19,4 +19,8 @@ function Auth($authProvider) {
     url: '/api/oauth/facebook' //could be fucked
     // responseType: 'token'
   });
+
+  $authProvider.instagram({
+    clientId: 'Instagram Client ID'
+  });
 }
