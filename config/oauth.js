@@ -8,6 +8,15 @@ module.exports = {
     scope: 'user:email'
   },
 
+  instagram: {
+    loginURL: '//https://api.instagram.com/oauth/authorize/?client_id=081e09dfcabd4ec38a730f3895732495&redirect_uri=http://localhost:7000/oauth/instagram&response_type=code',
+    redirectUri: 'http://localhost:7000',
+    accessTokenURL: 'https://api.instagram.com/oauth/access_token',
+    clientId: process.env.RENTAPP_INSTA_CLIENT_ID,
+    clientSecret: process.env.RENTAPP_INSTA_CLIENT_SECRET,
+    scope: 'user:email'
+  },
+
   facebook: {
     loginURL: 'https://www.facebook.com/v2.8/dialog/oauth',
     accessTokenURL: 'https://graph.facebook.com/v2.8/oauth/access_token',

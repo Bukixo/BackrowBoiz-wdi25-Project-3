@@ -59,6 +59,8 @@ router.route('/oauth/github')
 router.route('/oauth/facebook')
   .post(oauth.facebook);
 
+router.route('/oauth/instagram')
+  .post(oauth.instagram);
 // catch all 404 response
 router.all('*', (req, res) => res.notFound());
 

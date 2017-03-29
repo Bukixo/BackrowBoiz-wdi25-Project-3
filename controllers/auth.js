@@ -7,6 +7,8 @@ function register(req, res, next) {
 
   if(req.file) req.body.image = req.file.filename;
 
+//pass in the to, subject and text into the send function.
+
   User
     .create(req.body)
     .then((user) => {

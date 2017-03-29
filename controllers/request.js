@@ -12,7 +12,7 @@ function indexRequestRoute(req, res, next){
   .catch(next);
 }
 
-function showRequestRoute(req, res, next){
+function showRequestRoute(req, res, next)s{
   Request
   .findById(req.params.id)
   .populate('item requester')
