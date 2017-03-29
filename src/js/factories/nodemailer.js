@@ -1,3 +1,10 @@
+
+
+angular
+  .module('rentApp')
+  .factory('Nodemailer', Nodemailer); //Our Request Factroy which handels the request Update & delete request requests to our API
+//SAtellizer handles the Create Route for Our users
+
 const nodemailer = require('nodemailer');
 // var nodemailer = require("nodemailer");
 
@@ -10,6 +17,7 @@ const smtpTransport = nodemailer.createTransport('SMTP',{
 });
 
 console.log('SMTP Configured');
+
 
 smtpTransport.sendMail({  //email options
   from: 'Hannah Nodemailer <hannahwynnjones@hotmail.co.uk>', // sender address.  Must be the same as authenticated user if using Gmail.
