@@ -40,6 +40,7 @@
     }
   },
   "resolutions": {
-    "angular": "^1.6.3"
+    "angular": "^1.6.3",
+    "outlayer": "2.1.0"
   }
 }

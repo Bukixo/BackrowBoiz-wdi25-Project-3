@@ -104,4 +104,59 @@ function facebook(req, res, next) {
   .catch(next);
 }
 
-module.exports = { facebook, github };
+// =============INSTAGRAM===================
+
+function instagram(req, res, next) {
+  console.log('working');
+  return rp({
+    method: 'POST',
+    url: oauth.instagram.accessTokenURL,
+    qs: {
+      client_id: oauth.instagram.clientId,
+      client_secret: oauth.instagram.clientSecret,
+      redirect_uri: oauth.instagram.redirectUri,
+      grant_type: 'authorization_code',
+      code: req.body.code //query
+    },
+    json: true
+  })
+
+  .then((token) => {
+    return rp({
+      method: 'GET',
+      url: oauth.instagram.profileURL,
+      qs: token,
+      headers: {
+        'User-Agent': 'Request-Promise'
+      },
+      json: true
+
+    });
+  })
+  .then((profile) => {
+    return User
+      .findOne({ instagramId: profile.user.id })
+      .then((user) => {
+        if(!user) {
+          user = new User({
+            username: profile.user.username,
+            email: profile.email
+          });
+        }
+        user.instagramId = profile.id;
+        user.image = profile.user.profile_picture;
+
+        return user.save();
+      });
+  })
+  .then((user) => {
+    const token = jwt.sign({ userId: user.id }, secret, { expiresIn: '1hr' });
+    return res.json({
+      token,
+      message: `Welcome back ${user.username}!`
+    });
+  })
+  .catch(next);
+}
+
+module.exports = { facebook, github, instagram };
