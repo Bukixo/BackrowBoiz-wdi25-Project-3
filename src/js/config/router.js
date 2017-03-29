@@ -50,12 +50,17 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
      templateUrl: 'js/views/users/edit.html',
      controller: 'EditCtrl as editProfile'
    })
+   .state('payment', {
+     url: '/request/:id/payment',
+     templateUrl: 'js/views/items/makePayment.html',
+     controller: 'PaymentController as payment'
+   })
    .state('chatState', {
      url: '/chat',
      templateUrl: 'js/views/chat/allChat.html'
-    // controller: 'ChatCtrl as chat'
    });
 
 
   $urlRouterProvider.otherwise('/');
+
 }

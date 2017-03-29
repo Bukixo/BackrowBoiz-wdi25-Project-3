@@ -1,4 +1,5 @@
 const Request = require('../models/request');
+const stripe = require('stripe')('sk_test_RbXPNxb0rbgsI2mRZW113s7D');
 
 // indexRequestRoute Grabs all the requests and sends it to the Client, which will be filtered in the front-end
 function indexRequestRoute(req, res, next){
@@ -36,6 +37,7 @@ function createRequestRoute(req, res, next){
 
 //deleteRequestRoute Deletes the request only used by the owner of the request
 function deleteRequestRoute(req, res, next){
+  console.log(req.body);
   Request
   .findById(req.params.id)
   .exec()
@@ -64,10 +66,33 @@ function updateRequestRoute(req, res, next){
   .catch(next);
 }
 
+function paymentRoute(req, res, next) {
+  Request
+    .find()
+    .then((items) => res.json(items))
+    .catch(next);
+}
+
+function postPaymentRoute(req, res, next) {
+  var token = req.body.token;
+  stripe.charges.create({
+    amount: parseInt(parseFloat(req.body.amount * 100), 10),
+    currency: req.body.currency,
+    source: token,
+    description: 'TEST'
+  }, function(err) {
+    if(err) return res.status(500).json({ message: err });
+    res.status(200).json({ message: 'Payment successful' });
+  })
+  .catch(next);
+}
+
 module.exports = {
   index: indexRequestRoute,
   show: showRequestRoute,
   create: createRequestRoute,
   delete: deleteRequestRoute,
-  update: updateRequestRoute
+  update: updateRequestRoute,
+  payment: paymentRoute,
+  postPayment: postPaymentRoute
 };

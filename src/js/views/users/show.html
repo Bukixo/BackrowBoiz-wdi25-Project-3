@@ -55,6 +55,7 @@
         requested Item:{{ request.item[0].name }}<br>
         num of days{{request.numberOfDays}}<br>
         requested By: {{request.requester[0].username}}
+        <button ui-sref="payment({id: request.id})">Pay</button>
       </li>
 
       <button ui-sref="editProfile({id: main.profilePageId})">EDIT USER</button>

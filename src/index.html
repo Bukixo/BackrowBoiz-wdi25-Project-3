@@ -4,12 +4,11 @@
   <base href="/">
   <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,900|Poppins:400,700" rel="stylesheet"> <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
   <title>Project 3</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEi_tighHwZ4dswlQz7CWXWxpHZ17LzoM"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
- <script src="http://localhost:4001/socket.io/socket.io.js"></script>
-
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEi_tighHwZ4dswlQz7CWXWxpHZ17LzoM"
-   async defer></script>
+ <!-- <script src="http://localhost:4001/socket.io/socket.io.js"></script> -->
   <!-- inject:js -->
   <!-- endinject -->
   <!-- inject:css -->
@@ -30,7 +29,7 @@
   </div>
   </nav>
   <div class="message" ng-if="main.message">{{ main.message }}</div>
-  <main ui-view class="container"  ng-controller="ChatCtrl as chat">
+  <main ui-view class="container">
 
   </main>
 </body>

@@ -8,6 +8,7 @@ const geoCoder = require('../controllers/geoCoder');
 const secureRoute = require('../lib/secureRoute');
 const imageUpload = require('../lib/imageUpload');
 
+
 router.route('/location')
 .get(geoCoder.getLocation);
 
@@ -53,12 +54,18 @@ router.route('/item/:id/comments/:commentId')
 router.route('/profile')
   .get(secureRoute, userController.profile);
 
+router.route('/payment')
+  .get(requestController.payment)
+  .post(requestController.postPayment);
+
 router.route('/oauth/github')
   .post(oauth.github);
 
 router.route('/oauth/facebook')
   .post(oauth.facebook);
 
+router.route('/oauth/instagram')
+  .post(oauth.instagram);
 // catch all 404 response
 router.all('*', (req, res) => res.notFound());
 

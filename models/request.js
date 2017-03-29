@@ -5,7 +5,8 @@ const requestSchema = new mongoose.Schema({
   numberOfDays: {type: Number, required: true},
   requester: [{type: mongoose.Schema.ObjectId, ref: 'User', required: true}],
   message: {type: String},
-  accepted: {type: Boolean}
+  accepted: {type: Boolean},
+  paid: {type: Boolean}
 });
 
 requestSchema.methods.belongsTo = function requestItemBelongsTo(item) {

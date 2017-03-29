@@ -22,4 +22,5 @@ function LoginCtrl($auth, $state) {
 
   vm.authenticate = authenticate;
   vm.submit = submit;
+
 }

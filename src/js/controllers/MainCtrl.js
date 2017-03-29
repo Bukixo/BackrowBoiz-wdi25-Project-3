@@ -6,7 +6,6 @@ MainCtrl.$inject = ['$rootScope', '$state', '$auth', 'filterFilter', 'orderByFil
 function MainCtrl($rootScope, $state, $auth, filterFilter, orderByFilter) {
   const vm = this;
 
-
   // const socket = io('http://localhost:4001');
   // socket.emit('yo');
   // vm.send = sendMsg;

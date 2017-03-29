@@ -1,4 +1,4 @@
-angular
+/* angular
   .module('rentApp')
   .controller('ChatCtrl', ChatCtrl);
 
@@ -84,3 +84,4 @@ function ChatCtrl($auth, User, $http, $scope){
     vm.messages;
   });
 }
+*/

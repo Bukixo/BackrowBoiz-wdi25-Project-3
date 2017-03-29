@@ -14,4 +14,5 @@ function RegisterCtrl($auth, $state){
     }
   }
   vm.createUser = createUser;
+
 }
