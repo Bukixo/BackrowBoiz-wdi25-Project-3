@@ -7,6 +7,8 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
 
   $locationProvider.html5Mode(true);
 
+//state for messages
+
   $stateProvider
    .state('itemsIndex', {
      url: '/',
