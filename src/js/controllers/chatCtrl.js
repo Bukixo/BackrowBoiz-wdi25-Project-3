@@ -1,4 +1,4 @@
-angular
+/* angular
   .module('rentApp')
   .controller('ChatCtrl', ChatCtrl);
 
@@ -7,8 +7,11 @@ ChatCtrl.$inject = ['$auth', 'User', '$http', '$scope'];
 function ChatCtrl($auth, User, $http, $scope){
   const vm = this;
   let user;
-  const socket = io('http://localhost:4001');
+  //const socket = io('http://localhost:4001');
+  const socket = io(location.hostname+':4001');
   vm.messages = [];
+  const connectedUser =  {};
+  vm.allUsers = [];
 
   if($auth.getPayload())$http.get(`/api/users/${$auth.getPayload().userId}`)
  .then((data)=> {
@@ -51,10 +54,34 @@ function ChatCtrl($auth, User, $http, $scope){
   });
 
   socket.on('stats', (data)=>{
-    const numClients = data;
+    if($auth.getPayload())$http.get(`/api/users/${$auth.getPayload().userId}`)
+   .then((userdata)=> {
+     user = userdata.data;
+   });
+
+    data.id = socket;
+
+    connectedUser.user = user.username;
+    connectedUser.clientId = socket.id;
+
+    socket.emit('userConnect', connectedUser);
+
   });
+  socket.on('activeUsers', (users)=>{
+    users.forEach((user)=>{
+      if(user.clientId !== vm.allUsers.forEach((user)=> user.clientId)){
+        console.log('works');
+        user.num = Math.random()*10;
+
+        vm.allUsers.push(user);
+      }
+    });
+    console.log(vm.allUsers);
+  });
+
 
   $scope.$watch(()=>vm.messages,()=>{
     vm.messages;
   });
 }
+*/

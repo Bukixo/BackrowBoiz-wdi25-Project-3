@@ -8,25 +8,14 @@ function profileRoute(req, res, next){
     requested: Request.find().populate('requester item').exec(),
     user: User.findById(req.user.id).exec()
   })
-    .then((data)=> {
-      return res.json(data);
-    })
-    .catch(next);
+  .then((data) => res.json(data))
+  .catch(next);
 }
 
 function indexRoute(req, res, next) {
   User
     .find()
     .then((users) => res.json(users))
-    .catch(next);
-}
-
-function createRoute(req, res, next) {
-  if(req.file) req.body.imageSRC = req.file.filename;
-  //req.body.imageSRC = req.file.filename;
-  User
-    .create(req.body)
-    .then((user) => res.status(201).json(user))
     .catch(next);
 }
 
@@ -71,7 +60,6 @@ function deleteRoute(req, res, next) {
 
 module.exports = {
   index: indexRoute,
-  create: createRoute,
   show: showRoute,
   update: updateRoute,
   delete: deleteRoute,

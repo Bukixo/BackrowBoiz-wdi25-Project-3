@@ -1,26 +1,26 @@
 <div class="form">
 
 <h1>register page</h1>
-<!-- //{{register.user}} -->
+{{register.registerForm.$valid}}
 <form name="register.registerForm" ng-submit="register.createUser()" novalidate> <!-- Hook up the register.createUser() from the CTRL --->
 <!-- All of the error messages  -->
-  <div ng-messages="register.registerForm.username.$error" role="alert" ng-show="(register.registerForm.$submitted)||(register.registerForm.username.$touched) &&(register.registerForm.username.$invalid)">
+  <div ng-messages="register.registerForm.username.$error" role="alert" ng-show="(register.registerForm.username.$touched) &&(register.registerForm.username.$invalid)">
     <div ng-message="required"> Username is required </div>
   </div>
-  <div ng-show="register.registerForm.$submitted || register.registerForm.email.$touched &&(register.registerForm.email.$invalid)" ng-messages="register.registerForm.email.$error" role="alert">
+  <div ng-show="register.registerForm.email.$touched &&(register.registerForm.email.$invalid)" ng-messages="register.registerForm.email.$error" role="alert">
     <div ng-message="required"> Email is required </div>
     <div ng-message="pattern">Please enter a valid email.</div>
   </div>
-  <div ng-messages="register.registerForm.location.$error" role="alert" ng-show="(register.registerForm.$submitted)||(register.registerForm.location.$touched) &&(register.registerForm.location.$invalid)">
+  <div ng-messages="register.registerForm.location.$error" role="alert" ng-show="(register.registerForm.location.$touched) &&(register.registerForm.location.$invalid)">
     <div ng-message="required">Postcode is required </div>
   </div>
-  <div ng-messages="register.registerForm.image.$error" role="alert" ng-show="(register.registerForm.$submitted)||(register.registerForm.image.$touched) &&(register.registerForm.image.$invalid)">
+  <div ng-messages="register.registerForm.image.$error" role="alert" ng-show="(register.registerForm.image.$touched) &&(register.registerForm.image.$invalid)">
     <div ng-message="required"> Image is required </div>
   </div>
-  <div ng-messages="register.registerForm.password.$error" role="alert" ng-show="(register.registerForm.$submitted)||(register.registerForm.password.$touched) &&(register.registerForm.password.$invalid)">
+  <div ng-messages="register.registerForm.password.$error" role="alert" ng-show="(register.registerForm.password.$touched) &&(register.registerForm.password.$invalid)">
     <div ng-message="required"> Password is required </div>
   </div>
-  <div ng-messages="register.registerForm.passwordConfirmation.$error" role="alert" ng-show="(register.registerForm.$submitted)||(register.registerForm.passwordConfirmation.$touched) &&(register.registerForm.passwordConfirmation.$invalid)">
+  <div ng-messages="register.registerForm.passwordConfirmation.$error" role="alert" ng-show="(register.registerForm.passwordConfirmation.$touched) &&(register.registerForm.passwordConfirmation.$invalid)">
     <div ng-message="required">Confirmation is required </div>
   </div>
 
