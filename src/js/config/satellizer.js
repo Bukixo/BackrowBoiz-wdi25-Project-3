@@ -7,7 +7,7 @@ function Auth($authProvider) {
   $authProvider.signupUrl = '/api/register';
   $authProvider.loginUrl = '/api/login';
 
-  $authProvider.tokenPrefix = '';
+
 
   $authProvider.github({
     clientId: '6fa44555d50ccd78c8df',
@@ -19,4 +19,11 @@ function Auth($authProvider) {
     url: '/api/oauth/facebook' //could be fucked
     // responseType: 'token'
   });
+
+  $authProvider.tokenPrefix = '';
+
+  $authProvider.instagram({
+    clientId: 'Instagram Client ID'
+  });
+
 }

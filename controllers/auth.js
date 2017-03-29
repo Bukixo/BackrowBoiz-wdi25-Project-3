@@ -1,18 +1,21 @@
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const { secret } = require('../config/environment');
-
+const mail = require('../lib/mail');
 
 function register(req, res, next) {
 
   if(req.file) req.body.image = req.file.filename;
-  
+
   User
     .create(req.body)
-    .then(() => res.json({ message: 'Registration successful'}))
-    .catch((err) => {
-      console.log(err);
-    });
+    .then((user) => {
+      mail.send(user.email, 'Thanks for registering!', `Hey ${user.username}! Thanks for registering, for real!`, (err) => {
+        if(err) next(err);
+        res.json({ message: 'Registration successful'});
+      });
+    })
+    .catch(next);
 }
 
 function login(req, res, next) {

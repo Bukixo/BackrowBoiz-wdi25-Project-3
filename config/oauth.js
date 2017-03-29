@@ -14,7 +14,7 @@ module.exports = {
     profileURL: '#',
     clientId: process.env.RENTAPP_FB_CLIENT_ID,
     clientSecret: process.env.RENTAPP_FB_CLIENT_SECRET,
-    scope: 'user:email',
+    scope: 'user:email'
     // getLoginURL() {
     //   return `${this.loginURL}?client_id=${this.clientId}&redirect_uri=http://localhost:7000/api/oauth/login`;
     // }
