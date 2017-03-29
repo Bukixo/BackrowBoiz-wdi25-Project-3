@@ -39,8 +39,7 @@
         <td>CREATED BY: </td>
         <td> <span>
           <a ui-sref="profile({ id: show.item.createdBy.id})">  {{show.item.createdBy.username}}</a>
-        </td>
-      </tr>
+        </span></td>
 
       <tr>
         <td>PRICE:</td>
@@ -101,16 +100,12 @@
 
 </div>
 
+<form>
+<input type="range" min="0" max="10" name="radius" ng-model="show.range.radius">
+</form>
 
-<!--{{show.range}}
-
-        <!-- {{show.item.id}} -->
-    <!-- </div>
-  </div> -->
 
 
 
 
 {{show.request}}
-
-</div>

@@ -13,6 +13,7 @@ function ProfileCtrl(User, $stateParams, $http, $state, $auth){
   // vm.open = openEditModal;
 // Grabs Request info from back end
   vm.user = User.get($stateParams); // vm.user is the current user's userpage rendering
+
   vm.incomingRequests = [];
   vm.activeRequests = [];
   vm.myRequests = [];
@@ -24,7 +25,7 @@ function ProfileCtrl(User, $stateParams, $http, $state, $auth){
     vm.activeUser = response.data.user; // ActiveUser is the one being logged in
     vm.pending = response.data.pending;
     vm.requested = response.data.requested;
-
+    console.log(vm.requested);
   //  vm.myRequest= if(vm.requested)
 
     vm.requested.forEach((request)=>{
@@ -44,6 +45,7 @@ function ProfileCtrl(User, $stateParams, $http, $state, $auth){
       } else if(request.accepted === true && vm.user.id === request.requester[0].id){
         vm.accepted.push(request);
       }
+
 
     });
 
