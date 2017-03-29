@@ -12,21 +12,20 @@ function ProfileCtrl(User, $stateParams, $http, $state, $auth){
 //defines all functions that is going be interact directly with the UI
   // vm.open = openEditModal;
 // Grabs Request info from back end
+  vm.user = User.get($stateParams); // vm.user is the current user's userpage rendering
 
-
-
-  vm.user = User.get($stateParams);
   vm.incomingRequests = [];
   vm.activeRequests = [];
   vm.myRequests = [];
   vm.accepted = [];
+
   $http.get('/api/profile')
   .then((response)=> {
     //console.log(response);
-    vm.activeUser = response.data.user; // den som är inloggad
+    vm.activeUser = response.data.user; // ActiveUser is the one being logged in
     vm.pending = response.data.pending;
     vm.requested = response.data.requested;
-
+    console.log(vm.requested);
   //  vm.myRequest= if(vm.requested)
 
     vm.requested.forEach((request)=>{
@@ -37,23 +36,22 @@ function ProfileCtrl(User, $stateParams, $http, $state, $auth){
       }
     });
 
-    vm.requested.forEach((request)=>{// vill räkna ut ifall requesten är min, genom att jämföra createdBy.id med user.id isåfall visa den
+    vm.requested.forEach((request)=>{// checks if the request item's owner is the same as the user rendering and makes sure the requester is not the same as the actual user
       if(request.item[0].createdBy === vm.user.id && request.requester[0].id !== vm.user.id && request.accepted === false){
         vm.incomingRequests.push(request);
-      //  console.log(request);
+      //  if the first block passes it checks if the boolean accepted and determines if it's your request who got accepted or if you accepted someone elses
       }else if(request.accepted === true && vm.user.id !== request.requester[0].id){
         vm.activeRequests.push(request);
       } else if(request.accepted === true && vm.user.id === request.requester[0].id){
         vm.accepted.push(request);
       }
-      
+
 
     });
 
 
-  getProfileData();
 
-    vm.mine = vm.activeUser.id === vm.user.id; // berkänar om den inloggade.id är samma som profilens .id
+    vm.mine = vm.activeUser.id === vm.user.id; // Checks if the user is the same as the logged in
     vm.accept = acceptRequest;
     function acceptRequest(request){
       request.accepted = true;

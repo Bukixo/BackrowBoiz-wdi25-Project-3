@@ -37,6 +37,7 @@ function createRequestRoute(req, res, next){
 
 //deleteRequestRoute Deletes the request only used by the owner of the request
 function deleteRequestRoute(req, res, next){
+  console.log(req.body);
   Request
   .findById(req.params.id)
   .exec()

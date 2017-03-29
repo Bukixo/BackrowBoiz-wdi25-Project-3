@@ -1,6 +1,10 @@
 <div class="profile-show">
 
-      <img ng-src="{{ profile.user.imageSRC }}" alt="{{profile.user.username}}">
+  <div class="nav-extension">
+    <h1 class="title">FABRIC</h1>
+  </div>
+
+<!--- its user.image for the time bng whilst im styling  bukixxxx-->
 
         <img ng-src="{{ profile.user.image }}" alt="{{profile.user.username}}">
 
@@ -51,6 +55,7 @@
         requested Item:{{ request.item[0].name }}<br>
         num of days{{request.numberOfDays}}<br>
         requested By: {{request.requester[0].username}}
+        <button ui-sref="payment({id: request.id})">Pay</button>
       </li>
 
       <button ui-sref="editProfile({id: main.profilePageId})">EDIT USER</button>

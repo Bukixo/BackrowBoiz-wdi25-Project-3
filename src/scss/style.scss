@@ -39,12 +39,14 @@ nav {
           list-style: none;
           // line-height: -7px;
           float: right;
-          padding: 66px 1px;
-          margin-right: 50px;
+          padding: 80px 15px;
+
+
 
           a {
+            font-family: 'Playfair Display', serif;
             display: inline;
-            font-size: 20px;
+            font-size: 18px;
             color: black;
             display: block;
             z-index: 11;
@@ -68,9 +70,12 @@ nav {
   top: 50px;
   left: 0;
   z-index: 10;
+  margin-bottom: 50px;
+  height: 70px;
   h1{
     margin-left: 100px;
     padding-left: 140px;
+    margin-top: 30px;
   }
 }
  .profile-show {
@@ -129,20 +134,90 @@ nav {
 
 #maps {
   height:400px;
-  width: 400px;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 50px;
 }
 
+.title{
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 15px;
+  color: grey;
+  font-size: 16px;
+  font-weight: 700;
+  padding-top: 5px;
+}
 ///////// Item show /////////////
 
 .item-show {
+  .location-title{
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+  }
+  p {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    font-weight: 700;
+    font-size: 20px;
+  }
+  form {
+    margin: 60px 0;
+  }
+
+  .comments {
+    margin: 0 50px;
+
+    ul{
+        margin-top: 30px;
+        width: 50%;
+        height: 90px;
+        overflow: scroll;
+    }
+    textarea{
+      width: 100%;
+      border: 3px solid grey;
+    }
+  }
   .row{
-    border: 2px solid black;
+    // border: 2px solid black;
+    margin-top: 20px;
+    margin: 0 50px;
+    font-family: 'Poppins', sans-serif;
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 50px;
+      
+    }
   }
   img{
-    height: 30em;
+    height: 350px;
+    padding-top: 10px;
+    padding-bottom: 20px;
 
 }
-
+.toggle{
+  border: 1px solid grey;
+}
+.item-info{
+  border: 7px solid grey;
+  padding: 20px;
+  width: 500px;
+  table {
+    padding-left: 50px;
+  }
+  td {
+    font-size: 10px;
+    padding: 7px;
+    letter-spacing: 5px;
+    font-weight: 700;
+    span {
+      font-family: 'Playfair Display', serif;
+      font-weight: bold;
+      letter-spacing: normal;
+      font-size: 13px;
+    }
+  }
+}
 
   }
 

@@ -12,18 +12,22 @@
           <span ng-if="(payment.Form.payee.$invalid && payment.Form.payee.$dirty)" class="glyphicon glyphicon-remove form-control-feedback"></span>
         </div>
       </div>
+
+
       <div class="col-sm-4">
-        <div class="form-group" ng-class="{ 'has-feedback': payment.Form.amount.$dirty, 'has-success': (payment.Form.amount.$valid && payment.Form.amount.$dirty), 'has-error': (payment.Form.amount.$invalid && payment.Form.amount.$dirty) }">
+        <div class="form-group" ng-class="{ 'has-feedback': payment.Form.amount.$dirty, 'has-success': (payment.Form.amount.$valid), 'has-error': (payment.Form.amount.$invalid && payment.Form.amount.$dirty) }">
           <label class="control-label">Total Amount to Pay</label>
           <div class="input-group">
             <div class="input-group-addon">&pound;</div>
-            <input type="text" name="amount" class="form-control" ng-model="payment.amount" placeholder="25.00" required ng-pattern="/^[0-9]+(\.[0-9]{2})?$/">
+            <input type="text" name="amount" class="form-control" readonly ng-model="payment.card.amount " required ng-pattern="/^[0-9]+(\.[0-9]{2})?$/">
           </div>
-          <span ng-if="(payment.Form.amount.$valid && payment.Form.amount.$dirty)" class="glyphicon glyphicon-ok form-control-feedback"></span>
+          <span ng-if="(payment.Form.amount.$valid)" class="glyphicon glyphicon-ok form-control-feedback"></span>
           <span ng-if="(payment.Form.amount.$invalid && payment.Form.amount.$dirty)" class="glyphicon glyphicon-remove form-control-feedback"></span>
         </div>
       </div>
     </div>
+
+
     <div class="row">
       <div class="col-sm-8">
         <div class="form-group" ng-class="{ 'has-feedback': payment.Form['card-number'].$dirty, 'has-success': (payment.Form['card-number'].$valid && payment.Form['card-number'].$dirty), 'has-error': (payment.Form['card-number'].$invalid && payment.Form['card-number'].$dirty) }">
@@ -60,7 +64,7 @@
         </div>
       </div>
     </div>
-    <button class="btn btn-primary" ng-disabled="(payment.Form.$invalid||payment.Form.$submitted)">Make Payment</button>
+    <button class="btn btn-primary">Make Payment</button>
   </form>
   <div ng-show="payment.paymentSuccessful">
     <h2>Thank you!</h2>

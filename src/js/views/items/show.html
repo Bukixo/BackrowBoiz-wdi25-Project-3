@@ -1,65 +1,111 @@
 <div class="container item-show">
-  <div class="row">
-    <div class="col-lg-8 col-md-6 col-sm-6">
-      <h2>{{ show.item.name }}</h2>
-      <img ng-src="{{ show.item.image }}">
-        <div class="col-lg-8 col-md-6 col-sm-6">
-      <h1>Show</h1>
-
-
-
-      <a ui-sref="profile({ id: show.item.createdBy.id})">{{show.item.createdBy.username}}</a>
-      <input type="hidden" ng-model="show.item.createdBy.location">
-      <a ui-sref="itemEdit({ id: show.item.id })">Edit</a>
-
-      <button ng-click="show.delete()">Delete</button>
-      {{show.range}}
-    </div>
+  <div class="nav-extension">
+    <h1 class="title">FABRIC</h1>
   </div>
 
-  <!-- <div class ="row">
-    <div "col-lg-3 col-md-6 col-sm-6" class="info"> -->
-    <div class ="info">
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <img ng-src="{{ show.item.image }}">
+
+
+      <button class ="btn-primary" ng-click="showDiv = !showDiv">Request Item </button>
+      <div ng-hide="!showDiv" >
+          <div class="toggle">
+
+            <form name="show.makeRequest" ng-submit="show.sendRequest()" method="post">
+
+              <label for="numberOfDays">Days to rent</label>
+              <input type="number" name="numberOfDays" ng-model="show.request.numberOfDays">
+              <br>
+
+              <label for="message"> Message</label>
+              <textarea name="message" ng-model="show.request.message"></textarea><br>
+            <button class="btn btn-danger">Request item</button>
+            </form>
+          </div>
+      </div> <br>
+
+        <a ui-sref="itemEdit({ id: show.item.id})">Edit Profile</a> <br>
+
+      <button class="btn-primary" ng-click="show.delete()">Delete</button> <br>
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <h2>{{ show.item.name }}</h2>
+
+    <div class="item-info">
+
+    <table>
+        <td>CREATED BY: </td>
+        <td> <span>
+          <a ui-sref="profile({ id: show.item.createdBy.id})">  {{show.item.createdBy.username}}</a>
+        </span></td>
+
+      <tr>
+        <td>PRICE:</td>
+        <td><span>{{ show.item.price }}</span></td>
+      </tr>
+      <tr>
+        <td>DESCRIPTION</td>
+        <td><span>{{ show.item.description }}</span> </td>
+      </tr>
+      <tr>
+        <td>SIZE</td>
+        <td><span>{{ show.item.size }}</span> </td>
+      </tr>
+      <tr>
+        <td>CATEGORY</td>
+        <td><span>{{ show.item.catagory }}</span></td>
+      </tr>
+      <tr>
+        <td>RATING </td>
+        <td><span>{{ show.item.rating }}</span></td>
+      </tr>
+      <!-- <tr>
+        <td>COMMENTS:</td>
+        <td><span>{{ show.item.comments }} </span></td>
+      </tr> -->
+      <tr>
+        <td>LOCATION:</td>
+        <td><span>{{ show.item.createdBy.location }} </span></td>
+      </tr>
+  </table>
+
+    </div>
+    </div>
+  </div>
+  <div class ="comments">
+    <h2>User comments</h2>
       <ul>
-        <li>{{ show.item.price }}</li>
-        <li>{{ show.item.description }}</li>
-        <li>{{ show.item.size }}</li>
-        <li>{{ show.item.catagory }}</li>
+        <li ng-repeat="comment in show.item.comments track by $index"><p>{{ comment.content }}</p><small>{{comment.createdBy.email}}</small>
+        <button class = "btn-primary" ng-click="show.deleteComment(comment)">Delete</button></li>
       </ul>
 
-        <p>{{ show.item.rating }}</p>
-        <p>{{ show.item.comments }}</p>
-        <button type="button" name="button"></button>
-      </div>
-        <!-- {{show.item.id}} -->
-    <!-- </div>
-  </div> -->
+    <form ng-submit="show.addComment()">
 
-      <div id="maps">
-      </div>
-    </div>
+            <textarea ng-model="show.newComment.content">totally fab</textarea>
+            <button class="btn btn-primary">Comment</button>
+          </form>
+
   </div>
+  <h1 class="location-title"> Check out the Locations</h1>
+  <p>Use the slider to select how far you are willing to travel</p>
 
-<button ng-click="show.delete()">Delete</button>
-{{show.request}}
-<form name="show.makeRequest" ng-submit="show.sendRequest()" method="post">
-  <label for="numberOfDays">Days to rent</label>
-  <input type="number" name="numberOfDays" ng-model="show.request.numberOfDays">
-  <textarea name="message" ng-model="show.request.message"></textarea>
-<button class="btn btn-danger">Request item</button>
-</form>
+  <form>
+  <input type="range" min="0" max="10" name="radius" ng-model="show.range.radius">
+  </form>
 
-  <ul>
-    <li ng-repeat="comment in show.item.comments track by $index"><p>{{ comment.content }}</p><small>{{comment.createdBy.email}}</small>
-    <button ng-click="show.deleteComment(comment)">Delete</button></li>
-  </ul>
+        <div id="maps">
+        </div>
 
-<form ng-submit="show.addComment()">
-        <label>Add comment</label>
-        <textarea ng-model="show.newComment.content"></textarea>
-        <button class="btn">Comment</button>
-      </form>
+</div>
 
 <form>
 <input type="range" min="0" max="10" name="radius" ng-model="show.range.radius">
 </form>
+
+
+
+
+
+{{show.request}}

@@ -7,6 +7,8 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
 
   $locationProvider.html5Mode(true);
 
+//state for messages
+
   $stateProvider
    .state('itemsIndex', {
      url: '/',
@@ -49,11 +51,16 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
      controller: 'EditCtrl as editProfile'
    })
    .state('payment', {
-     url: '/payment',
+     url: '/request/:id/payment',
      templateUrl: 'js/views/items/makePayment.html',
      controller: 'PaymentController as payment'
+   })
+   .state('chatState', {
+     url: '/chat',
+     templateUrl: 'js/views/chat/allChat.html'
    });
 
 
   $urlRouterProvider.otherwise('/');
+
 }
