@@ -47,6 +47,11 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
      url: '/user/:id/edit',
      templateUrl: 'js/views/users/edit.html',
      controller: 'EditCtrl as editProfile'
+   })
+   .state('chatState', {
+     url: '/chat',
+     templateUrl: 'js/views/chat/allChat.html'
+    // controller: 'ChatCtrl as chat'
    });
 
 
