@@ -80,7 +80,7 @@ xdescribe('Get api/item', ()=>{
   });
 });
 
-describe('Post api/item', ()=>{
+xdescribe('Post api/item', ()=>{
 
   it('should return a 201status and have all the properties',(done)=>{
     app.post('/api/item')
@@ -134,7 +134,7 @@ xdescribe('PUT api/item/:id', ()=>{
   });
 
   it('should update our selected item',(done)=>{
-    app.post(`/api/item/${oneItem.id}`)
+    app.put(`/api/item/${oneItem.id}`)
     .type('form')
     .send({name: 'Miachel Jordan',
       createdBy: '58d54d45f028b0f6b0375803',

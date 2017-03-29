@@ -14,8 +14,8 @@ const stripe = require('stripe')('sk_test_RbXPNxb0rbgsI2mRZW113s7D');
 
 const { port, env, dbURI } = require('./config/environment');
 const app = express();
-const http =require('http').createServer(app);
-const io = require('socket.io')(4001);
+//const http =require('http').createServer(app);
+//const io = require('socket.io')(4001);
 
 
 app.use(morgan('dev'));
