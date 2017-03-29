@@ -42,12 +42,13 @@ app.io = io;
 
 const users = {};
 io.on('connection', function(socket){
+  console.log(`User has Connected ${socket.id}`);
   socket.send(socket.id);
 
-  let numClients = 0;
-  numClients++;
-  io.emit('stats', { numClients});
-  console.log(`Connected clients: ${socket.id}, ${numClients}`);
+  // let numClients = 0;
+  // numClients++;
+  io.emit('stats', 'hello connected');
+  //console.log(`Connected clients: ${socket.id}, ${numClients}`);
 
   socket.on('connected', (data)=>{
     socket.user = data.user;
@@ -60,6 +61,15 @@ io.on('connection', function(socket){
     io.emit('chat message', msg);
   });
 
+  const users = [];
+  socket.on('userConnect', (user)=>{
+    //users.push(user);
+    users.push(user);
+    console.log(users);
+    io.emit('activeUsers', users);
+    //console.log(users);
+  });
+
   socket.on('broadcast', (msg)=>{
     console.log('broadcast', msg);
     io.emit('broadcast', msg);
@@ -70,7 +80,7 @@ io.on('connection', function(socket){
 
   socket.on('disconnect', function () {
     socket.disconnect();
-    console.log(`${socket.id}disconnected`);
+    console.log(`User has ${socket.id}disconnected`);
   });
 });
 
