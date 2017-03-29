@@ -44,9 +44,6 @@ const users = {};
 io.on('connection', function(socket){
   console.log(`User has Connected ${socket.id}`);
   socket.send(socket.id);
-
-  // let numClients = 0;
-  // numClients++;
   io.emit('stats', 'hello connected');
   //console.log(`Connected clients: ${socket.id}, ${numClients}`);
 
@@ -63,9 +60,7 @@ io.on('connection', function(socket){
 
   const users = [];
   socket.on('userConnect', (user)=>{
-    //users.push(user);
     users.push(user);
-    console.log(users);
     io.emit('activeUsers', users);
     //console.log(users);
   });
@@ -76,7 +71,6 @@ io.on('connection', function(socket){
   });
   //socket.broadcast.emit('user connected');
 //  socket.emit('announcements', { message: 'you are now connected!'});
-
 
   socket.on('disconnect', function () {
     socket.disconnect();

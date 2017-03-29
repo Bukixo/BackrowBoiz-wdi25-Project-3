@@ -7,7 +7,8 @@ ChatCtrl.$inject = ['$auth', 'User', '$http', '$scope'];
 function ChatCtrl($auth, User, $http, $scope){
   const vm = this;
   let user;
-  const socket = io('http://localhost:4001');
+  //const socket = io('http://localhost:4001');
+  const socket = io(location.hostname+':4001');
   vm.messages = [];
   const connectedUser =  {};
   vm.allUsers = [];
