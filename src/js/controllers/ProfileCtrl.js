@@ -71,7 +71,7 @@ function ProfileCtrl(User, $stateParams, $http, $state, $auth){
   vm.decline = declineRequest;
   function declineRequest(request){
     $http
-    .delete(`/api/request/${request.id}`)
+    .delete(`/api/request/decline/${request.id}`)
     .then(()=>{
       const index = vm.incomingRequests.indexOf(request);
       vm.incomingRequests.splice(index, 1);
