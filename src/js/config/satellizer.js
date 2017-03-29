@@ -21,4 +21,9 @@ function Auth($authProvider) {
   });
 
   $authProvider.tokenPrefix = '';
+
+  $authProvider.instagram({
+    clientId: 'Instagram Client ID'
+  });
+
 }
