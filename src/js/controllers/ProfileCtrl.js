@@ -46,6 +46,7 @@ function ProfileCtrl(User, $stateParams, $http, $state, $auth){
       } else if(request.accepted === true && vm.user.id === request.requester[0].id){
         vm.accepted.push(request);
       }
+      
 
     });
 

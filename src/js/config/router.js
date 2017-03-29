@@ -47,6 +47,11 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
      url: '/user/:id/edit',
      templateUrl: 'js/views/users/edit.html',
      controller: 'EditCtrl as editProfile'
+   })
+   .state('payment', {
+     url: '/payment',
+     templateUrl: 'js/views/items/makePayment.html',
+     controller: 'PaymentController as payment'
    });
 
 
