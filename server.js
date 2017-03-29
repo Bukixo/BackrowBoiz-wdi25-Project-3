@@ -40,21 +40,32 @@ app.io = io;
 
 
 
-
+const users = {};
 io.on('connection', function(socket){
+  socket.send(socket.id);
+
   let numClients = 0;
   numClients++;
-  io.emit('stats', { numClients });
-  console.log('Connected clients:', numClients);
-  console.log(`${socket.id} connected`);
+  io.emit('stats', { numClients});
+  console.log(`Connected clients: ${socket.id}, ${numClients}`);
+
+  socket.on('connected', (data)=>{
+    socket.user = data.user;
+    console.log('socket.user-->',socket.user);
+    socket.emit('announcments', {data});
+  });
 
   socket.on('chat message', function(msg){
     console.log('message: ' + msg);
     io.emit('chat message', msg);
   });
 
+  socket.on('broadcast', (msg)=>{
+    console.log('broadcast', msg);
+    io.emit('broadcast', msg);
+  });
   //socket.broadcast.emit('user connected');
-  socket.emit('announcements', { message: 'you are now connected!'});
+//  socket.emit('announcements', { message: 'you are now connected!'});
 
 
   socket.on('disconnect', function () {
