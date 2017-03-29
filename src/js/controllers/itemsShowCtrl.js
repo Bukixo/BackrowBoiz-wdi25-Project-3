@@ -104,6 +104,9 @@ function itemShowCtrl(Item, $stateParams, $state, $scope, $http, Comments, geoCo
     });
 
   }
+
+
+
 }
 
 
