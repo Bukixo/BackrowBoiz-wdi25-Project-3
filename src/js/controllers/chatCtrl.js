@@ -10,7 +10,7 @@ function ChatCtrl($auth, User, $http, $scope){
   const socket = io('http://localhost:4001');
   vm.messages = [];
 
-  $http.get(`/api/users/${$auth.getPayload().userId}`)
+  if($auth.getPayload())$http.get(`/api/users/${$auth.getPayload().userId}`)
  .then((data)=> {
    user = data.data;
  });
@@ -19,13 +19,17 @@ function ChatCtrl($auth, User, $http, $scope){
 
   vm.send = sendMsg;
   function sendMsg(){
+    if($auth.getPayload())$http.get(`/api/users/${$auth.getPayload().userId}`)
+   .then((data)=> {
+     user = data.data;
+   });
     if(vm.socketMessage.message === false) return console.log('he');
     vm.socketMessage.socket = socket.id;
     vm.socketMessage.user = user.username;
-    //socket.broadcast.emit('broadcast',vm.socketMessage); should send to all users execept sender
-    socket.emit('chat message',vm.socketMessage); // sends to all connected users
+    socket.emit('broadcast',vm.socketMessage);// should send to all users execept sender
+    //socket.emit('chat message',vm.socketMessage); // sends to all connected users
   //  socket.to('iXzG4hbu2xO10Ek6AAAE').emit(vm.socketMessage); // sends to specifi ID
-    vm.messages.push(vm.socketMessage);
+  //  vm.messages.push(vm.socketMessage);
     console.log(vm.socketMessage, 'sent');
     vm.socketMessage = {};
     return false;
@@ -38,15 +42,17 @@ function ChatCtrl($auth, User, $http, $scope){
   //  alert('you have recived a msg');
   });
   socket.on('broadcast', function(msg){ // listen for broadcasts
-    console.log(msg, 'recived');
+    console.log(msg, 'recived broadcast');
     vm.messages.push(msg);
   });
 
   socket.on('announcements', function(data) { // listens for announcments
-    console.log('Got announcement:', data);
+    console.log(data);
   });
 
-
+  socket.on('stats', (data)=>{
+    const numClients = data;
+  });
 
   $scope.$watch(()=>vm.messages,()=>{
     vm.messages;
