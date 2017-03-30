@@ -63,8 +63,13 @@ function createRequestRoute(req, res, next){
 
     console.log(request.numberOfDays);
 
-
-    mail.send('hannahwynnjones2@gmail.com', 'Thanks for making a request!', `Hey ${currentUser.username}! Thanks for requesting ${item.name} from ${user.username} for ${request.numberOfDays} we'll let you know when the request has been accepted or not!`, (err) => {
+//sending an email to the item owner (const user) telling them that someone has made a request
+    mail.send(user.email, 'Someone\'s made a request!', `Hey ${user.username}! Great News! ${currentUser.username} has requested ${item.name} for ${request.numberOfDays}.  To accept this request, please go to heroku.com and accept the payment from ${currentUser.username}`, (err) => {
+      if(err) next(err);
+      res.status(201).json(request);
+    });
+//sending email to user (const currentuser) telling them that they've successfully made a request
+    mail.send(currentUser.email, 'Thanks for making a request!', `Hey ${currentUser.username}! Thanks for requesting ${item.name} from ${user.username} for ${request.numberOfDays} days at £${request.price} per day, we'll let you know when the request has been accepted or not!`, (err) => {
       if(err) next(err);
       res.status(201).json(request);
     })
@@ -84,7 +89,7 @@ function deleteRequestRoute(req, res, next){
   .then(()=> res.status(204).end())
   .catch(next);
 }
-
+//owner of item clicked 'accepted', then function runs.  then up to requester to pay.
 function updateRequestRoute(req, res, next){
   console.log(req.body);
   Request
@@ -101,14 +106,14 @@ function updateRequestRoute(req, res, next){
   .then((request)=> res.status(302).json(request))
   .catch(next);
 }
-
+//click on oay, this takes you to the payment form.
 function paymentRoute(req, res, next) {
   Request
     .find()
     .then((items) => res.json(items))
     .catch(next);
 }
-
+//payment form.  Fun shit happens.
 function postPaymentRoute(req, res, next) {
   var token = req.body.token;
   stripe.charges.create({
@@ -120,6 +125,10 @@ function postPaymentRoute(req, res, next) {
     if(err) return res.status(500).json({ message: err });
     res.status(200).json({ message: 'Payment successful' });
   })
+
+  //email to requester, telling them it's gone through
+
+  //emial to item owner, telling them that thye've paid, and this is their address.
   .catch(next);
 }
 
