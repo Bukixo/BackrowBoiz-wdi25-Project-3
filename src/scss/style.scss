@@ -3,9 +3,8 @@
   width: 600px;
     border-top: 1px solid black;
     text-align: center;
-    padding: 30px 0;
     position: relative;
-    margin-top: 50px;
+    margin: 50px auto;
 }
 
 .centered-styles {
@@ -21,32 +20,6 @@ $grey: #E5E5E5;
 $dark-blue: #3E7FC6;
 $lightGrey: #827d78;
 $darkGrey: #242322;
-
-
-.table-styling {
-  table {
-    padding-left: 50px;
-  }
-  td {
-    font-size: 10px;
-    padding: 7px;
-    letter-spacing: 2px;
-    font-weight: 700;
-    font-family: 'Poppins', sans-serif;
-    line-height: normal;
-    span {
-      font-family: 'Playfair Display', serif;
-      font-weight: bold;
-      letter-spacing: normal;
-      font-size: 13px;
-    }
-  }
-}
-//
-// .hello {
-//   @extend .table-styling;
-// }
-
 
 //FONTS
 //'Open Sans Condensed'
@@ -202,10 +175,7 @@ nav {
 /////////////////////////////profile page styling/////////////////////////////////
 
  .profile-show {
-  // border: 5px solid lightGrey;
-  border: 5px solid black;
-  margin: 70px;
-  left: 20px;
+  border: 2px solid black;
   button {
     display: block;
     margin-top: 3px;
@@ -213,60 +183,22 @@ nav {
   }
   .show-row{
     padding: 20px;
-    .box-1 {
-      top: 50px;
-      .delete {
-        transform: translate(116%, -116%);
-      }
-      img {
-        height: 250px;
-        padding: 10px;
-        border-radius: 20px;
-      }
+  }
+  .box-1 {
+  border: 1px solid black;
+    img {
+      height: 250px;
+      padding: 10px;
     }
-
-    .box-2 {
-      @extend .table-styling;
-      // border: 1px solid black;
-      padding: 50px;
-      right: 70px;
-      top: 60px;
-      td {
-        font-size: 15px;
-        span {
-          font-size: 18px;
-          font-weight: normal;
-        }
-      }
-      }
-    .box-3 {
-        // border: 1px solid black;
-        left: 20px;
-        ul {
-          li {
-            border: white;
-            list-style: none;
-          }
-        }
-
-        a{
-          &:hover{
-            color:#81a7ce;
-            text-decoration: none;
-          }
-        }
-        h3{
-          // font-family: 'Poppins', sans-serif;
-          font-family: 'Playfair Display', serif;
-          font-size: 25px;
-          &:hover{
-            color:#81a7ce;
-            text-decoration: none;
-          }
-        }
+  }
+  .box-2 {
+    @extend .table-styling;
+    border: 1px solid black;
+    padding: 50px;
     }
-}
-
+  .box-3 {
+      border: 1px solid black;
+  }
 
  }
 // .item{
@@ -274,6 +206,7 @@ nav {
 // }
 
 ////////////////////////////////////Masonry//////////////////////////////
+<<<<<<< HEAD
 .hidden-masonry{
   text-align: left;
   visibility: hidden;
@@ -292,6 +225,7 @@ nav {
   background: rgba(0,0,0,0.1);
   z-index: 199;
 }
+
 .container-index {
   margin-top: 60px;
 }
@@ -306,7 +240,7 @@ nav {
   column-count:         5;
   column-gap:           0px;
 
-
+  
   .masonry {
     /* Just in case there are inline attributes */
     width: 100% !important;
@@ -365,7 +299,7 @@ nav {
 .menu{
   cursor: pointer;
     position: fixed;
-    z-index: 10;
+    z-index: 100;
     top:100px;
     left: 20px;
   height: 50px;
@@ -388,29 +322,26 @@ nav {
       transform: rotate(0deg);
       transition: all 0.5s ease-in-out;
       &:nth-child(1) {
-        bottom: 5px;
-        left:-39px;
-        width: 50%;
-        transform: translateX(38px) translateY(-4px) rotate(-45deg);
+        top: 0px;
       }
       &:nth-child(2),
       &:nth-child(3) {
         top: 6px;
       }
       &:nth-child(4) {
-        left:-39px;
-        top: 5px;
-        width: 50%;
-        transform: translateX(38px) translateY(4px) rotate(45deg);
+        top: 12px;
       }
     }
   }
   &.open {
     .burger{
       span{
+
         &:nth-child(1),
         &:nth-child(4){
+          top:6px;
           width:0%;
+          left: 50%;
         }
         &:nth-child(2){
           transform: rotate(45deg);
@@ -423,8 +354,9 @@ nav {
   }
 }
 
-///////////////////SEARCH BAR////////////////////////////////
 
+
+///////////////////SEARCH BAR////////////////////////////////
 .filters{
   background:rgba(300,300,300,0.9) ;
   width: 200px;
@@ -466,7 +398,7 @@ nav {
 
 //SHOW PAGE
 .item-show {
-    margin: 0 auto;
+    margin: 50px auto;
     text-align: center;
 
 //ROW 1
@@ -479,6 +411,7 @@ nav {
     // width: 400px;
     // margin: 10px;
     text-align: left;
+    padding-left: 20px;
     img{
       width: 300px;
       // padding-top: 10px;
@@ -539,19 +472,11 @@ nav {
   margin-left: 70px;
 }
 
-.toggle{
-  border: 1px solid grey;
-}
-
-//COMMENTS
-.comments {
-  margin: 0 50px;
-
   .toggle {
     background-color: $cream;
-    border: 3px solid grey;
-    padding: 10px;
-    width: 350px;
+    border: 1px solid grey;
+    padding: 10px 80px;
+    width: 550px;
     margin: 10px 0;
     h5 {
       font-family: 'Playfair Display';
@@ -563,6 +488,7 @@ nav {
     }
     .requestButton {
       background-color: white;
+      margin: 10px 0;
     }
     .form {
       text-transform: uppercase;
@@ -592,10 +518,10 @@ nav {
       }
     }
 
-    h2 {
-      text-align: center;
-      font-family: 'Playfair Display';
-    }
+    // h2 {
+    //   text-align: center;
+    //   font-family: 'Playfair Display';
+    // }
 
   ul{
       margin-top: 30px;
@@ -604,14 +530,29 @@ nav {
       overflow: scroll;
       text-decoration: none;
       list-style-type: none;
+      li {
+        list-style-type: none;
+      }
   }
   textarea{
     width: 100%;
     border: 3px solid grey;
 
   }
-}
+
 }//end of comments
+
+//COMMENTS
+.comments {
+  margin: 0 50px;
+  h2 {
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 35px;
+    margin: 50px auto;
+  }
+}
+
 //MAP
   .location-title{
     font-family: 'Playfair Display', serif;
@@ -628,9 +569,7 @@ nav {
   }
 
 
-
-  //REQUESTING ITEM
-
+///  //REQUESTING ITEM
   input{
     color:black;
     &:focus {
@@ -780,7 +719,6 @@ div.footer{
   color: white;
   //position: fixed;
   bottom: 0;
-  position: fixed;
   width:100%;
   p{
     float:right;

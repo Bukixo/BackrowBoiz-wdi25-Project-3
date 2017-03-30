@@ -1,122 +1,123 @@
-
 <div class="container item-show">
-    <div class="row justify-content-center">
+  <div class="row justify-content-center">
 
-      <div id="leftShow" class="col-lg-4">
-      <!-- Includes the image and the user buttons -->
-        <img ng-src="{{ show.item.image }}">
-        <div class="userButtons">
-          <a ng-if="main.isAuthenticated() && show.item.createdBy.id === main.profilePageId" class="miniButton" ui-sref="itemEdit({ id: show.item.id})">Edit Item</a>
-          <a ng-if="main.isAuthenticated() && show.item.createdBy.id === main.profilePageId" class="miniButton" ng-click="show.delete()">Delete Item</a>
+    <div id="leftShow" class="col-lg-4">
+    <!-- Includes the image and the user buttons -->
+      <img ng-src="{{ show.item.image }}">
+      <div class="userButtons">
+        <a ng-if="main.isAuthenticated() && show.item.createdBy.id === main.profilePageId" class="miniButton" ui-sref="itemEdit({ id: show.item.id})">Edit Item</a>
+        <a ng-if="main.isAuthenticated() && show.item.createdBy.id === main.profilePageId" class="miniButton" ng-click="show.delete()">Delete Item</a>
+      </div>
+    </div>
+
+    <div id="rightShow" class="col-lg-8">
+      <h2>{{ show.item.name }}</h2>
+      <div class="item-info">
+      <table>
+        <td>CREATED BY: </td>
+          <td> <span>
+          <a ui-sref="profile({ id: show.item.createdBy.id})">  {{show.item.createdBy.username}}</a>
+          </span></td>
+        <tr>
+          <td>PRICE:</td>
+          <td><span>{{ show.item.price }}</span></td>
+        </tr>
+        <tr>
+          <td>DESCRIPTION</td>
+          <td><span>{{ show.item.description }}</span> </td>
+        </tr>
+        <tr>
+          <td>SIZE</td>
+          <td><span>{{ show.item.size }}</span> </td>
+        </tr>
+        <tr>
+          <td>CATEGORY</td>
+          <td><span>{{ show.item.catagory }}</span></td>
+        </tr>
+        <!-- <tr>
+        <td>COMMENTS:</td>
+        <td><span>{{ show.item.comments }} </span></td>
+        </tr> -->
+        <tr>
+          <td>LOCATION:</td>
+          <td><span>{{ show.item.createdBy.location }} </span></td>
+        </tr>
+      </table>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="lineBreak"></div>
+  </div>
+
+  <div class="row justify-content-center">
+
+  <!-- REQUESTING ITEM -->
+
+  <div ng-if="main.isAuthenticated() && show.item.createdBy.id !== main.profilePageId">
+  <button class="requestButton" ng-click="showDiv = !showDiv">Request Item </button>
+  <div ng-hide="!showDiv" >
+
+  <div class="toggle">
+
+            <form name="show.makeRequest" ng-submit="show.sendRequest()" method="post">
+              <h5>Your request:</h5>
+
+              <label for="numberOfDays">Days to rent</label>
+              <input style="width: 50px" type="number" name="numberOfDays" ng-model="show.request.numberOfDays">
+                <br>
+
+
+            <label for="message"> Message<span>Po.</span></label>
+            <textarea name="message" ng-model="show.request.message"></textarea>
+            <button class="requestButton">Request item</button>
+          </form>
         </div>
-      </div>
 
-      <div id="rightShow" class="col-lg-8">
-        <h2>{{ show.item.name }}</h2>
-        <div class="item-info">
-        <table>
-          <td>CREATED BY: </td>
-            <td> <span>
-            <a ui-sref="profile({ id: show.item.createdBy.id})">  {{show.item.createdBy.username}}</a>
-            </span></td>
-          <tr>
-            <td>PRICE:</td>
-            <td><span>{{ show.item.price }}</span></td>
-          </tr>
-          <tr>
-            <td>DESCRIPTION</td>
-            <td><span>{{ show.item.description }}</span> </td>
-          </tr>
-          <tr>
-            <td>SIZE</td>
-            <td><span>{{ show.item.size }}</span> </td>
-          </tr>
-          <tr>
-            <td>CATEGORY</td>
-            <td><span>{{ show.item.catagory }}</span></td>
-          </tr>
-          <!-- <tr>
-          <td>COMMENTS:</td>
-          <td><span>{{ show.item.comments }} </span></td>
-          </tr> -->
-          <tr>
-            <td>LOCATION:</td>
-            <td><span>{{ show.item.createdBy.location }} </span></td>
-          </tr>
-        </table>
-        </div>
       </div>
-
     </div>
 
-    <div class="row justify-content-center">
+  </div>
 
-    <!-- REQUESTING ITEM -->
+  <div class="row">
 
-    <div ng-if="main.isAuthenticated() && show.item.createdBy.id !== main.profilePageId">
-    <button class="requestButton" ng-click="showDiv = !showDiv">Request Item </button>
-    <div ng-hide="!showDiv" >
+    <div class="comments">
+        <h2>User comments</h2>
+          <ul>
 
-    <div class="toggle">
+          <li class="commentBox" ng-repeat="comment in show.item.comments track by $index"><p>{{ comment.content }}</p><small>{{comment.createdBy.email}}</small>
+            <span uib-rating ng-model="comment.rating" max="5" read-only="true"></span>
+            <button ng-if="main.isAuthenticated() && comment.createdBy.id === main.profilePageId" class = "requestButton" ng-click="show.deleteComment(comment)">Delete</button>
+          </li>
 
-              <form name="show.makeRequest" ng-submit="show.sendRequest()" method="post">
-                <h5>Your request:</h5>
-
-                <label for="numberOfDays">Days to rent</label>
-                <input type="number" name="numberOfDays" ng-model="show.request.numberOfDays">
-                  <br>
-
-
-              <label for="message"> Message<span>Po.</span></label>
-              <textarea name="message" ng-model="show.request.message"></textarea>
-              <button class="requestButton">Request item</button>
-            </form>
-          </div>
-
-        </div>
-      </div>
-
+          </ul>
     </div>
+    <form ng-if="main.isAuthenticated()" ng-submit="show.addComment()">
+        <select type="number" ng-model="show.newComment.rating">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+        <textarea ng-model="show.newComment.content">totally fab</textarea>
+      <button class="requestButton">Comment</button>
+    </form>
+  </div>
 
-    <div class="row">
-      <br>
-      <br>
-      <div class="lineBreak centered-styles"></div>
-    </div>
 
-    <div class="row">
 
-      <div class="comments">
-          <h2>User comments</h2>
-            <ul>
+<h1 class="location-title"> Check out the Locations</h1>
+<p>Use the slider to select how far you are willing to travel</p>
+<h2 id="rangeText">{{show.range.radius}} miles</h2>
+<form>
+  <input id="range" type="range" min="0" max="10" name="radius" ng-model="show.range.radius">
+</form>
 
-            <li class="commentBox" ng-repeat="comment in show.item.comments track by $index"><p>{{ comment.content }}</p><small>{{comment.createdBy.email}}</small>
-              <span uib-rating ng-model="comment.rating" max="5" read-only="true"></span>
-              <button ng-if="main.isAuthenticated() && comment.createdBy.id === main.profilePageId" class = "requestButton" ng-click="show.deleteComment(comment)">Delete</button>
-            </li>
-
-            </ul>
-      </div>
-      <form ng-if="main.isAuthenticated()" ng-submit="show.addComment()">
-          <select type="number" ng-model="show.newComment.rating">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-          <textarea ng-model="show.newComment.content">totally fab</textarea>
-        <button class="requestButton">Comment</button>
-      </form>
-    </div>
-
-  <h1 class="location-title"> Check out the Locations</h1>
-  <p>Use the slider to select how far you are willing to travel</p>
-  <h2 id="rangeText">{{show.range.radius}} miles</h2>
-  <form>
-    <input id="range" type="range" min="0" max="10" name="radius" ng-model="show.range.radius">
-  </form>
-
-  <div id="maps"></div>
+<div id="maps"></div>
 
 </div>
+
+{{show.request}}
