@@ -35,7 +35,9 @@
 
     <a ui-sref="itemsShow({ id: item.id })" ng-repeat="item in index.filtered" class="masonry">
       <img ng-src="{{ item.image }}">
+      <p class="hidden-masonry">{{item.name}}</p>
     </a>
+
   </div>
 
 </div>

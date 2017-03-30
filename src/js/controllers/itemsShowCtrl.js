@@ -1,11 +1,12 @@
-/* global google:ignore mapStyles:ignore  */
+/* global google:ignore  */
 angular
   .module('rentApp')
   .controller('itemShowCtrl', itemShowCtrl)
   .controller('itemEditCtrl', itemEditCtrl);
 
-itemShowCtrl.$inject = ['Item', '$stateParams', '$state', '$scope', '$http', 'Comments', 'geoCoder', '$auth'];
-function itemShowCtrl(Item, $stateParams, $state, $scope, $http, Comments, geoCoder, $auth){
+itemShowCtrl.$inject = ['Item', '$stateParams', '$state', '$scope', '$http', 'Comments', 'geoCoder', '$auth', 'mapStyles'];
+function itemShowCtrl(Item, $stateParams, $state, $scope, $http, Comments, geoCoder, $auth, mapStyles){
+  console.log(mapStyles.styles);
   const vm = this;
   vm.range = {};
 
@@ -89,7 +90,7 @@ function itemShowCtrl(Item, $stateParams, $state, $scope, $http, Comments, geoCo
       center: latlng,
       zoom: 10,
       scrollwheel: false,
-      styles: mapStyles
+      styles: mapStyles.styles
     });
     //marker puts marker on the screen with a animation
 

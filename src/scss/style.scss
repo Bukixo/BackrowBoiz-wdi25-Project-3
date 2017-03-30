@@ -175,7 +175,15 @@ nav {
 
 
 ////////////////////////////////////Masonry//////////////////////////////
-
+.hidden-masonry{
+  visibility: hidden;
+  height:10px;
+  width: 200px;
+  z-index: 200;
+  margin-top: -30px;
+  margin-left: 20px;
+  color: lightblue;
+}
 .container-index {
   margin-top: 60px;
 }
@@ -194,10 +202,17 @@ nav {
     /* Just in case there are inline attributes */
     width: 100% !important;
     height: auto !important;
+    display: block;
+    &:hover{
+      .hidden-masonry{
+        visibility: visible;
+      }
+    }
 
     img {
       width: 100% !important;
       height: auto !important;
+      border-radius: 5px;
     }
   }
 
@@ -235,7 +250,7 @@ nav {
 .menu{
   cursor: pointer;
     position: fixed;
-    z-index: 100;
+    z-index: 10;
     top:100px;
     left: 20px;
   height: 50px;
@@ -258,26 +273,29 @@ nav {
       transform: rotate(0deg);
       transition: all 0.5s ease-in-out;
       &:nth-child(1) {
-        top: 0px;
+        bottom: 5px;
+        left:-39px;
+        width: 50%;
+        transform: translateX(38px) translateY(-4px) rotate(-45deg);
       }
       &:nth-child(2),
       &:nth-child(3) {
         top: 6px;
       }
       &:nth-child(4) {
-        top: 12px;
+        left:-39px;
+        top: 5px;
+        width: 50%;
+        transform: translateX(38px) translateY(4px) rotate(45deg);
       }
     }
   }
   &.open {
     .burger{
       span{
-
         &:nth-child(1),
         &:nth-child(4){
-          top:6px;
           width:0%;
-          left: 50%;
         }
         &:nth-child(2){
           transform: rotate(45deg);
@@ -289,7 +307,6 @@ nav {
     }
   }
 }
-
 
 .filters{
   background:rgba(300,300,300,0.9) ;
