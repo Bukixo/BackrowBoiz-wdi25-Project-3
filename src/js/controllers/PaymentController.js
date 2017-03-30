@@ -15,14 +15,13 @@ function PaymentController($http, $window, $state, $stateParams, Request) {
   const request = Request.get($stateParams, ()=>{
     requester = request.requester[0].id;
     const pricePerDay = request.item[0].price;
-    console.log(pricePerDay);
     const days = request.numberOfDays;
     vm.card.amount = days * pricePerDay;
   });
 
   function paymentTransaction(data){
     $http
-        .post('/payment', data)
+        .post('/api/payment', data)
         .then((req, res) => {
           if(res.status === 200) {
             vm.paymentSuccessful = true;

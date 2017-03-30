@@ -9,10 +9,9 @@ function indexRoute(req, res, next) {
 }
 
 function createRoute(req, res, next) {
-
+  console.log(req.body);
   if(req.file) req.body.image = req.file.filename;
   req.body.createdBy = req.user;
-
   Item
     .create(req.body)
     .then((item) => res.status(201).json(item))
