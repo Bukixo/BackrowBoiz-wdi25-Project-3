@@ -68,50 +68,84 @@ button {
   }
 }
 
+a {
+  color: $darkGrey;
+  text-decoration: none;
+  margin: 0 2px;
+}
+
+/* visited link */
+a:visited {
+    color: grey;
+}
+
+/* mouse over link */
+a:hover {
+    color: $dark-blue;
+}
+
+/* selected link */
+a:active {
+    color: blue;
+}
+
 #rangeText{
   z-index: 3;
 }
 ////////////////////////////NAV BAR STYLING ///////////////////////////////////
 nav {
-   div {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  .banner {
     z-index: 11;
-    background-color: rgba(300,300,300,0.9);
+    background-color: #949191;
     width: 100%;
-    height: 7%;
-    position: absolute;
-    top: 0;
-    transition: all 0.5s ease-in-out;
-    text-align: center;
-    position: fixed;
-    top: 0%;
-    border: 1px solid #949191;
-    ul {
-      text-align: center;
-      padding-right: 90px;
-      margin-right: 110px;
-      background-color: white;
-        li {
-          list-style: none;
-          // line-height: -7px;
-          float: right;
-          padding: 77px 15px;
-          a {
-            font-family: 'Playfair Display', serif;
-            display: inline;
-            font-size: 18px;
-            color: black;
-            display: block;
-            z-index: 11;
-            &.active {
-              color: white;
-              opacity: 0.5;
-              text-decoration: line-through;
-              animation: none;
-            }
+    height: 50%;
+    // border: 1px solid #949191;
+  }
+  ul {
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    height: 50px;
+    padding: 0 100px !important;
+      li {
+        list-style: none;
+        line-height: 50px;
+        float: right;
+        padding-left: 15px;
+        &.logo {
+          float: left;
+          padding: 0;
+          h1 {
+            margin: 0;
+            padding: 0;
+            line-height: 53px;
           }
         }
+        &.menu-icon {
+          display: none;
+          cursor: pointer;
+        }
+        a {
+          font-family: 'Playfair Display', serif;
+          display: inline;
+          font-size: 18px;
+          color: black;
+          display: block;
+          z-index: 11;
+          &.active {
+            color: white;
+            opacity: 0.5;
+            text-decoration: line-through;
+            animation: none;
+          }
+        }
+      }
 
-    }
   }
 }
 
@@ -328,6 +362,8 @@ nav {
   }
 }
 
+
+
 ///////////////////SEARCH BAR////////////////////////////////
 .filters{
   background:rgba(300,300,300,0.9) ;
@@ -335,9 +371,9 @@ nav {
   height:100%;
   position: fixed;
   top:100px;
-  left:-20%;
+  left:-30%;
   transition: 1s ease;
-  left: -20%;
+  left: -30%;
   padding-top: 40px;
   &.open{
     transition: 1s ease;
@@ -355,7 +391,9 @@ nav {
   }
 
 }
+
 ////////////////title font styling/////////////////////
+
 .title{
   font-family: 'Poppins', sans-serif;
   letter-spacing: 15px;
@@ -368,38 +406,49 @@ nav {
 
 //SHOW PAGE
 .item-show {
-    margin: 0;
+    margin: 0 auto;
+    text-align: center;
 
 //ROW 1
   .row {
-    width: 900px;
-    display: block;
-    margin: 0;
-  .leftShow {
-    width: 400px;
-    display: block;
-    margin: 0;
+    // width: 1200px;
+    // display: inline;
+    // margin: 10px;
+    text-align: left;
+  #leftShow {
+    // width: 400px;
+    // margin: 10px;
+    text-align: left;
     img{
-      height: 350px;
-      padding-top: 10px;
-      padding-bottom: 20px;
+      width: 300px;
+      // padding-top: 10px;
+      // padding-bottom: 20px;
     }
     .userButtons {
-
+      text-align: center;
+      padding: 20px 10px;
+      width: 300px;
+      font-size: 15px;
+      .miniButton {
+        padding: 0 10px;
+      }
     }
   }
-    .rightShow {
-      width: 400px;
-      display: block;
-      margin: 0;
+    #rightShow {
+      // width: 400px;
+      // display: inline;
+      // margin: 0;
+      padding-bottom: 40px;
       h2 {
         font-family: 'Playfair Display', serif;
         font-size: 50px;
+        width: 600px;
+        padding: 25px 0;
       }
       .item-info{
         border: 7px solid grey;
         padding: 20px;
-        width: 500px;
+        width: 600px;
         table {
           padding-left: 50px;
         }
@@ -424,25 +473,74 @@ nav {
 //START ROW 2
 
 //TOGGLE
-.toggle{
-  border: 1px solid grey;
-}
 
-//COMMENTS
-.comments {
-  margin: 0 50px;
 
-  ul{
-      margin-top: 30px;
-      width: 50%;
-      height: 90px;
-      overflow: scroll;
-  }
-  textarea{
-    width: 100%;
+//REQUESTING ITEM
+.requestDiv {
+
+
+  .toggle {
+    h5 {
+      font-family: 'Playfair Display';
+      font-size: 30px;
+      padding-bottom: 5px;
+    }
+    background-color: $cream;
     border: 3px solid grey;
+    padding: 10px;
+    width: 350px;
+    margin: 10px 0;
+    .requestButton {
+      background-color: white;
+    }
+    .form {
+      text-transform: uppercase;
+      width:600px;
+      text-align: center;
+      margin: 5px auto;
+      padding: 20px 30px;
+      border: 5px solid white;
+      background-color: $lightGrey;
+      input, select, label{
+        display:block;
+        width:100%;
+        line-height: 2.5;
+        border-radius: 5px;
+        font-size: 16px;
+        // margin: 20px;
+      }
+    }
+    input{
+      color:black;
+      &:focus {
+      outline: none !important;
+      }
+    }
+
+    h2 {
+      text-align: center;
+      font-family: 'Playfair Display';
+    }
+    // button{
+    //   text-transform: uppercase;
+    //   margin-top: 20px;
+    //   width:100%;
+    //   padding: 10px 0;
+    //   color:white;
+    //   background-color: $dark-blue;
+    //   cursor: pointer;
+    //   border: 2px solid white;
+    //   border-radius: 2px;
+    //   &:hover{
+    //     color:black;
+    //     background: $light-blue;
+    //   }
+    // }
+    }
   }
-}
+//END OF REQUESTING ITEM
+//COMMENTS
+
 
 //MAP
   .location-title{
@@ -455,33 +553,41 @@ nav {
     font-weight: 700;
     font-size: 20px;
   }
-  form {
-    margin: 60px 0;
+
+}
+
+.requestButton {
+  width: 180px;
+  margin-left: 70px;
+  background-color: #F9F7F3;
+}
+
+.comments {
+  margin: 0 50px;
+  h2 {
+    font-family: 'Playfair Display', serif;
+    color: black;
+  }
+  .requestButton {
+    width: 180px;
+    margin: 2px;
+    background-color: #F9F7F3;
   }
 
+  ul{
+      margin-top: 30px;
+      margin-left: 0px;
+      width: 50%;
+      height: 90px;
+      overflow: scroll;
 
+      li {
+        text-decoration: none;
+        list-style-type: none;
+        margin-left: 0px;
+        padding-left: 0px;
 
-
-
-//BUKIS
-// .item-show {
-//
-//   .row{
-//     // border: 2px solid black;
-//     margin-top: 20px;
-//     margin: 0 50px;
-//     font-family: 'Poppins', sans-serif;
-//
-//   }
-//
-//   }
-
-  //REQUESTING ITEM
-  input{
-    color:black;
-    &:focus {
-    outline: none !important;
-    }
+      }
   }
 
 
@@ -494,7 +600,7 @@ nav {
   padding: 20px;
   width: 500px;
   @extend .table-styling;
-
+  }
   .form{
     text-transform: uppercase;
     width:400px;
@@ -531,8 +637,15 @@ nav {
       }
     }
 
+
+  textarea{
+    width: 600px;
+    border: 3px solid grey;
   }
-  //END OF REQUESTING ITEM
+  form {
+      margin: 0 50px;
+
+  }
 }
 
 
@@ -544,13 +657,18 @@ input{
   }
 }
 
+  //END OF REQUESTING ITEM
+
+
+
 //Footer fools
 
 
 
 div.footer{
+  margin-top: 20px;
   z-index:5;
-  background-color: black;
+  background-color: #B8B5B5;
   height:50px;
   // padding: 10px 0;
   text-align: center;
@@ -581,6 +699,34 @@ div.footer{
         img {
           max-height: 30px;
           width: 30px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  nav{
+    ul {
+      padding: 0 20px !important;
+      .dropdown {
+        display: none;
+        background-color: white;
+        z-index: 100;
+        position: absolute;
+        top: 100px;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        &.open {
+          display: block;
+        }
+      }
+      li {
+        float: none;
+        text-align: right;
+        &.menu-icon {
+          display: block;
         }
       }
     }
