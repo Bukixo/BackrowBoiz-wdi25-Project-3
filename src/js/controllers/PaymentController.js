@@ -26,16 +26,15 @@ function PaymentController($http, $window, $state, $stateParams, Request) {
     Stripe.card.createToken(vm.card, (status, response) => {
       console.log(status);
       console.log(vm.card);
-      if(status === 200) {
-        var data = {
-          card: vm.card,
-          token: response.id,
-          payee: vm.payee,
-          amount: vm.amount,
-          currency: vm.currency
-        };
+      const data = {
+        card: vm.card,
+        token: response.id,
+        payee: vm.card.payee,
+        amount: vm.card.amount,
+        currency: vm.card.currency
+      };
 
-        $http
+      $http
           .post('/payment', data)
           .then((req, res) => {
             if(res.status === 200) {
@@ -45,7 +44,7 @@ function PaymentController($http, $window, $state, $stateParams, Request) {
               vm.paymentSuccessful = false;
             }
           });
-      }
+
     });
 
     request.paid = true;
