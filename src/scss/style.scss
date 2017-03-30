@@ -3,9 +3,8 @@
   width: 600px;
     border-top: 1px solid black;
     text-align: center;
-    padding: 30px 0;
     position: relative;
-    margin-top: 50px;
+    margin: 50px auto;
 }
 
 .centered-styles {
@@ -371,7 +370,7 @@ nav {
 
 //SHOW PAGE
 .item-show {
-    margin: 0 auto;
+    margin: 50px auto;
     text-align: center;
 
 //ROW 1
@@ -384,6 +383,7 @@ nav {
     // width: 400px;
     // margin: 10px;
     text-align: left;
+    padding-left: 20px;
     img{
       width: 300px;
       // padding-top: 10px;
@@ -444,19 +444,11 @@ nav {
   margin-left: 70px;
 }
 
-.toggle{
-  border: 1px solid grey;
-}
-
-//COMMENTS
-.comments {
-  margin: 0 50px;
-
   .toggle {
     background-color: $cream;
-    border: 3px solid grey;
-    padding: 10px;
-    width: 350px;
+    border: 1px solid grey;
+    padding: 10px 80px;
+    width: 550px;
     margin: 10px 0;
     h5 {
       font-family: 'Playfair Display';
@@ -497,10 +489,10 @@ nav {
       }
     }
 
-    h2 {
-      text-align: center;
-      font-family: 'Playfair Display';
-    }
+    // h2 {
+    //   text-align: center;
+    //   font-family: 'Playfair Display';
+    // }
 
   ul{
       margin-top: 30px;
@@ -509,14 +501,29 @@ nav {
       overflow: scroll;
       text-decoration: none;
       list-style-type: none;
+      li {
+        list-style-type: none;
+      }
   }
   textarea{
     width: 100%;
     border: 3px solid grey;
 
   }
-}
+
 }//end of comments
+
+//COMMENTS
+.comments {
+  margin: 0 50px;
+  h2 {
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 35px;
+    margin: 50px auto;
+  }
+}
+
 //MAP
   .location-title{
     font-family: 'Playfair Display', serif;
@@ -591,7 +598,7 @@ nav {
     }
 
   }
-}  
+}
 ////////END OF JAKES FORMS///////////////
 
 .toggle{
