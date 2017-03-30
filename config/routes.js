@@ -35,9 +35,6 @@ router.route('/request/:id')
   .put(requestController.update)
   .delete(secureRoute, requestController.delete);
 
-router.route('/request/decline/:id')
-  .delete(secureRoute, requestController.decline);
-
 router.route('/item')
   .get(itemController.index)
   .post(secureRoute, imageUpload, itemController.create);
