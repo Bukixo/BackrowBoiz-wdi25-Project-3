@@ -52,11 +52,11 @@
 
     <!-- REQUESTING ITEM -->
 
-      <div class="requestDiv">
-        <div ng-if="main.isAuthenticated() && show.item.createdBy.id !== main.profilePageId">
-          <button class="requestButton" ng-click="showDiv = !showDiv">Request Item </button>
-          <div ng-hide="!showDiv" >
-            <div class="toggle">
+    <div ng-if="main.isAuthenticated() && show.item.createdBy.id !== main.profilePageId">
+    <button class="requestButton" ng-click="showDiv = !showDiv">Request Item </button>
+    <div ng-hide="!showDiv" >
+
+    <div class="toggle">
 
               <form name="show.makeRequest" ng-submit="show.sendRequest()" method="post">
                 <h5>Your request:</h5>
@@ -108,8 +108,6 @@
         <button class="requestButton">Comment</button>
       </form>
     </div>
-  </div>
-
 
   <h1 class="location-title"> Check out the Locations</h1>
   <p>Use the slider to select how far you are willing to travel</p>

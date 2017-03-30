@@ -554,44 +554,44 @@ nav {
 
 
 ///////DONT MESS WITH MY FORMS//////////
-  .form{
+.form{
+  text-transform: uppercase;
+  width:400px;
+  margin: 0px auto 0;
+  padding: 40px 30px;
+  border: 5px solid white;
+  background-color: $grey;
+  input, select, label{
+    display:block;
+    width:100%;
+    line-height: 2.5;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  div{
+    color: red;
+  }
+  h2{
+    text-align: center;
+  }
+  button{
     text-transform: uppercase;
-    width:400px;
-    margin: 0px auto 0;
-    padding: 40px 30px;
-    border: 5px solid white;
-    background-color: $grey;
-    input, select, label{
-      display:block;
-      width:100%;
-      line-height: 2.5;
-      border-radius: 5px;
-      font-size: 16px;
-    }
-    div{
-      color: red;
-    }
-    h2{
-      text-align: center;
-    }
-    button{
-      text-transform: uppercase;
-      margin-top: 20px;
-      width:100%;
-      padding: 10px 0;
-      margin-left: 0;
-      color:white;
-      background-color: $dark-blue;
-      cursor: pointer;
-      border: 2px solid white;
-      border-radius: 2px;
-      &:hover{
-        color:black;
-        background: $light-blue;
-      }
+    margin-top: 20px;
+    width:100%;
+    padding: 10px 0;
+    margin-left: 0;
+    color:white;
+    background-color: $dark-blue;
+    cursor: pointer;
+    border: 2px solid white;
+    border-radius: 2px;
+    &:hover{
+      color:black;
+      background: $light-blue;
     }
 
   }
+}  
 ////////END OF JAKES FORMS///////////////
 
 .toggle{
@@ -646,6 +646,9 @@ nav {
         .requestButton {
           width: 100px;
         }
+      }
+  }
+
   textarea{
     width: 600px;
     height: 100px;
@@ -653,10 +656,7 @@ nav {
   }
   form {
       margin: 0 50px;
-
   }
-  }
-}
 }
 
 ////////////////////////FORM STYLING////////////////////////
@@ -672,10 +672,7 @@ input{
   }
 }
 
-
-
-
-///////////////////////////////Footer fools//////////////////////////////////
+//////////////////////////////Footer fools//////////////////////////////////
 div.footer{
   margin-top: 20px;
   z-index:5;
