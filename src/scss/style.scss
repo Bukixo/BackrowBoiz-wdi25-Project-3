@@ -559,6 +559,10 @@ nav {
     font-family: 'Playfair Display', serif;
     color: black;
   }
+  .commentBox {
+    width: 400px;
+    border: 2px solid #f2f2f2;
+  }
   .requestButton {
     width: 180px;
     margin: 2px;
@@ -577,12 +581,16 @@ nav {
         list-style-type: none;
         margin-left: 0px;
         padding-left: 0px;
+        .requestButton {
+          width: 100px;
+        }
 
       }
   }
   textarea{
     width: 600px;
-    border: 3px solid grey;
+    height: 100px;
+    border: 3px solid #e6e6e6;
   }
   form {
       margin: 0 50px;
@@ -628,4 +636,14 @@ div.footer{
       }
     }
   }
+}
+
+
+.lineBreak {
+  width: 600px;
+    border-top: 1px solid black;
+    text-align: center;
+    padding: 30px 0;
+    position: relative;
+    margin-top: 50px;
 }

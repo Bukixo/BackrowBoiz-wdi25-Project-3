@@ -82,13 +82,17 @@
   </div>
 
 <div class="row">
+  <br>
+  <br>
+<div class="lineBreak centered-styles"></div>
+</div>
 
-
+<div class="row">
 
   <div class="comments">
     <h2>User comments</h2>
       <ul>
-        <li ng-repeat="comment in show.item.comments track by $index"><p>{{ comment.content }}</p><small>{{comment.createdBy.email}}</small>
+        <li class="commentBox" ng-repeat="comment in show.item.comments track by $index"><p>{{ comment.content }}</p><small>{{comment.createdBy.email}}</small>
         <button class = "requestButton" ng-click="show.deleteComment(comment)">Delete</button></li>
       </ul>
 
@@ -99,6 +103,8 @@
           </form>
     </div>
   </div>
+
+
   <h1 class="location-title"> Check out the Locations</h1>
   <p>Use the slider to select how far you are willing to travel</p>
 <h2 id="rangeText">{{show.range.radius}} miles</h2>
