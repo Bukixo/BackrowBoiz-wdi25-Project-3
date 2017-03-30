@@ -28,29 +28,7 @@
 </select>
 </aside>
 <!--- Renders all Items from the GET request in the Controller REMOVE THIS LATER -->
-<div class="bigDiv">
-  <!-- <div ng-repeat="item in index.items | filter: index.q | filter: index.sort | filter: index.catagory: true" class="col-lg-3 col-md-4 col-sm-6"> -->
-  <div ng-repeat="item in index.filtered" class="col-lg-3 col-md-4 col-sm-6">
-    <div class="l-box">
 <div class="container-index">
-  <div class="nav-extension">
-    <h1 class="title">FABRIC</h1>
-  </div>
-
-
-  <input type="text" class="search" ng-model="index.q" placeholder="Search...">
-
-  <select ng-model="index.sort">
-    <option value="+price">Price ascending</option>
-    <option value="-price">Price descending</option>
-  </select>
-
-  <select ng-model="index.catagory">
-    <option>All</option>
-    <option>Men</option>
-    <option>Women</option>
-    <option>Child</option>
-  </select>
 
   <!--- Renders all Items from the GET request in the Controller REMOVE THIS LATER -->
   <div class="masonry-container">
