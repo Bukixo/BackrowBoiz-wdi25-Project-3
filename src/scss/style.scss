@@ -1,10 +1,27 @@
 ///////USEFUL BITS//////////
+#email{
+  display: block;
+}
 .lineBreak {
   width: 600px;
     border-top: 1px solid black;
     text-align: center;
     position: relative;
     margin: 50px auto;
+}
+
+button {
+  font-family: 'Playfair Display', serif;
+  width: 180px;
+  margin: 2px;
+  background-color: #F9F7F3;
+}
+
+.btn {
+  font-family: 'Playfair Display', serif;
+  width: 180px;
+  margin: 2px;
+  background-color: #F9F7F3;
 }
 
 .centered-styles {
@@ -302,13 +319,13 @@ nav {
   margin: 0;
 }
 .mask{
-  border-radius: 10px;
+  border-radius: 15px;
   display: none;
   position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
+  top: 3px;
+  left: 3px;
+  bottom: 3px;
+  right: 3px;
   background: rgba(0,0,0,0.5);
   z-index: 199;
 }
@@ -346,9 +363,8 @@ nav {
     img {
       width: 100% !important;
       height: auto !important;
-      border-radius: 10px;
       padding: 3px;
-      display: block;
+      border-radius: 15px;
     }
   }
 
@@ -611,16 +627,15 @@ nav {
       outline: none !important;
       }
     }
-
     h2 {
       text-align: center;
       font-family: 'Playfair Display';
     }
 
-  ul{
+  ul {
       margin-top: 30px;
-      width: 50%;
-      height: 90px;
+      // width: 50%;
+      // height: 90px;
       overflow: scroll;
       text-decoration: none;
       list-style-type: none;
@@ -631,7 +646,6 @@ nav {
   textarea{
     width: 100%;
     border: 3px solid grey;
-
   }
 
 }
@@ -640,29 +654,87 @@ nav {
 
 //COMMENTS
 .comments {
+  font-family: 'Playfair Display', serif;
   margin: 0 50px;
+  // background-color: yellow;
   h2 {
     text-align: center;
     font-family: 'Playfair Display';
     font-size: 35px;
     margin: 50px auto;
   }
+  ul {
+      margin-top: 30px;
+      width: 50%;
+      height: 150px;
+      overflow: scroll;
+      text-decoration: none;
+      list-style-type: none;
+      li {
+        list-style-type: none;
+      }
+      a {
+        color: blue;
+        align: right;
+        margin: 6px 0;
+      }
+    }
+  }
+
+  form {
+    margin: 60px 100px;
+
+    textarea {
+      width: 400px;
+      height: 70px;
+    }
+    .requestButton {
+      width: auto;
+    }
+  }
+
+.commentBox {
+  font-family: 'Playfair Display', serif;
+  width: 600px;
+  // background-color: red;
+  padding: 15px;
+  // border: 2px solid #f2f2f2;
+}
+.requestButton {
+  font-family: 'Playfair Display', serif;
+  width: 180px;
+  margin: 2px;
+  background-color: #F9F7F3;
+}
+//MAP
+
+  .maps {
+    h1 {
+      font-size: 30px;
+      margin: 10px 0 40px 0;
+    }
+    .location-title{
+      font-family: 'Playfair Display', serif;
+      text-align: center;
+    }
+    p, h2 {
+      font-family: 'Playfair Display', serif;
+      text-align: left;
+      font-size: 15px;
+    }
+  form {
+    margin: 60px 100px;
+        textarea {
+      width: 400px;
+      height: 70px;
+    }
+    .requestButton {
+      width: auto;
+    }
+  }
+
 }
 
-//MAP
-  .location-title{
-    font-family: 'Playfair Display', serif;
-    text-align: center;
-  }
-  p {
-    font-family: 'Poppins', sans-serif;
-    text-align: center;
-    font-weight: 700;
-    font-size: 20px;
-  }
-  form {
-    margin: 60px 0;
-  }
 
 
 ///  //REQUESTING ITEM
@@ -673,123 +745,80 @@ nav {
     }
   }
 
-  .commentBox {
-    width: 400px;
-    border: 2px solid #f2f2f2;
-  }
-  .requestButton {
-    width: 180px;
-    margin: 2px;
-    background-color: #F9F7F3;
-}
+
   //END OF REQUESTING ITEM
 
 
 ///////DONT MESS WITH MY FORMS//////////
-.form{
-  text-transform: uppercase;
-  width:400px;
-  margin: 0px auto 0;
-  padding: 40px 30px;
-  border: 5px solid white;
-  background-color: $grey;
-  input, select, label{
-    display:block;
-    width:100%;
-    line-height: 2.5;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  div{
-    color: red;
-  }
-  h2{
+
+
+.form-style-8{
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 2px;
+    width: 500px;
+    padding: 30px;
+    background: #FFFFFF;
+    margin: 50px auto;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+    -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+    -webkit-box-shadow:  0px 0px 15px rgba(0, 0, 0, 0.22);
+
+}
+.form-style-8 h2{
+    background: #4D4D4D;
+    text-transform: uppercase;
+    font-family: 'Playfair Display', serif;
+    color: white;
     text-align: center;
-  }
-  button{
-    text-transform: uppercase;
-    margin-top: 20px;
-    width:100%;
-    padding: 10px 0;
-    margin-left: 0;
-    color:white;
-    background-color: $dark-blue;
+    font-size: 18px;
+    font-weight: 100;
+    padding: 20px;
+    margin: -30px -30px 30px -30px;
+}
+
+.form-style-8 textarea,
+
+{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    outline: none;
+    display: block;
+    width: 100%;
+    padding: 7px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    background: transparent;
+    margin-bottom: 10px;
+    font: 16px Arial, Helvetica, sans-serif;
+    height: 45px;
+}
+.form-style-8 textarea{
+    resize:none;
+    overflow: hidden;
+}
+.form-style-8 input[type="button"],
+.form-style-8 input[type="submit"]{
+    -moz-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+    box-shadow: inset 0px 1px 0px 0px #45D6D6;
+    background-color: #2CBBBB;
+    border: 1px solid #27A0A0;
+    display: inline-block;
     cursor: pointer;
-    border: 2px solid white;
-    border-radius: 2px;
-    &:hover{
-      color:black;
-      background: $light-blue;
-    }
-
-  }
-}
-////////END OF JAKES FORMS///////////////
-
-.toggle{
-  border: 1px solid grey;
-}
-.item-info{
-  border: 7px solid grey;
-  padding: 20px;
-  width: 500px;
-  @extend .table-styling;
-
-  .form {
+    color: #FFFFFF;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 14px;
+    padding: 8px 18px;
+    text-decoration: none;
     text-transform: uppercase;
-    width:400px;
-    margin: 0px auto 0;
-    padding: 40px 30px;
-    border: 5px solid white;
-    background-color: $grey;
-    input, select, label{
-      display:block;
-      width:100%;
-      line-height: 2.5;
-      border-radius: 5px;
-      font-size: 16px;
-    }
-    div{
-      color: red;
-    }
-    h2{
-      text-align: center;
-    }
-    button{
-      text-transform: uppercase;
-      margin-top: 20px;
-      width:100%;
-      padding: 10px 0;
-      color:white;
-      background-color: $dark-blue;
-      cursor: pointer;
-      border: 2px solid white;
-      border-radius: 2px;
-      &:hover{
-        color:black;
-        background: $light-blue;
-      }
-    }
-      li {
-        text-decoration: none;
-        list-style-type: none;
-        margin-left: 0px;
-        padding-left: 0px;
-        .requestButton {
-          width: 100px;
-        }
-      }
-  }
-
-  textarea{
-    width: 600px;
-    height: 100px;
-    border: 3px solid #e6e6e6;
-  }
-  form {
-      margin: 0 50px;
-  }
 }
+.form-style-8 input[type="button"]:hover,
+.form-style-8 input[type="submit"]:hover {
+    background:linear-gradient(to bottom, #34CACA 5%, #30C9C9 100%);
+    background-color:#34CACA;
+}
+
 
 ////////////////////////FORM STYLING////////////////////////
 input{

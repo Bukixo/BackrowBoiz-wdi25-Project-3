@@ -6,7 +6,6 @@ angular
 
 itemShowCtrl.$inject = ['Item', '$stateParams', '$state', '$scope', '$http', 'Comments', 'geoCoder', '$auth', 'mapStyles'];
 function itemShowCtrl(Item, $stateParams, $state, $scope, $http, Comments, geoCoder, $auth, mapStyles){
-  console.log(mapStyles.styles);
   const vm = this;
   vm.range = {};
   vm.newComment = {};
