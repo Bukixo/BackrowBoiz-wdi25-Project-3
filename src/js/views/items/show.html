@@ -69,8 +69,7 @@
                 <input style="width: 50px" type="number" name="numberOfDays" ng-model="show.request.numberOfDays">
                   <br>
 
-
-              <label for="message"> Message<span>Po.</span></label>
+              <label for="message"> Message</label>
               <textarea name="message" ng-model="show.request.message"></textarea>
               <button class="requestButton">Request item</button>
             </form>
@@ -87,8 +86,12 @@
           <h2>User comments</h2>
             <ul>
 
-            <li class="commentBox" ng-repeat="comment in show.item.comments track by $index"><p>{{ comment.content }}</p><small>{{comment.createdBy.email}}</small>
-              <span uib-rating ng-model="comment.rating" max="5" read-only="true"></span>
+            <li class="commentBox" ng-repeat="comment in show.item.comments track by $index">
+
+
+<p>{{ comment.content }}</p><small>Comment added by: {{comment.createdBy.email}}</small>
+<br>
+<small>Rating: </small><span uib-rating ng-model="comment.rating" max="5" read-only="true"></span>
               <button ng-if="main.isAuthenticated() && comment.createdBy.id === main.profilePageId" class = "requestButton" ng-click="show.deleteComment(comment)">Delete</button>
             </li>
 
