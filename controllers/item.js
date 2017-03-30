@@ -86,7 +86,6 @@ function deleteCommentRoute(req, res, next) {
     .findById(req.params.id)
     .exec()
     .then((item) => {
-
       if(!item) return res.notFound();
       // get the embedded record by it's id
       const comment = item.comments.id(req.params.commentId);

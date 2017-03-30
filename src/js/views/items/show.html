@@ -58,12 +58,12 @@
       <label for="numberOfDays">Days to rent</label>
       <input type="number" name="numberOfDays" ng-model="show.request.numberOfDays">
       <br>
-
-
-<<<<<<< HEAD
-=======
-
->>>>>>> development
+      <label for="message"> Message</label>
+      <textarea name="message" ng-model="show.request.message"></textarea>
+    <button class="btn btn-danger">Request item</button>
+    </form>
+  </div>
+</div>
     <div class="col-lg-4 col-md-4 col-sm-12">
       <h2>{{ show.item.name }}</h2>
 
@@ -102,16 +102,11 @@
 
     </div>
 
-            <label for="message"> Message</label>
-            <textarea name="message" ng-model="show.request.message"></textarea>
-          <button class="btn btn-danger">Request item</button>
-          </form>
         </div>
 
-    </div>
-  </div>
+
     <!-- REQUESTING ITEM -->
-  </div>
+
 
 <div class="row">
 
@@ -148,7 +143,3 @@
 
         <div id="maps">
         </div>
-
-
-
-{{show.request}}

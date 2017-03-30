@@ -8,7 +8,8 @@ function GeoCoder($http){
     return $http
       .get('/api/location', {params: {location}})
       .then((data)=> {
-        const latlng = data.data.results[0].geometry.location;
+
+        const latlng = data.data.results[0].geometry.location || 'North Korea';
         return latlng;
       });
   };

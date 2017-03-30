@@ -8,27 +8,30 @@ itemShowCtrl.$inject = ['Item', '$stateParams', '$state', '$scope', '$http', 'Co
 function itemShowCtrl(Item, $stateParams, $state, $scope, $http, Comments, geoCoder, $auth){
   const vm = this;
   vm.range = {};
+  vm.newComment = {};
+
+  vm.sendRequest = sendRequest;
+
+  Item.get($stateParams,(data)=>{
+    const location = data.createdBy.location;
+    vm.item = data;
+    getLocationOfUser(location);
+  });
 
   function sendRequest(){
     vm.request.paid = false;
     vm.request.accepted = false;
     vm.request.item =  vm.item.id;
     vm.request.requester = $auth.getPayload().userId;
-    console.log(vm.request);
+
     $http
       .post('/api/request', vm.request)
       .then(()=>{
         $state.go('itemsIndex');
       });
   }
-  vm.sendRequest = sendRequest;
 
-  vm.newComment = {};
-  Item.get($stateParams,(data)=>{
-    const location = data.createdBy.location;
-    vm.item = data;
-    getLocationOfUser(location);
-  });
+
   vm.delete = itemsDelete;
   function itemsDelete() {
     vm.item
@@ -122,7 +125,7 @@ function itemEditCtrl(Item, $stateParams, $state) {
   function itemsUpdate() {
     // The vm.item gives us the full object user so I had to reassign the createdBy to an single Object.id inorder for the form to work because it only takes a Singledatavalue
     vm.item.createdBy = vm.item.createdBy.id;
-    console.log(vm.item);
+
     vm.item
       .$update()
       .then(() => $state.go('itemsShow', $stateParams));

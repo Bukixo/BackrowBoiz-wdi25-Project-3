@@ -10,7 +10,6 @@ function Item($resource){
 
   Item.prototype.location = function(){
     if(this.location){
-      console.log(this.location);
       return this.location;
     }
   };

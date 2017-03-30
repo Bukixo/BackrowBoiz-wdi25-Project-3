@@ -8,6 +8,13 @@ ProfileCtrl.$inject = ['User','$stateParams', '$http', '$state', '$auth', 'Reque
 function ProfileCtrl(User, $stateParams, $http, $state, $auth, Request, Item){
   const vm = this;
 
+  vm.allUserItems = [];
+  vm.incomingRequests = [];
+  vm.activeRequests = [];
+  vm.myRequests = [];
+  vm.accepted = [];
+
+
   function getUsersItems(){
     Item.query()
     .$promise
@@ -19,24 +26,19 @@ function ProfileCtrl(User, $stateParams, $http, $state, $auth, Request, Item){
       });
     });
   }
+
 //defines all functions that is going be interact directly with the UI
 // Grabs Request info from back end
   vm.user = User.get($stateParams, ()=>{
     getUsersItems();
   }); // vm.user is the current user's userpage rendering
 
-  vm.allUserItems = [];
-  vm.incomingRequests = [];
-  vm.activeRequests = [];
-  vm.myRequests = [];
-  vm.accepted = [];
 
   $http.get('/api/profile')
   .then((response)=> {
     vm.activeUser = response.data.user; // ActiveUser is the one being logged in
     vm.pending = response.data.pending;
     vm.requested = response.data.requested;
-
     vm.requested.forEach((request)=>{
       if(request.requester[0].id === vm.user.id){
         vm.myRequests.push(request);
@@ -55,10 +57,11 @@ function ProfileCtrl(User, $stateParams, $http, $state, $auth, Request, Item){
     });
 
 
-    vm.mine = vm.activeUser.id === vm.user.id; // Checks if the user is the same as the logged in
+     // Checks if the user is the same as the logged in
     vm.accept = acceptRequest;
-
-
+    vm.decline = declineRequest;
+    vm.delete = profileDelete;
+    vm.mine = vm.activeUser.id === vm.user.id;
     function acceptRequest(request){
       request.accepted = true;
       request.requester = request.requester[0].id;
@@ -71,9 +74,8 @@ function ProfileCtrl(User, $stateParams, $http, $state, $auth, Request, Item){
       const index = vm.incomingRequests.indexOf(request);
       vm.incomingRequests.splice(index, 1);
     }
-
   });
-  vm.decline = declineRequest;
+
   function declineRequest(request){
     Request
     .delete({id: request.id})
@@ -86,7 +88,6 @@ function ProfileCtrl(User, $stateParams, $http, $state, $auth, Request, Item){
   }
 
 
-  vm.delete = profileDelete;
   function profileDelete() {
     $auth.logout();
     vm.user
@@ -98,21 +99,20 @@ function ProfileCtrl(User, $stateParams, $http, $state, $auth, Request, Item){
 EditCtrl.$inject = ['User', '$state', '$stateParams'];
 function EditCtrl(User, $state, $stateParams){
   //gets the user from the profile passed in
-
   const vm = this;
 
+  vm.update= updateUser;
   vm.user = User.get($stateParams);
-
-
 //updates the user
   function updateUser(){
     // if(vm.editProfileForm){
+    console.log(vm.user);
     vm.user
     .$update()
     .then(()=> {
       // closeEditModal();
-      $state.go('itemsIndex', $stateParams);
+      $state.go('profile', $stateParams);
     });
   }
-  vm.update= updateUser;
+
 }

@@ -5,7 +5,7 @@ angular
 itemIndexCtrl.$inject = ['Item','User', 'Request', 'filterFilter', 'orderByFilter', '$scope', '$rootScope'];
 function itemIndexCtrl(Item, User, Request, filterFilter, orderByFilter, $scope, $rootScope) {
   const vm = this;
-  
+  vm.request = Request.query();
   vm.menuIsOpen = false;
 
   function stateChange(e, toState){
@@ -21,13 +21,11 @@ function itemIndexCtrl(Item, User, Request, filterFilter, orderByFilter, $scope,
     filterItems();
   });
 
-  vm.request = Request.query();
 
   function filterItems(){
     const params =  { name: vm.q };
     if(vm.catagory) params.catagory = vm.catagory;
     vm.filtered = filterFilter(vm.all, params);
-
     vm.filtered = orderByFilter(vm.filtered, vm.sort);
   }
 
