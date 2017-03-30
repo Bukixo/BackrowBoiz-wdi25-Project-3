@@ -14,7 +14,7 @@ function register(req, res, next) {
     .then((user) => {
       mail.send(user.email, 'Thanks for registering!', `Hey ${user.username}! Thanks for registering, for real!`, (err) => {
         if(err) next(err);
-        res.json({ message: 'Registration successful'});
+        res.status(201).json({ message: 'Registration successful'});
       });
     })
     .catch(next);

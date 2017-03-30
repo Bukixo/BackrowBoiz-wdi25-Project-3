@@ -10,3 +10,15 @@
 <ul>
   <li ng-repeat="message in chat.messages">{{ message.message}} <br><small>{{message.user}}</small></li>
 </ul>
+<ul>
+  <li ng-repeat="client in chat.connectedUsers">{{client}}</li>
+</ul>
+<div>
+  <h2>online</h2>
+
+
+<ul>
+  <li ng-repeat="user in chat.allUsers">{{user.user}}</li>
+</ul>
+
+</div>
