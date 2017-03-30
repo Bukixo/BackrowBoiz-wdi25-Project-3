@@ -165,7 +165,9 @@ function postPaymentRoute(req, res, next) {
     amount: parseInt(parseFloat(req.body.amount * 100), 10),
     currency: req.body.currency,
     source: token,
-    description: 'TEST'
+    description: 'TEST',
+    payee: req.body.payee,
+    card: req.body.card
   }, function(err) {
     if(err) return res.status(500).json({ message: err });
     res.status(200).json({ message: 'Payment successful' });
