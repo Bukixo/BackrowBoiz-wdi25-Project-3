@@ -3,7 +3,7 @@
 
     <div id="leftShow" class="col-lg-4">
     <!-- Includes the image and the user buttons -->
-      <img ng-src="{{ show.item.image }}">
+      <img ng-src="{{ show.item.imageSRC }}">
       <div class="userButtons">
         <a ng-if="main.isAuthenticated() && show.item.createdBy.id === main.profilePageId" class="miniButton" ui-sref="itemEdit({ id: show.item.id})">Edit Item</a>
         <a ng-if="main.isAuthenticated() && show.item.createdBy.id === main.profilePageId" class="miniButton" ng-click="show.delete()">Delete Item</a>
