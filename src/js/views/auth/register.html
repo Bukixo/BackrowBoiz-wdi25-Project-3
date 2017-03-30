@@ -1,7 +1,6 @@
 <div class="form">
 
 <h1>register page</h1>
-{{register.registerForm.$valid}}
 <form name="register.registerForm" ng-submit="register.createUser()" novalidate> <!-- Hook up the register.createUser() from the CTRL --->
 <!-- All of the error messages  -->
   <div ng-messages="register.registerForm.username.$error" role="alert" ng-show="(register.registerForm.username.$touched) &&(register.registerForm.username.$invalid)">
@@ -36,7 +35,7 @@
 <input type="text" name="location" ng-model="register.user.location" required>
 
 <label for="image">Profile image</label>
-<input type="file" base64 name="base64" id="image" ng-model="register.user.base64" required>
+<input class="input-btn" type="file" base64 name="base64" id="image" ng-model="register.user.base64" required>
 
 <label for="password">Password</label>
 <input type="password" name="password" ng-model="register.user.password" required>

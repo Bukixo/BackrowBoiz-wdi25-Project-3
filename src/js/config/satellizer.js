@@ -19,7 +19,8 @@ function Auth($authProvider) {
   });
 
   $authProvider.instagram({
-    clientId: '081e09dfcabd4ec38a730f3895732495'
+    clientId: '081e09dfcabd4ec38a730f3895732495',
+    url: '/api/oauth/instagram'
   });
 
   $authProvider.tokenPrefix = '';
