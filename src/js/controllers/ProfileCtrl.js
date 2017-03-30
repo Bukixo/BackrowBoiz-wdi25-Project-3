@@ -4,8 +4,8 @@ angular
   .controller('ProfileCtrl', ProfileCtrl)
   .controller('EditCtrl', EditCtrl);
 
-ProfileCtrl.$inject = ['User','$stateParams', '$http', '$state', '$auth'];
-function ProfileCtrl(User, $stateParams, $http, $state, $auth){
+ProfileCtrl.$inject = ['User','$stateParams', '$http', '$state', '$auth', 'Request'];
+function ProfileCtrl(User, $stateParams, $http, $state, $auth, Request){
   const vm = this;
 
 
@@ -70,8 +70,9 @@ function ProfileCtrl(User, $stateParams, $http, $state, $auth){
   });
   vm.decline = declineRequest;
   function declineRequest(request){
-    $http
-    .delete(`/api/request/decline/${request.id}`)
+    Request
+    .$delete({id: request.id})
+    .$promise
     .then(()=>{
       const index = vm.incomingRequests.indexOf(request);
       vm.incomingRequests.splice(index, 1);

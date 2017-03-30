@@ -45,6 +45,8 @@ function PaymentController($http, $window, $state, $stateParams, Request) {
           });
       }
     });
+    request.paid = true;
+    request.accepted = true;
     Request
     .delete({id: request.id})
     .$promise

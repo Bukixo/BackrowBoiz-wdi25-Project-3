@@ -80,6 +80,8 @@ function deleteRequestRoute(req, res, next){
   .exec()
   .then((request)=>{
     if(!request) return res.notFound();
+    // if the boolean on the request is not accepted and not paid it will return a callback which removes the request.
+    if(!req.body.accepted && !req.body.paid) return declineRequestRoute(req, res, next);
     //Here use a promiseProps and send email to owner and requster
     return Promise.props({ request, user: User.findById(req.body.requester), item: Item.findById(request.item)})
     .then((data)=>{
@@ -103,7 +105,6 @@ function deleteRequestRoute(req, res, next){
 
 //Removes the request with no further or do bc it's been declined
 function declineRequestRoute(req, res, next){
-  console.log(req.body);
   Request
   .findById(req.params.id)
   .exec()
@@ -161,6 +162,5 @@ module.exports = {
   delete: deleteRequestRoute,
   update: updateRequestRoute,
   payment: paymentRoute,
-  postPayment: postPaymentRoute,
-  decline: declineRequestRoute
+  postPayment: postPaymentRoute
 };
