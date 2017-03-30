@@ -111,9 +111,9 @@ function instagram(req, res, next) {
   return rp({
     method: 'POST',
     url: oauth.instagram.accessTokenURL,
-    qs: {
-      client_id: oauth.instagram.clientId,
-      client_secret: oauth.instagram.clientSecret,
+    form: {
+      client_id: process.env.RENTAPP_INSTA_CLIENT_ID,
+      client_secret: process.env.RENTAPP_INSTA_CLIENT_SECRET,
       redirect_uri: oauth.instagram.redirectUri,
       grant_type: 'authorization_code',
       code: req.body.code //query
@@ -121,29 +121,30 @@ function instagram(req, res, next) {
     json: true
   })
 
-  .then((token) => {
-    return rp({
-      method: 'GET',
-      url: oauth.instagram.profileURL,
-      qs: token,
-      headers: {
-        'User-Agent': 'Request-Promise'
-      },
-      json: true
-
-    });
-  })
+  // .then((token) => {
+  //
+  //   return rp({
+  //     method: 'GET',
+  //     url: oauth.instagram.profileURL,
+  //     qs: token,
+  //     headers: {
+  //       'User-Agent': 'Request-Promise'
+  //     },
+  //     json: true
+  //
+  //   });
+  // })
   .then((profile) => {
+    console.log(profile);
     return User
       .findOne({ instagramId: profile.user.id })
       .then((user) => {
         if(!user) {
           user = new User({
-            username: profile.user.username,
-            email: profile.email
+            username: profile.user.username
           });
         }
-        user.instagramId = profile.id;
+        user.instagramId = profile.user.id;
         user.image = profile.user.profile_picture;
 
         return user.save();
