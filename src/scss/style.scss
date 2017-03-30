@@ -9,7 +9,13 @@ $cream: #F9F7F3;
 $light-blue: #B5E2FA;
 $grey: #E5E5E5;
 $dark-blue: #3E7FC6;
+$lightGrey: #827d78;
+$darkGrey: #242322;
 
+//FONTS
+//'Open Sans Condensed'
+//'Playfair Display'Headings on show etc
+//font-family: 'Poppins', sans-serif;  used for title
 body{
   overflow-x: hidden;
   background-color: white;
@@ -17,6 +23,20 @@ body{
   margin-top: 100px;
 .enabled {
   display:none;
+  }
+}
+
+button {
+  border-width: medium;
+  border-color: white;
+  margin: 10px;
+  padding: 5px 20px;
+  background-color: $lightGrey;
+  color: $darkGrey;
+  border-radius: 5px;
+  font-size: 16px;
+  a {
+    color: $darkGrey;
   }
 }
 
@@ -32,7 +52,7 @@ body{
 nav {
    div {
     z-index: 11;
-    background-color: #B8B5B5;
+    background-color: rgba(300,300,300,0.9);
     width: 100%;
     height: 7%;
     position: absolute;
@@ -74,7 +94,7 @@ nav {
 
 .nav-extension {
   width: 100%;
-  background-color: white;
+  background-color: rgba(300,300,300,0.9);
   position: fixed;
   top: 47px;
   left: 0;
@@ -87,6 +107,7 @@ nav {
     margin-top: 30px;
   }
 }
+
  .profile-show {
   // position: absolute;
   // top: 50%;
@@ -346,7 +367,85 @@ nav {
 }
 ///////// Item show /////////////
 
+//SHOW PAGE
 .item-show {
+    margin: 0;
+
+//ROW 1
+  .row {
+    width: 900px;
+    display: block;
+    margin: 0;
+  .leftShow {
+    width: 400px;
+    display: block;
+    margin: 0;
+    img{
+      height: 350px;
+      padding-top: 10px;
+      padding-bottom: 20px;
+    }
+    .userButtons {
+
+    }
+  }
+    .rightShow {
+      width: 400px;
+      display: block;
+      margin: 0;
+      h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 50px;
+      }
+      .item-info{
+        border: 7px solid grey;
+        padding: 20px;
+        width: 500px;
+        table {
+          padding-left: 50px;
+        }
+        td {
+          font-size: 10px;
+          padding: 7px;
+          letter-spacing: 5px;
+          font-weight: 700;
+          span {
+            font-family: 'Playfair Display', serif;
+            font-weight: bold;
+            letter-spacing: normal;
+            font-size: 13px;
+          }
+        }
+      }
+    }
+
+
+  } //END OF ROW1
+
+//START ROW 2
+
+//TOGGLE
+.toggle{
+  border: 1px solid grey;
+}
+
+//COMMENTS
+.comments {
+  margin: 0 50px;
+
+  ul{
+      margin-top: 30px;
+      width: 50%;
+      height: 90px;
+      overflow: scroll;
+  }
+  textarea{
+    width: 100%;
+    border: 3px solid grey;
+  }
+}
+
+//MAP
   .location-title{
     font-family: 'Playfair Display', serif;
     text-align: center;
@@ -361,104 +460,66 @@ nav {
     margin: 60px 0;
   }
 
-  .comments {
-    margin: 0 50px;
 
-    ul{
-        margin-top: 30px;
-        width: 50%;
-        height: 90px;
-        overflow: scroll;
-    }
-    textarea{
-      width: 100%;
-      border: 3px solid grey;
-    }
-  }
-  .row{
-    // border: 2px solid black;
-    margin-top: 20px;
-    margin: 0 50px;
-    font-family: 'Poppins', sans-serif;
-    h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 50px;
 
-    }
-  }
-  img{
-    height: 350px;
-    padding-top: 10px;
-    padding-bottom: 20px;
 
-}
-.toggle{
-  border: 1px solid grey;
-}
-.item-info{
-  border: 7px solid grey;
-  padding: 20px;
-  width: 500px;
-  table {
-    padding-left: 50px;
-  }
-  td {
-    font-size: 10px;
-    padding: 7px;
-    letter-spacing: 5px;
-    font-weight: 700;
-    span {
-      font-family: 'Playfair Display', serif;
-      font-weight: bold;
-      letter-spacing: normal;
-      font-size: 13px;
+
+//BUKIS
+// .item-show {
+//
+//   .row{
+//     // border: 2px solid black;
+//     margin-top: 20px;
+//     margin: 0 50px;
+//     font-family: 'Poppins', sans-serif;
+//
+//   }
+//
+//   }
+
+  //REQUESTING ITEM
+  input{
+    color:black;
+    &:focus {
+    outline: none !important;
     }
   }
-}
 
-  }
-
-
-input{
-  color:black;
-  &:focus {
-  outline: none !important;
-  }
-}
-
-.form{
-  text-transform: uppercase;
-  width:400px;
-  margin: 0px auto 0;
-  padding: 40px 30px;
-  border: 5px solid white;
-  background-color: $grey;
-  input, select, label{
-    display:block;
-    width:100%;
-    line-height: 2.5;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  div{
-    color: red;
-  }
-  h2{
-    text-align: center;
-  }
-  button{
+  .form{
     text-transform: uppercase;
-    margin-top: 20px;
-    width:100%;
-    padding: 10px 0;
-    color:white;
-    background-color: $dark-blue;
-    cursor: pointer;
-    border: 2px solid white;
-    border-radius: 2px;
-    &:hover{
-      color:black;
-      background: $light-blue;
+    width:400px;
+    margin: 0px auto 0;
+    padding: 40px 30px;
+    border: 5px solid white;
+    background-color: $grey;
+    input, select, label{
+      display:block;
+      width:100%;
+      line-height: 2.5;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    div{
+      color: red;
+    }
+    h2{
+      text-align: center;
+    }
+    button{
+      text-transform: uppercase;
+      margin-top: 20px;
+      width:100%;
+      padding: 10px 0;
+      color:white;
+      background-color: $dark-blue;
+      cursor: pointer;
+      border: 2px solid white;
+      border-radius: 2px;
+      &:hover{
+        color:black;
+        background: $light-blue;
+      }
     }
   }
+  //END OF REQUESTING ITEM
 }
