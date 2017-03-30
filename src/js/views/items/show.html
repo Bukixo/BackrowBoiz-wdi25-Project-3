@@ -1,35 +1,75 @@
-<div class="container item-show">
+
   <div class="nav-extension">
     <h1 class="title">FABRIC</h1>
   </div>
+<div class="container item-show">
+  <div class="row">
+
+      <div class="leftShow col-lg-6">
+        <!-- Includes the image and the user buttons -->
+        <img ng-src="{{ show.item.image }}">
+        <div class="userButtons">
+          <a ui-sref="itemEdit({ id: show.item.id})">Edit Item</a>
+          <button class="btn-primary" ng-click="show.delete()">Delete Item</button>
+        </div>
+      </div>
+
+      <div class="rightShow col-lg-6">
+        <h2>{{ show.item.name }}</h2>
+        <div class="item-info">
+          <table>
+              <td>CREATED BY: </td>
+              <td> <span>
+                <a ui-sref="profile({ id: show.item.createdBy.id})">  {{show.item.createdBy.username}}</a>
+              </span></td>
+            <tr>
+              <td>PRICE:</td>
+              <td><span>{{ show.item.price }}</span></td>
+            </tr>
+            <tr>
+              <td>DESCRIPTION</td>
+              <td><span>{{ show.item.description }}</span> </td>
+            </tr>
+            <tr>
+              <td>SIZE</td>
+              <td><span>{{ show.item.size }}</span> </td>
+            </tr>
+            <tr>
+              <td>CATEGORY</td>
+              <td><span>{{ show.item.catagory }}</span></td>
+            </tr>
+            <tr>
+              <td>RATING </td>
+              <td><span>{{ show.item.rating }}</span></td>
+            </tr>
+            <!-- <tr>
+              <td>COMMENTS:</td>
+              <td><span>{{ show.item.comments }} </span></td>
+            </tr> -->
+            <tr>
+              <td>LOCATION:</td>
+              <td><span>{{ show.item.createdBy.location }} </span></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+  </div>
 
   <div class="row">
-    <div class="col-lg-4 col-md-4 col-sm-12">
-      <img ng-src="{{ show.item.image }}">
 
+    <!-- REQUESTING ITEM -->
+    <button class ="btn-primary" ng-click="showDiv = !showDiv">Request Item </button>
+    <div ng-hide="!showDiv" >
+        <div class="toggle">
 
-      <button class ="btn-primary" ng-click="showDiv = !showDiv">Request Item </button>
-      <div ng-hide="!showDiv" >
-          <div class="toggle">
+          <form name="show.makeRequest" ng-submit="show.sendRequest()" method="post">
 
-            <form name="show.makeRequest" ng-submit="show.sendRequest()" method="post">
+            <label for="numberOfDays">Days to rent</label>
+            <input type="number" name="numberOfDays" ng-model="show.request.numberOfDays">
+            <br>
 
-              <label for="numberOfDays">Days to rent</label>
-              <input type="number" name="numberOfDays" ng-model="show.request.numberOfDays">
-              <br>
-
-              <label for="message"> Message</label>
-              <textarea name="message" ng-model="show.request.message"></textarea><br>
-            <button class="btn btn-danger">Request item</button>
-            </form>
-          </div>
-      </div> <br>
-
-        <a ui-sref="itemEdit({ id: show.item.id})">Edit Profile</a> <br>
-
-      <button class="btn-primary" ng-click="show.delete()">Delete</button> <br>
-    </div>
-
+<<<<<<< HEAD
     <div class="col-lg-4 col-md-4 col-sm-12">
       <h2>{{ show.item.name }}</h2>
 
@@ -67,15 +107,28 @@
   </table>
 
     </div>
+=======
+            <label for="message"> Message</label>
+            <textarea name="message" ng-model="show.request.message"></textarea>
+          <button class="btn btn-danger">Request item</button>
+          </form>
+        </div>
+>>>>>>> development
     </div>
+    <!-- REQUESTING ITEM -->
   </div>
+
+<div class="row">
+
+
+
   <div class ="comments">
     <h2>User comments</h2>
       <ul>
         <li ng-repeat="comment in show.item.comments track by $index"><p>{{ comment.content }}</p><small>{{comment.createdBy.email}}</small>
         <button class = "btn-primary" ng-click="show.deleteComment(comment)">Delete</button></li>
       </ul>
-
+    </div>
     <form ng-submit="show.addComment()">
 
             <textarea ng-model="show.newComment.content">totally fab</textarea>
