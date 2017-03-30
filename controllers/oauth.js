@@ -107,7 +107,6 @@ function facebook(req, res, next) {
 // =============INSTAGRAM===================
 
 function instagram(req, res, next) {
-  console.log('working');
   return rp({
     method: 'POST',
     url: oauth.instagram.accessTokenURL,
@@ -120,20 +119,6 @@ function instagram(req, res, next) {
     },
     json: true
   })
-
-  // .then((token) => {
-  //
-  //   return rp({
-  //     method: 'GET',
-  //     url: oauth.instagram.profileURL,
-  //     qs: token,
-  //     headers: {
-  //       'User-Agent': 'Request-Promise'
-  //     },
-  //     json: true
-  //
-  //   });
-  // })
   .then((profile) => {
     console.log(profile);
     return User
