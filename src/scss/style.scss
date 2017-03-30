@@ -268,11 +268,10 @@ nav {
   cursor: pointer;
     position: fixed;
     z-index: 100;
-    top:60px;
+    top:100px;
     left: 20px;
   height: 50px;
   width: 50px;
-  background-color: white;
   cursor: pointer;
   border-radius: 50%;
   .burger{
@@ -435,73 +434,32 @@ nav {
 
 //TOGGLE
 
+.requestButton {
+  width: 200px;
+  margin-left: 70px;
+}
 
-//REQUESTING ITEM
-.requestDiv {
+.toggle{
+  border: 1px solid grey;
+}
 
-
-  .toggle {
-    h5 {
-      font-family: 'Playfair Display';
-      font-size: 30px;
-      padding-bottom: 5px;
-    }
-    background-color: $cream;
-    border: 3px solid grey;
-    padding: 10px;
-    width: 350px;
-    margin: 10px 0;
-    .requestButton {
-      background-color: white;
-    }
-    .form {
-      text-transform: uppercase;
-      width:600px;
-      text-align: center;
-      margin: 5px auto;
-      padding: 20px 30px;
-      border: 5px solid white;
-      background-color: $lightGrey;
-      input, select, label{
-        display:block;
-        width:100%;
-        line-height: 2.5;
-        border-radius: 5px;
-        font-size: 16px;
-        // margin: 20px;
-      }
-    }
-    input{
-      color:black;
-      &:focus {
-      outline: none !important;
-      }
-    }
-
-    h2 {
-      text-align: center;
-      font-family: 'Playfair Display';
-    }
-    // button{
-    //   text-transform: uppercase;
-    //   margin-top: 20px;
-    //   width:100%;
-    //   padding: 10px 0;
-    //   color:white;
-    //   background-color: $dark-blue;
-    //   cursor: pointer;
-    //   border: 2px solid white;
-    //   border-radius: 2px;
-    //   &:hover{
-    //     color:black;
-    //     background: $light-blue;
-    //   }
-    // }
-    }
-  }
-//END OF REQUESTING ITEM
 //COMMENTS
+.comments {
+  margin: 0 50px;
 
+  ul{
+      margin-top: 30px;
+      width: 50%;
+      height: 90px;
+      overflow: scroll;
+      text-decoration: none;
+      list-style-type: none;
+  }
+  textarea{
+    width: 100%;
+    border: 3px solid grey;
+  }
+}
 
 //MAP
   .location-title{
@@ -514,44 +472,76 @@ nav {
     font-weight: 700;
     font-size: 20px;
   }
+  form {
+    margin: 60px 0;
+  }
 
 }
 
-.requestButton {
-  width: 180px;
-  margin-left: 70px;
-  background-color: #F9F7F3;
-}
 
-.comments {
-  margin: 0 50px;
-  h2 {
-    font-family: 'Playfair Display', serif;
-    color: black;
+
+//BUKIS
+// .item-show {
+//
+//   .row{
+//     // border: 2px solid black;
+//     margin-top: 20px;
+//     margin: 0 50px;
+//     font-family: 'Poppins', sans-serif;
+//
+//   }
+//
+//   }
+
+  //REQUESTING ITEM
+  input{
+    color:black;
+    &:focus {
+    outline: none !important;
+    }
   }
-  .requestButton {
-    width: 180px;
-    margin: 2px;
-    background-color: #F9F7F3;
-  }
+  //END OF REQUESTING ITEM
 
-  ul{
-      margin-top: 30px;
-      margin-left: 0px;
-      width: 50%;
-      height: 90px;
-      overflow: scroll;
 
-      li {
-        text-decoration: none;
-        list-style-type: none;
-        margin-left: 0px;
-        padding-left: 0px;
-
+///////DONT MESS WITH MY FORMS//////////
+  .form{
+    text-transform: uppercase;
+    width:400px;
+    margin: 0px auto 0;
+    padding: 40px 30px;
+    border: 5px solid white;
+    background-color: $grey;
+    input, select, label{
+      display:block;
+      width:100%;
+      line-height: 2.5;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    div{
+      color: red;
+    }
+    h2{
+      text-align: center;
+    }
+    button{
+      text-transform: uppercase;
+      margin-top: 20px;
+      width:100%;
+      padding: 10px 0;
+      margin-left: 0;
+      color:white;
+      background-color: $dark-blue;
+      cursor: pointer;
+      border: 2px solid white;
+      border-radius: 2px;
+      &:hover{
+        color:black;
+        background: $light-blue;
       }
+    }
   }
-
-<<<<<<< HEAD
+}
 
 }
 .toggle{
@@ -617,9 +607,13 @@ input{
   &:focus {
   outline: none !important;
   }
-}
 
-  //END OF REQUESTING ITEM
+.input-btn{
+  margin-top: -10px;
+
+}
+////////////////////////
+
 
 
 
@@ -673,7 +667,7 @@ div.footer{
       .dropdown {
         display: none;
         background-color: white;
-        z-index: 100;
+        z-index: 110;
         position: absolute;
         top: 100px;
         left: 0;
@@ -681,6 +675,7 @@ div.footer{
         padding: 20px;
         &.open {
           display: block;
+          z-index: 110;
         }
       }
       li {
