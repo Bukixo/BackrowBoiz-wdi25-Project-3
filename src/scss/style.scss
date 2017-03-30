@@ -17,6 +17,7 @@ body{
   margin-top: 100px;
 .enabled {
   display:none;
+  }
 }
 
 #rangeText{
@@ -309,11 +310,11 @@ nav {
 
 
 .filters{
-  //border: 2px solid black;
+  background:rgba(300,300,300,0.9) ;
   width: 200px;
-  height:200px;
+  height:100%;
   position: fixed;
-  top:130px;
+  top:100px;
   left:-20%;
   transition: 1s ease;
   left: -20%;
