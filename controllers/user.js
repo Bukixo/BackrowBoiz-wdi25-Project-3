@@ -43,7 +43,7 @@ function updateRoute(req, res, next) {
 
       return user.save();
     })
-    .then((user) => res.json(user))
+    .then((user) => res.status(302).json(user))
     .catch(next);
 }
 

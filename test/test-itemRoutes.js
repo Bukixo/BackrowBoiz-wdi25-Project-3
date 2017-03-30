@@ -80,7 +80,7 @@ describe('GET /api/item', ()=>{
   });
 });
 
-describe('Post api/item', ()=>{
+xdescribe('Post api/item', ()=>{
 
   it('should return a 201status and have all the properties',(done)=>{
     app.post('/api/item')

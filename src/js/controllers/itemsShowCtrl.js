@@ -58,6 +58,21 @@ function itemShowCtrl(Item, $stateParams, $state, $scope, $http, Comments, geoCo
     });
   }
 
+  // //is bugged af gotta fix
+  vm.rate = rateItem;
+  function rateItem(){
+  //  const rate = parseFloat(vm.item.rate);
+    //vm.item.rating = rate;
+    vm.item.createdBy = vm.item.createdBy.id;
+    console.log(vm.item);
+    vm.item
+      .$update()
+      .then(() => {
+        vm.rated = true;
+        $state.go('itemsIndex');
+      });//$state.go('itemsShow', $stateParams));
+  }
+
 
 
 //<------------GOOGLE MAPS ------------------->

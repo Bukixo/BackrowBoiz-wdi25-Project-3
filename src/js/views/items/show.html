@@ -40,7 +40,6 @@
         <td> <span>
           <a ui-sref="profile({ id: show.item.createdBy.id})">  {{show.item.createdBy.username}}</a>
         </span></td>
-
       <tr>
         <td>PRICE:</td>
         <td><span>{{ show.item.price }}</span></td>
@@ -70,7 +69,6 @@
         <td><span>{{ show.item.createdBy.location }} </span></td>
       </tr>
   </table>
-
     </div>
     </div>
   </div>
@@ -90,9 +88,9 @@
   </div>
   <h1 class="location-title"> Check out the Locations</h1>
   <p>Use the slider to select how far you are willing to travel</p>
-
+<h2 id="rangeText">{{show.range.radius}} miles</h2>
   <form>
-  <input type="range" min="0" max="10" name="radius" ng-model="show.range.radius">
+  <input id="range" type="range" min="0" max="10" name="radius" ng-model="show.range.radius">
   </form>
 
         <div id="maps">
@@ -100,12 +98,18 @@
 
 </div>
 
-<form>
-<input type="range" min="0" max="10" name="radius" ng-model="show.range.radius">
-</form>
 
 
 
-
+<form ng-class="{'enabled': show.rated}" ng-submit="show.rate()" ng-if="main.isAuthenticated() && show.item.createdBy.id !== show.request.requester" name="show.ratinForm">
+   <select type="number" ng-model="show.item.rating">
+     <option value="1">1</option>
+     <option value="2">2</option>
+     <option value="3">3</option>
+     <option value="4">4</option>
+     <option value="5">5</option>
+   </select>
+   <button ng-click="show.rate()" type="submit">Rate</button>
+ </form>
 
 {{show.request}}
