@@ -1,8 +1,8 @@
-<div class="form">
+<div class="form form-style-8">
 
-<h1>register page</h1>
+<h2>REGISTER</h2>
 <form name="register.registerForm" ng-submit="register.createUser()" novalidate>
-  
+
   <div ng-messages="register.registerForm.username.$error" role="alert" ng-show="(register.registerForm.username.$touched) &&(register.registerForm.username.$invalid)">
     <div ng-message="required"> Username is required </div>
   </div>
@@ -26,7 +26,7 @@
 <!-- The INPUT FIELDS -->
 
 <label for="username">Username</label>
-<input type="text" name="username" ng-model="register.user.username" required>
+<input type="text" name="username" ng-model="register.user.username" id="username" required>
 
 <label for="email">Email</label>
 <input type="text" name="email" id="email" ng-model="register.user.email" ng-pattern="/@/" required>

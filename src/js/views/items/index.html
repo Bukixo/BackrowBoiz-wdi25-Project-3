@@ -37,10 +37,11 @@
 
 
     <a ui-sref="itemsShow({ id: item.id })" >
-      <div class="mask"></div>
-      <img ng-src="{{ item.image }}">
+      <div class="mask">
+        <p class="hidden-masonry">{{item.name}}</p>
+      </div>
+      <img ng-src="{{ item.imageSRC }}">
     </a>
-      <p class="hidden-masonry">{{item.name}}</p>
       </div>
   </div>
 

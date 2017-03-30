@@ -9,8 +9,8 @@ module.exports = {
   },
 
   instagram: {
-    loginURL: '//https://api.instagram.com/oauth/authorize/?client_id=081e09dfcabd4ec38a730f3895732495&redirect_uri=http://localhost:7000/oauth/instagram&response_type=code',
-    redirectUri: 'http://localhost:7000',
+    loginURL: '//https://api.instagram.com/oauth/authorize/?client_id=081e09dfcabd4ec38a730f3895732495&redirect_uri=https://guarded-refuge-81006.herokuapp.com/oauth/instagram&response_type=code',
+    redirectUri: 'https://guarded-refuge-81006.herokuapp.com',
     accessTokenURL: 'https://api.instagram.com/oauth/access_token',
     clientId: process.env.RENTAPP_INSTA_CLIENT_ID,
     clientSecret: process.env.RENTAPP_INSTA_CLIENT_SECRET,
