@@ -22,6 +22,7 @@ $darkGrey: #242322;
     padding: 7px;
     letter-spacing: 5px;
     font-weight: 700;
+    font-family: 'Poppins', sans-serif;
     span {
       font-family: 'Playfair Display', serif;
       font-weight: bold;
@@ -134,7 +135,15 @@ nav {
 /////////////////////////////profile page styling/////////////////////////////////
 
  .profile-show {
-  border: 2px solid black;
+   border: 2px solid black;
+
+  a {
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    letter-spacing: normal;
+    font-size: 13px;
+
+  }
   button {
     display: block;
     margin-top: 3px;
@@ -146,7 +155,10 @@ nav {
 
 .box-1 {
   border: 1px solid black;
-
+  .delete {
+    margin-left: 110px;
+    transform: translateY(-116%);
+  }
   img {
     height: 250px;
     padding: 10px;
@@ -154,11 +166,27 @@ nav {
 }
 .box-2 {
   @extend .table-styling;
+  td{
+    font-size: 20px;
+    span {
+      font-size: 20px;
+    }
+  }
   border: 1px solid black;
   padding: 50px;
   }
 .box-3 {
     border: 1px solid black;
+    a{
+      color: black;
+    }
+    ul{
+      list-style-type: none;
+      li {
+        border: white;
+        font-family: 'Poppins', sans-serif;
+      }
+    }
 }
 
  }
@@ -194,7 +222,11 @@ nav {
       height: auto !important;
       border-radius: 20px;
       padding: 3px;
-      display: block;
+      // display: block;
+    }
+    p{
+      top: 50%;
+      left: 50%;
     }
   }
 

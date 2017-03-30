@@ -61,15 +61,14 @@
     <!-- REQUESTING ITEM -->
     <button class ="btn-primary" ng-click="showDiv = !showDiv">Request Item </button>
     <div ng-hide="!showDiv" >
-        <div class="toggle">
 
-          <form name="show.makeRequest" ng-submit="show.sendRequest()" method="post">
+    <div class="toggle">
+      <form name="show.makeRequest" ng-submit="show.sendRequest()" method="post">
+      <label for="numberOfDays">Days to rent</label>
+      <input type="number" name="numberOfDays" ng-model="show.request.numberOfDays">
+      <br>
 
-            <label for="numberOfDays">Days to rent</label>
-            <input type="number" name="numberOfDays" ng-model="show.request.numberOfDays">
-            <br>
 
-<<<<<<< HEAD
     <div class="col-lg-4 col-md-4 col-sm-12">
       <h2>{{ show.item.name }}</h2>
 
@@ -107,13 +106,13 @@
   </table>
 
     </div>
-=======
+
             <label for="message"> Message</label>
             <textarea name="message" ng-model="show.request.message"></textarea>
           <button class="btn btn-danger">Request item</button>
           </form>
         </div>
->>>>>>> development
+
     </div>
     <!-- REQUESTING ITEM -->
   </div>
