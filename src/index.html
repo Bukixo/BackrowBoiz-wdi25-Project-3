@@ -2,10 +2,11 @@
 <html ng-app="rentApp">
 <head>
   <base href="/">
-  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,900|Poppins:400,700" rel="stylesheet"> <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,900|Poppins:400,700" rel="stylesheet">
   <title>Project 3</title>
+<!--
+  <script src="./js/mapStyles.js" charset="utf-8"></script> -->
 
-<!--  <script src="./js/mapStyles.js" charset="utf-8"></script> -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEi_tighHwZ4dswlQz7CWXWxpHZ17LzoM"></script>
@@ -17,25 +18,23 @@
   <!-- endinject -->
 </head>
 <body ng-controller="MainCtrl as main">
-  <nav class="navbar navbar-toggleable-md">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-    <div class="banner">
-    <ul>
-      <li><a ui-sref="itemsIndex">Index</a></li>
-      <li><a ui-sref="itemsNew">New</a></li>
-    <!--  <li ng-if="main.isAuthenticated()"><a ui-sref="chatState">Chat</a></li> -->
-      <li ng-if="main.isAuthenticated()"><a ui-sref="profile({id: main.profilePageId})">My profile</a></li>
-      <li ng-if="!main.isAuthenticated()"><a ui-sref="login">Login</a></li>
-      <li ng-if="!main.isAuthenticated()"><a ui-sref="register">Register</a></li>
-      <li ng-if="main.isAuthenticated()"><a ng-click="main.logout()" href="#">Logout</a></li>
+  <!-- navbar -->
+  <nav>
+    <div class="banner"></div>
+    <ul class="container">
+      <li class="logo"><h1 class="title">FABRIC</h1></li>
+      <li class="menu-icon" ng-click="navIsOpen = !navIsOpen">&#9776;</li>
+      <div class="dropdown" ng-class="{ 'open': navIsOpen }">
+        <li><a ui-sref="itemsIndex">Index</a></li>
+        <li ng-if="!main.isAuthenticated()"><a ui-sref="login">Login</a></li>
+        <li ng-if="!main.isAuthenticated()"><a ui-sref="register">Register</a></li>
+        <li ng-if="main.isAuthenticated()"><a ui-sref="itemsNew">New</a></li>
+        <li ng-if="main.isAuthenticated()"><a ui-sref="profile({id: main.profilePageId})">My profile</a></li>
+        <li ng-if="main.isAuthenticated()"><a ng-click="main.logout()" href="#">Logout</a></li>
+      </div>
     </ul>
-  </div>
   </nav>
-  <div class="nav-extension">
-    <h1 class="title">FABRIC</h1>
-  </div>
+
   <div class="message" ng-if="main.message">{{ main.message }}</div>
   <main ui-view class="container">
 
