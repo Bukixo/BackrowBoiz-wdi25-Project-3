@@ -40,7 +40,7 @@ beforeEach((done)=>{
 });
 //<------------------TEST SETUP OVER NOW WE CAN WRITE SOME TEST-------------->
 //Describes what we are going to test in this describe block
-xdescribe('Get api/item', ()=>{
+describe('GET /api/item', ()=>{
 // it describes what is going to be logged in the terminal , app.get is the function we testing and expect is the result we expect to get
   it('should return a 200 response', (done)=>{
     app.get('/api/item')
@@ -111,7 +111,7 @@ describe('Post api/item', ()=>{
   });
 });
 
-xdescribe('PUT api/item/:id', ()=>{
+describe('PUT api/item/:id', ()=>{
 
   let oneItem = null;
   beforeEach((done)=>{
@@ -134,7 +134,7 @@ xdescribe('PUT api/item/:id', ()=>{
   });
 
   it('should update our selected item',(done)=>{
-    app.post(`/api/item/${oneItem.id}`)
+    app.put(`/api/item/${oneItem.id}`)
     .type('form')
     .send({name: 'Miachel Jordan',
       createdBy: '58d54d45f028b0f6b0375803',
@@ -150,5 +150,14 @@ xdescribe('PUT api/item/:id', ()=>{
       respo.body.name.should.equal('Miachel Jordan');
       done();
     });
+  });
+});
+
+
+describe('GET /api/register', ()=>{
+  
+  it('should return a 200 responce',(done)=>{
+    app.get('/register')
+    .end(200, done);
   });
 });
