@@ -1,7 +1,17 @@
-<div class="container"
+<div class="container">
 
 <div class="row">
 <div class="profile-show col-lg-9 col-md-4 col-sm-12">
+
+  <div class="row show-row">
+      <div class="col-lg-4 col-md-4 col-sm-12 box-1">
+ <img ng-src="{{ profile.user.imageSRC }}" alt="{{profile.user.username}}">
+
+  <button ng-if="main.profilePageId === profile.user.id" ui-sref="editProfile({id: main.profilePageId})">EDIT USER</button>
+
+  <button class ="delete" ng-if="main.profilePageId === profile.user.id" ng-click="profile.delete()">Delete Profile</button>
+</div>
+
 <!--- its user.image for the time bng whilst im styling  bukixxxx-->
 
 
@@ -27,7 +37,7 @@
 
 
     <div class="col-lg-4 col-md-4 col-sm-12 box-3">
-      <a href="#" ng-click="showUlsend = !showUlsend"><h2 ng-if="main.profilePageId === profile.user.id"> Requests sent</h2></a>
+      <a href="#" ng-click="showUlsend = !showUlsend"><h3 ng-if="main.profilePageId === profile.user.id"> Requests sent</h3></a>
         <ul ng-if="main.profilePageId === profile.user.id" ng-hide="!showUlsend">
           <li class="toggle" ng-repeat="myReq in profile.myRequests"><p>
             requested:{{ myReq.item[0].name}}</p></li>
@@ -35,7 +45,7 @@
 
 
 
-        <a href="#" ng-click="showUlreqs = !showUlreqs"><h2 ng-if="main.profilePageId === profile.user.id">Pending requests</h2></a>
+        <a href="#" ng-click="showUlreqs = !showUlreqs"><h3 ng-if="main.profilePageId === profile.user.id">Pending requests</h3></a>
         <ul ng-hide="!showUlreqs">
           {{profile.request}}
             <li class="toggle" ng-repeat="request in profile.incomingRequests">requested Item:{{ request.item[0].name }}<br>num of   days{{request.numberOfDays}}<br>
@@ -45,7 +55,7 @@
         </ul>
 
 
-      <a href="#" ng-click="showUlactive = !showUlactive"><h2 >Active Requests</h2></a>
+      <a href="#" ng-click="showUlactive = !showUlactive"><h3 >Active Requests</h3></a>
       <ul ng-hide="!showUlactive">
         <li class="toggle" ng-repeat="request in profile.activeRequests">
           requested Item:{{ request.item[0].name }}<br>
@@ -55,11 +65,7 @@
         </li>
         </ul>
 
-
-</div>
-
-
-      <a ng-click="showUlaccept = !showUlaccept"><h2>Accepted</h2></a>
+      <a href="#" ng-click="showUlaccept = !showUlaccept"><h3>Accepted</h3></a>
         <ul ng-hide="!showUlaccept">
           <li class="toggle" ng-repeat="request in profile.accepted">
           requested Item:{{ request.item[0].name }}<br>
@@ -70,11 +76,11 @@
         </li>
         </ul>
 
-      <button ng-if="main.profilePageId === profile.user.id" ui-sref="editProfile({id: main.profilePageId})">EDIT USER</button>
-      <button ng-if="main.profilePageId === profile.user.id" ng-click="profile.delete()">Delete Profile</button>
-
+      </div>
     </div>
   </div>
+</div>
+</div>
 </div>
 
 
