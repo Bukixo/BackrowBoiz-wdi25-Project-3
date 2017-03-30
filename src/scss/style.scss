@@ -40,6 +40,27 @@ button {
   }
 }
 
+a {
+  color: $darkGrey;
+  text-decoration: none;
+  margin: 0 2px;
+}
+
+/* visited link */
+a:visited {
+    color: grey;
+}
+
+/* mouse over link */
+a:hover {
+    color: $dark-blue;
+}
+
+/* selected link */
+a:active {
+    color: blue;
+}
+
 #rangeText{
   z-index: 3;
 }
@@ -296,7 +317,6 @@ nav {
   }
 
 }
-
 .title{
   font-family: 'Poppins', sans-serif;
   letter-spacing: 15px;
@@ -309,38 +329,49 @@ nav {
 
 //SHOW PAGE
 .item-show {
-    margin: 0;
+    margin: 0 auto;
+    text-align: center;
 
 //ROW 1
   .row {
-    width: 900px;
-    display: block;
-    margin: 0;
-  .leftShow {
-    width: 400px;
-    display: block;
-    margin: 0;
+    // width: 1200px;
+    // display: inline;
+    // margin: 10px;
+    text-align: left;
+  #leftShow {
+    // width: 400px;
+    // margin: 10px;
+    text-align: left;
     img{
-      height: 350px;
-      padding-top: 10px;
-      padding-bottom: 20px;
+      width: 300px;
+      // padding-top: 10px;
+      // padding-bottom: 20px;
     }
     .userButtons {
-
+      text-align: center;
+      padding: 20px 10px;
+      width: 300px;
+      font-size: 15px;
+      .miniButton {
+        padding: 0 10px;
+      }
     }
   }
-    .rightShow {
-      width: 400px;
-      display: block;
-      margin: 0;
+    #rightShow {
+      // width: 400px;
+      // display: inline;
+      // margin: 0;
+      padding-bottom: 40px;
       h2 {
         font-family: 'Playfair Display', serif;
         font-size: 50px;
+        width: 600px;
+        padding: 25px 0;
       }
       .item-info{
         border: 7px solid grey;
         padding: 20px;
-        width: 500px;
+        width: 600px;
         table {
           padding-left: 50px;
         }
@@ -365,6 +396,12 @@ nav {
 //START ROW 2
 
 //TOGGLE
+
+.requestButton {
+  width: 200px;
+  margin-left: 70px;
+}
+
 .toggle{
   border: 1px solid grey;
 }
@@ -378,6 +415,8 @@ nav {
       width: 50%;
       height: 90px;
       overflow: scroll;
+      text-decoration: none;
+      list-style-type: none;
   }
   textarea{
     width: 100%;

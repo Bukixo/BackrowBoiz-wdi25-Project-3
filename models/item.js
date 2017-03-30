@@ -3,7 +3,8 @@ const s3 = require('../lib/s3');
 
 const commentSchema = new mongoose.Schema({
   content: {type: String, required: true},
-  createdBy: {type: mongoose.Schema.ObjectId, ref: 'User', required: true}
+  createdBy: {type: mongoose.Schema.ObjectId, ref: 'User', required: true},
+  rating: {type: Number}
 }, {
   timestamps: true
 });
@@ -19,7 +20,6 @@ const itemSchema = new mongoose.Schema({
   price: {type: Number, required: true},
   image: {type: String},
   description: {type: String, required: true},
-  rating: {type: String},
   comments: [commentSchema],
   size: {type: String, required: true},
   catagory: {type: String}
