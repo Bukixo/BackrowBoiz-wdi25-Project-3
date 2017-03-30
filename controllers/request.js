@@ -63,13 +63,19 @@ function createRequestRoute(req, res, next){
 
     console.log(request.numberOfDays);
 
+//sending an email to the item owner (const user) telling them that someone has made a request
+    mail.send(user.email, 'Someone\'s made a request!', `Hey ${user.username}! Great News! ${currentUser.username} has requested ${item.name} for ${request.numberOfDays}.  To accept this request, please go to heroku.com and accept the payment from ${currentUser.username}`, (err) => {
+      if(err) next(err);
+      res.status(201).json(request);
+    });
+//sending email to user (const currentuser) telling them that they've successfully made a request
+    mail.send(currentUser.email, 'Thanks for making a request!', `Hey ${currentUser.username}! Thanks for requesting ${item.name} from ${user.username} for ${request.numberOfDays} days at £${request.price} per day, we'll let you know when the request has been accepted or not!`, (err) => {
 
-    mail.send(`${currentUser.email}`, 'Thanks for making a request!', `Hey ${currentUser.username}! Thanks for requesting ${item.name} from ${user.username} for ${request.numberOfDays} we'll let you know when the request has been accepted or not!`, (err) => {
       if(err) next(err);
       res.status(201).json(request);
     });
   })
-  .catch(next);
+    .catch(next);
 }
 //deleteRequestRoute Deletes the request only used by the owner of the request
 // PUT NODEMAILER EMAIL HERE!!
@@ -93,14 +99,24 @@ function deleteRequestRoute(req, res, next){
       const user = data.user ;// The user who did the request,
       const item = data.item; // item being currently requested
       const itemOwner = data.itemOwner; // the Owner of the rent
-      // PUT NODEMAILER RIGHT HERE!!<-------------------------- NODEMAILER ----------------------------->
+
+      //sending an email to the item owner (const itemOwner) telling them that someone has paid for the request
+      mail.send(user.email, 'Payment made!', `Hey ${user.username}!  ${itemOwner.username} has made a payment for ${item.name} for ${request.numberOfDays}.  You'll naeed to send the ${item.name} to ${itemOwner.username} at ${itemOwner.location}.`, (err) => {
+        if(err) next(err);
+        res.status(201).json(request);
+      });
+        //sending email to requester (const user) telling them that they've successfully made a payment
+      mail.send(itemOwner.email, 'Successful Payment!', `Hey ${itemOwner.username}! Thanks for your payment for ${item.name} from ${user.username} for ${request.numberOfDays} days at £${request.price} per day.  ${itemOwner.username} will send the item next day delivery.`, (err) => {
+        if(err) next(err);
+        res.status(201).json(request);
+      })
+      .then((request)=>{
+        return request.remove();
+      });
     })
-    .then((request)=>{
-      return request.remove();
-    });
-  })
-  .then(()=> res.status(204).end())
-  .catch(next);
+    .then(()=> res.status(204).end())
+    .catch(next);
+  });
 }
 
 //Removes the request with no further or do bc it's been declined
@@ -115,6 +131,8 @@ function declineRequestRoute(req, res, next){
   .then(()=> res.status(204).end())
   .catch(next);
 }
+
+//owner of item clicked 'accepted', then function runs.  then up to requester to pay.
 
 
 function updateRequestRoute(req, res, next){
@@ -133,14 +151,14 @@ function updateRequestRoute(req, res, next){
   .then((request)=> res.status(302).json(request))
   .catch(next);
 }
-
+//click on oay, this takes you to the payment form.
 function paymentRoute(req, res, next) {
   Request
     .find()
     .then((items) => res.json(items))
     .catch(next);
 }
-
+//payment form.  Fun shit happens.
 function postPaymentRoute(req, res, next) {
   var token = req.body.token;
   stripe.charges.create({
@@ -152,6 +170,10 @@ function postPaymentRoute(req, res, next) {
     if(err) return res.status(500).json({ message: err });
     res.status(200).json({ message: 'Payment successful' });
   })
+
+  //email to requester, telling them it's gone through
+
+  //emial to item owner, telling them that thye've paid, and this is their address.
   .catch(next);
 }
 
