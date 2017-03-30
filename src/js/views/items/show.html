@@ -85,12 +85,19 @@
   <div class ="comments">
     <h2>User comments</h2>
       <ul>
-        <li ng-repeat="comment in show.item.comments track by $index"><p>{{ comment.content }}</p><small>{{comment.createdBy.email}}</small>
+        <li ng-repeat="comment in show.item.comments track by $index"><p>{{ comment.content }}{{comment.rating}}</p><small>{{comment.createdBy.email}}</small>
+          <span uib-rating ng-model="comment.rating" max="5" read-only="true"></span>
         <button class = "btn-primary" ng-click="show.deleteComment(comment)">Delete</button></li>
       </ul>
     </div>
     <form ng-submit="show.addComment()">
-
+      <select type="number" ng-model="show.newComment.rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
             <textarea ng-model="show.newComment.content">totally fab</textarea>
             <button class="btn btn-primary">Comment</button>
           </form>
@@ -107,19 +114,5 @@
         </div>
 
 </div>
-
-
-
-
-<form ng-class="{'enabled': show.rated}" ng-submit="show.rate()" ng-if="main.isAuthenticated() && show.item.createdBy.id !== show.request.requester" name="show.ratinForm">
-   <select type="number" ng-model="show.item.rating">
-     <option value="1">1</option>
-     <option value="2">2</option>
-     <option value="3">3</option>
-     <option value="4">4</option>
-     <option value="5">5</option>
-   </select>
-   <button ng-click="show.rate()" type="submit">Rate</button>
- </form>
 
 {{show.request}}
