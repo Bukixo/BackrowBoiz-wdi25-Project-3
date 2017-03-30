@@ -3,18 +3,18 @@
     <h1 class="title">FABRIC</h1>
   </div>
 <div class="container item-show">
-  <div class="row">
+  <div class="row justify-content-center">
 
-      <div class="leftShow col-lg-6">
+      <div id="leftShow" class="col-lg-4">
         <!-- Includes the image and the user buttons -->
         <img ng-src="{{ show.item.image }}">
         <div class="userButtons">
-          <a ui-sref="itemEdit({ id: show.item.id})">Edit Item</a>
-          <button class="btn-primary" ng-click="show.delete()">Delete Item</button>
+          <a class="miniButton" ui-sref="itemEdit({ id: show.item.id})">Edit Item</a>
+          <a class="miniButton" ng-click="show.delete()">Delete Item</a>
         </div>
       </div>
 
-      <div class="rightShow col-lg-6">
+      <div id="rightShow" class="col-lg-8">
         <h2>{{ show.item.name }}</h2>
         <div class="item-info">
           <table>
@@ -56,10 +56,10 @@
 
   </div>
 
-  <div class="row">
+  <div class="row justify-content-center">
 
     <!-- REQUESTING ITEM -->
-    <button class ="btn-primary" ng-click="showDiv = !showDiv">Request Item </button>
+    <button class="requestButton" ng-click="showDiv = !showDiv">Request Item </button>
     <div ng-hide="!showDiv" >
         <div class="toggle">
 
