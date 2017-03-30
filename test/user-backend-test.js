@@ -155,7 +155,7 @@ xdescribe('PUT, /api/users/:id', ()=>{
         profileImage: 'missHomeRip'})
         .end((err,res)=>{
           //checks if the res.status is updated right and if the updated Object has the correct values
-          expect(res.status).to.equal(302);
+          expect(res.status).to.equal(204);
           expect(res.text).to.have.contain('bobby Brown baby');
           expect(res.text).to.have.contain('email');
           expect(res.text).to.have.contain('location');
