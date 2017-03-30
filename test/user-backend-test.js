@@ -1,4 +1,4 @@
-/* global should, expect, supertest, it, describe */
+/* Global should, expect, supertest, it, describe */
 process.env.NODE_ENV = 'test';
 const should = require('chai').should(); // require Should which gives us the should keyword when we describe the test
 const expect = require('chai').expect; // gives us expect which is the action that actual runs the funciton
@@ -37,7 +37,7 @@ beforeEach((done)=>{
 });
 
 // describing what is going to be tested
-describe('/api/users', ()=>{
+xdescribe('/api/users', ()=>{
 // tells you what is expected and runs the test
   it('should return a 200 response',(done)=>{
     app.get('/api/users')
@@ -60,7 +60,7 @@ describe('/api/users', ()=>{
 
 });
 //going to use the :id which means we need to find one user and use the USER id in the url to get One user
-describe('/api/users/:id',()=>{
+xdescribe('/api/users/:id',()=>{
   let user;
 // runs beforeEach and finds a user from the testdata and returns it to us we assign it to our global function variable so we can use it during the tests
   beforeEach((done)=>{
@@ -88,7 +88,7 @@ describe('/api/users/:id',()=>{
   });
 });
 //test the post request when we make a User This is with the $auth /register
-describe('POST /api/register ', ()=>{
+xdescribe('POST /api/register ', ()=>{
 //Creates a template user we are going to create
   const user = {
     username: 'Bear',
@@ -132,7 +132,7 @@ describe('POST /api/register ', ()=>{
   });
 });
 //describes the Updatefunction
-describe('PUT, /api/users/:id', ()=>{
+xdescribe('PUT, /api/users/:id', ()=>{
   //says what is going to be tested in this block
   it('should update the user created ',(done)=>{
     // Create a new user with the new Method works the same as User.create beacuse the UserSChema we required is a Construtor Function
@@ -167,7 +167,7 @@ describe('PUT, /api/users/:id', ()=>{
   });
 });
 //Deletes the user
-describe('DELETE, /api/users/:id delete a user', ()=>{
+xdescribe('DELETE, /api/users/:id delete a user', ()=>{
   it('should remove one user and', (done)=>{
       // Create a new user with the new Method works the same as User.create beacuse the UserSChema we required is a Construtor Function
     const user = new User({
