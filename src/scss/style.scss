@@ -457,32 +457,73 @@ nav {
 
 //TOGGLE
 
-.requestButton {
-  width: 200px;
-  margin-left: 70px;
-}
 
-.toggle{
-  border: 1px solid grey;
-}
+//REQUESTING ITEM
+.requestDiv {
 
-//COMMENTS
-.comments {
-  margin: 0 50px;
 
-  ul{
-      margin-top: 30px;
-      width: 50%;
-      height: 90px;
-      overflow: scroll;
-      text-decoration: none;
-      list-style-type: none;
-  }
-  textarea{
-    width: 100%;
+  .toggle {
+    h5 {
+      font-family: 'Playfair Display';
+      font-size: 30px;
+      padding-bottom: 5px;
+    }
+    background-color: $cream;
     border: 3px solid grey;
+    padding: 10px;
+    width: 350px;
+    margin: 10px 0;
+    .requestButton {
+      background-color: white;
+    }
+    .form {
+      text-transform: uppercase;
+      width:600px;
+      text-align: center;
+      margin: 5px auto;
+      padding: 20px 30px;
+      border: 5px solid white;
+      background-color: $lightGrey;
+      input, select, label{
+        display:block;
+        width:100%;
+        line-height: 2.5;
+        border-radius: 5px;
+        font-size: 16px;
+        // margin: 20px;
+      }
+    }
+    input{
+      color:black;
+      &:focus {
+      outline: none !important;
+      }
+    }
+
+    h2 {
+      text-align: center;
+      font-family: 'Playfair Display';
+    }
+    // button{
+    //   text-transform: uppercase;
+    //   margin-top: 20px;
+    //   width:100%;
+    //   padding: 10px 0;
+    //   color:white;
+    //   background-color: $dark-blue;
+    //   cursor: pointer;
+    //   border: 2px solid white;
+    //   border-radius: 2px;
+    //   &:hover{
+    //     color:black;
+    //     background: $light-blue;
+    //   }
+    // }
+    }
   }
-}
+//END OF REQUESTING ITEM
+//COMMENTS
+
 
 //MAP
   .location-title{
@@ -495,72 +536,50 @@ nav {
     font-weight: 700;
     font-size: 20px;
   }
-  form {
-    margin: 60px 0;
+
+
+}
+
+.requestButton {
+  width: 180px;
+  margin-left: 70px;
+  background-color: #F9F7F3;
+}
+
+.comments {
+  margin: 0 50px;
+  h2 {
+    font-family: 'Playfair Display', serif;
+    color: black;
+  }
+  .requestButton {
+    width: 180px;
+    margin: 2px;
+    background-color: #F9F7F3;
   }
 
+  ul{
+      margin-top: 30px;
+      margin-left: 0px;
+      width: 50%;
+      height: 90px;
+      overflow: scroll;
 
+      li {
+        text-decoration: none;
+        list-style-type: none;
+        margin-left: 0px;
+        padding-left: 0px;
 
-
-
-//BUKIS
-// .item-show {
-//
-//   .row{
-//     // border: 2px solid black;
-//     margin-top: 20px;
-//     margin: 0 50px;
-//     font-family: 'Poppins', sans-serif;
-//
-//   }
-//
-//   }
-
-  //REQUESTING ITEM
-  input{
-    color:black;
-    &:focus {
-    outline: none !important;
-    }
-  }
-
-  .form{
-    text-transform: uppercase;
-    width:400px;
-    margin: 0px auto 0;
-    padding: 40px 30px;
-    border: 5px solid white;
-    background-color: $grey;
-    input, select, label{
-      display:block;
-      width:100%;
-      line-height: 2.5;
-      border-radius: 5px;
-      font-size: 16px;
-    }
-    div{
-      color: red;
-    }
-    h2{
-      text-align: center;
-    }
-    button{
-      text-transform: uppercase;
-      margin-top: 20px;
-      width:100%;
-      padding: 10px 0;
-      color:white;
-      background-color: $dark-blue;
-      cursor: pointer;
-      border: 2px solid white;
-      border-radius: 2px;
-      &:hover{
-        color:black;
-        background: $light-blue;
       }
-    }
   }
-  //END OF REQUESTING ITEM
+  textarea{
+    width: 600px;
+    border: 3px solid grey;
+  }
+  form {
+      margin: 0 50px;
+  }
 }
 
 //Footer fools
