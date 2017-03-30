@@ -105,12 +105,9 @@ function EditCtrl(User, $state, $stateParams){
   vm.user = User.get($stateParams);
 //updates the user
   function updateUser(){
-    // if(vm.editProfileForm){
-    console.log(vm.user);
     vm.user
     .$update()
     .then(()=> {
-      // closeEditModal();
       $state.go('profile', $stateParams);
     });
   }

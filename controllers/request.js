@@ -133,7 +133,7 @@ function updateRequestRoute(req, res, next){
 function paymentRoute(req, res, next) {
   Request
     .find()
-    .then((items) => res.json(items))
+    .then((items) => res.status(200).json(items))
     .catch(next);
 }
 //payment form.  Fun shit happens.
