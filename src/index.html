@@ -18,7 +18,10 @@
   <!-- endinject -->
 </head>
 <body ng-controller="MainCtrl as main">
-  <nav class="navbar">
+  <nav class="navbar navbar-toggleable-md">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
     <div class="banner">
     <ul>
       <li><a ui-sref="itemsIndex">Index</a></li>
@@ -38,5 +41,16 @@
   <main ui-view class="container">
 
   </main>
+  <div class="footer">
+    <ul id="socialBtns">
+      <li><a href="#" target="_blank"><img class="mediabtn" src="http://www.freeiconspng.com/uploads/images-facebook-f-logo-png-transparent-background-page-2-29.png"></a></li>
+      <li><a href="#" target="_blank"><img class="mediabtn" src="https://img.clipartfest.com/b8c432267a7ac6fb3f67c67da889ae26_-png-transparent-background-instagram-clipart-png-transparent-background_2048-2048.png"></a></li>
+      <li><a href="#" target="_blank"><img class="mediabtn" src="https://www.girldevelopit.com/assets/github-fork-476365c39e16ea2d6172e4c1e8cf6e7c.png"></a></li>
+      <li><a href="#" target="_blank"><img class="mediabtn" src="http://3daystartup.org/wp-content/uploads/2011/07/twitter-512.png"></a></li>
+    </ul>
+    <p id="footerText">&copy; BackrowBoiz LLC<br/>Made with &hearts; at GA</p>
+  </div>
+
+
 </body>
 </html>
