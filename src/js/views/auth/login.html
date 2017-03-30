@@ -1,6 +1,6 @@
-<div class="form">
+<div class="form form-style-8">
 
-<h1>Login page</h1>
+<h2>Login page</h2>
 
 <form name="login.loginForm" ng-submit="login.submit()" novalidate>
   <div ng-messages="login.loginForm.email.$error" role="alert" ng-show="(login.loginForm.$submitted)||(login.loginForm.email.$touched) &&(login.loginForm.email.$invalid)">
@@ -17,10 +17,11 @@
     <label for="password">Password</label>
     <input type="password" name="password" id="password" ng-model="login.credentials.password" required>
 
-  <button>Login</button>
-</form>
+  <button>Login</button> <br>
 
 <button ng-click="login.authenticate('github')">Sign in with GitHub</button>
 <button ng-click="login.authenticate('facebook')">Sign in with Facebook</button>
 <button ng-click="login.authenticate('instagram')">Sign in with Instagram</button>
 </div>
+
+</form>
