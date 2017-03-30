@@ -59,21 +59,24 @@
   <div class="row justify-content-center">
 
     <!-- REQUESTING ITEM -->
-    <button class="requestButton" ng-click="showDiv = !showDiv">Request Item </button>
-    <div ng-hide="!showDiv" >
-        <div class="toggle">
+    <div class="requestDiv">
 
-          <form name="show.makeRequest" ng-submit="show.sendRequest()" method="post">
+      <button class="requestButton" ng-click="showDiv = !showDiv">Request Item </button>
+      <div ng-hide="!showDiv"
+          <div class="toggle">
 
-            <label for="numberOfDays">Days to rent</label>
-            <input type="number" name="numberOfDays" ng-model="show.request.numberOfDays">
-            <br>
+            <form name="show.makeRequest" ng-submit="show.sendRequest()" method="post">
+              <h5>Your request:</h5>
+              <label for="numberOfDays">Days to rent</label>
+              <input type="number" name="numberOfDays" ng-model="show.request.numberOfDays">
+              <br>
 
-            <label for="message"> Message</label>
-            <textarea name="message" ng-model="show.request.message"></textarea>
-          <button class="btn btn-danger">Request item</button>
-          </form>
-        </div>
+              <label for="message"> Message</label>
+              <textarea name="message" ng-model="show.request.message"></textarea><br>
+            <button class="requestButton">Request item</button>
+            </form>
+          </div>
+      </div>
     </div>
     <!-- REQUESTING ITEM -->
   </div>
@@ -82,14 +85,15 @@
 
 
 
-  <div class ="comments">
+  <div class="comments">
     <h2>User comments</h2>
       <ul>
         <li ng-repeat="comment in show.item.comments track by $index"><p>{{ comment.content }}{{comment.rating}}</p><small>{{comment.createdBy.email}}</small>
           <span uib-rating ng-model="comment.rating" max="5" read-only="true"></span>
         <button class = "btn-primary" ng-click="show.deleteComment(comment)">Delete</button></li>
+
       </ul>
-    </div>
+
     <form ng-submit="show.addComment()">
       <select type="number" ng-model="show.newComment.rating">
         <option value="1">1</option>
@@ -99,9 +103,9 @@
         <option value="5">5</option>
       </select>
             <textarea ng-model="show.newComment.content">totally fab</textarea>
-            <button class="btn btn-primary">Comment</button>
+            <button class="requestButton">Comment</button>
           </form>
-
+    </div>
   </div>
   <h1 class="location-title"> Check out the Locations</h1>
   <p>Use the slider to select how far you are willing to travel</p>
@@ -113,6 +117,6 @@
         <div id="maps">
         </div>
 
-</div>
+
 
 {{show.request}}
