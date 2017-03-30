@@ -4,16 +4,28 @@ angular
   .controller('ProfileCtrl', ProfileCtrl)
   .controller('EditCtrl', EditCtrl);
 
-ProfileCtrl.$inject = ['User','$stateParams', '$http', '$state', '$auth', 'Request'];
-function ProfileCtrl(User, $stateParams, $http, $state, $auth, Request){
+ProfileCtrl.$inject = ['User','$stateParams', '$http', '$state', '$auth', 'Request', 'Item'];
+function ProfileCtrl(User, $stateParams, $http, $state, $auth, Request, Item){
   const vm = this;
 
-
+  function getUsersItems(){
+    Item.query()
+    .$promise
+    .then((items)=>{
+      items.forEach((item)=>{
+        if(item.createdBy.id === vm.user.id);
+        vm.allUserItems.push(item);
+      });
+    });
+  }
 //defines all functions that is going be interact directly with the UI
   // vm.open = openEditModal;
 // Grabs Request info from back end
-  vm.user = User.get($stateParams); // vm.user is the current user's userpage rendering
+  vm.user = User.get($stateParams, ()=>{
+    getUsersItems();
+  }); // vm.user is the current user's userpage rendering
 
+  vm.allUserItems = [];
   vm.incomingRequests = [];
   vm.activeRequests = [];
   vm.myRequests = [];
@@ -45,14 +57,13 @@ function ProfileCtrl(User, $stateParams, $http, $state, $auth, Request){
       } else if(request.accepted === true && vm.user.id === request.requester[0].id){
         vm.accepted.push(request);
       }
-
-
     });
-
 
 
     vm.mine = vm.activeUser.id === vm.user.id; // Checks if the user is the same as the logged in
     vm.accept = acceptRequest;
+
+
     function acceptRequest(request){
       request.accepted = true;
       request.requester = request.requester[0].id;
@@ -71,7 +82,7 @@ function ProfileCtrl(User, $stateParams, $http, $state, $auth, Request){
   vm.decline = declineRequest;
   function declineRequest(request){
     Request
-    .$delete({id: request.id})
+    .delete({id: request.id})
     .$promise
     .then(()=>{
       const index = vm.incomingRequests.indexOf(request);
@@ -81,18 +92,6 @@ function ProfileCtrl(User, $stateParams, $http, $state, $auth, Request){
   }
 
 
-  // Opens the Modal assign controller and template to our edit
-  // function openEditModal(){
-  //   $uibModal.open({
-  //     templateUrl: 'js/views/users/edit.html',
-  //     controller: 'ProfileEditModalCtrl as profile',
-  //     resolve: {
-  //       user: ()=> {
-  //         return vm.user;
-  //       }
-  //     }
-  //   });
-  // }
   vm.delete = profileDelete;
   function profileDelete() {
     $auth.logout();
