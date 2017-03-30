@@ -9,8 +9,8 @@
         <!-- Includes the image and the user buttons -->
         <img ng-src="{{ show.item.image }}">
         <div class="userButtons">
-          <a class="miniButton" ui-sref="itemEdit({ id: show.item.id})">Edit Item</a>
-          <a class="miniButton" ng-click="show.delete()">Delete Item</a>
+          <a ng-if="main.isAuthenticated() && show.item.createdBy.id === main.profilePageId" class="miniButton" ui-sref="itemEdit({ id: show.item.id})">Edit Item</a>
+          <a ng-if="main.isAuthenticated() && show.item.createdBy.id === main.profilePageId" class="miniButton" ng-click="show.delete()">Delete Item</a>
         </div>
       </div>
 
@@ -38,10 +38,6 @@
               <td>CATEGORY</td>
               <td><span>{{ show.item.catagory }}</span></td>
             </tr>
-            <tr>
-              <td>RATING </td>
-              <td><span>{{ show.item.rating }}</span></td>
-            </tr>
             <!-- <tr>
               <td>COMMENTS:</td>
               <td><span>{{ show.item.comments }} </span></td>
@@ -59,6 +55,7 @@
   <div class="row justify-content-center">
 
     <!-- REQUESTING ITEM -->
+    <div ng-if="main.isAuthenticated() && show.item.createdBy.id !== main.profilePageId">
     <button class="requestButton" ng-click="showDiv = !showDiv">Request Item </button>
     <div ng-hide="!showDiv" >
         <div class="toggle">
@@ -75,6 +72,7 @@
           </form>
         </div>
     </div>
+  </div>
     <!-- REQUESTING ITEM -->
   </div>
 
@@ -85,12 +83,12 @@
   <div class ="comments">
     <h2>User comments</h2>
       <ul>
-        <li ng-repeat="comment in show.item.comments track by $index"><p>{{ comment.content }}{{comment.rating}}</p><small>{{comment.createdBy.email}}</small>
+        <li ng-repeat="comment in show.item.comments track by $index"><p>{{ comment.content }}</p><small>{{comment.createdBy.email}}</small>
           <span uib-rating ng-model="comment.rating" max="5" read-only="true"></span>
-        <button class = "btn-primary" ng-click="show.deleteComment(comment)">Delete</button></li>
+        <button ng-if="main.isAuthenticated() && comment.createdBy.id === main.profilePageId" class = "btn-primary" ng-click="show.deleteComment(comment)">Delete</button></li>
       </ul>
     </div>
-    <form ng-submit="show.addComment()">
+    <form ng-if="main.isAuthenticated()" ng-submit="show.addComment()">
       <select type="number" ng-model="show.newComment.rating">
         <option value="1">1</option>
         <option value="2">2</option>
