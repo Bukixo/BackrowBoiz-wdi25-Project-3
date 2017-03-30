@@ -50,45 +50,58 @@ button {
 // }
 
 nav {
-   div {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  .banner {
     z-index: 11;
-    background-color: rgba(300,300,300,0.9);
+    background-color: #949191;
     width: 100%;
-    height: 7%;
-    position: absolute;
-    top: 0;
-    transition: all 0.5s ease-in-out;
-    text-align: center;
-    position: fixed;
-    top: 0%;
-    border: 1px solid #949191;
-    ul {
-      text-align: center;
-      padding-right: 90px;
-      margin-right: 110px;
-      background-color: white;
-        li {
-          list-style: none;
-          // line-height: -7px;
-          float: right;
-          padding: 77px 15px;
-          a {
-            font-family: 'Playfair Display', serif;
-            display: inline;
-            font-size: 18px;
-            color: black;
-            display: block;
-            z-index: 11;
-            &.active {
-              color: white;
-              opacity: 0.5;
-              text-decoration: line-through;
-              animation: none;
-            }
+    height: 50%;
+    // border: 1px solid #949191;
+  }
+  ul {
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    height: 50px;
+    padding: 0 100px !important;
+      li {
+        list-style: none;
+        line-height: 50px;
+        float: right;
+        padding-left: 15px;
+        &.logo {
+          float: left;
+          padding: 0;
+          h1 {
+            margin: 0;
+            padding: 0;
+            line-height: 53px;
           }
         }
+        &.menu-icon {
+          display: none;
+          cursor: pointer;
+        }
+        a {
+          font-family: 'Playfair Display', serif;
+          display: inline;
+          font-size: 18px;
+          color: black;
+          display: block;
+          z-index: 11;
+          &.active {
+            color: white;
+            opacity: 0.5;
+            text-decoration: line-through;
+            animation: none;
+          }
+        }
+      }
 
-    }
   }
 }
 
@@ -492,10 +505,30 @@ div.footer{
   }
 }
 
-@media only screen and (max-width: 940px) {
+@media only screen and (max-width: 768px) {
   nav{
-  ul{
-    display: none;
+    ul {
+      padding: 0 20px !important;
+      .dropdown {
+        display: none;
+        background-color: white;
+        z-index: 100;
+        position: absolute;
+        top: 100px;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        &.open {
+          display: block;
+        }
+      }
+      li {
+        float: none;
+        text-align: right;
+        &.menu-icon {
+          display: block;
+        }
+      }
+    }
   }
-}
 }

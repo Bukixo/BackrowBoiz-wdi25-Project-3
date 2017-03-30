@@ -5,6 +5,7 @@ angular
 MainCtrl.$inject = ['$rootScope', '$state', '$auth', 'filterFilter', 'orderByFilter'];
 function MainCtrl($rootScope, $state, $auth, filterFilter, orderByFilter) {
   const vm = this;
+  vm.navIsOpen = false;
 
   // const socket = io('http://localhost:4001');
   // socket.emit('yo');
@@ -42,6 +43,7 @@ function MainCtrl($rootScope, $state, $auth, filterFilter, orderByFilter) {
     if(vm.stateHasChanged) vm.message = null;
     if(!vm.stateHasChanged) vm.stateHasChanged = true;
     if($auth.getPayload()) vm.profilePageId = $auth.getPayload().userId;
+    vm.navIsOpen = false;
   });
 
 }
