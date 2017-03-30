@@ -1,4 +1,4 @@
-  <div class="container item-show">
+<div class="container item-show">
     <div class="row justify-content-center">
 
       <div id="leftShow" class="col-lg-4">
@@ -13,34 +13,6 @@
       <div id="rightShow" class="col-lg-8">
         <h2>{{ show.item.name }}</h2>
         <div class="item-info">
-<<<<<<< HEAD
-          <table>
-              <td>CREATED BY: </td>
-              <td> <span>
-                <a ui-sref="profile({ id: show.item.createdBy.id})">  {{show.item.createdBy.username}}</a>
-              </span></td>
-            <tr>
-              <td>PRICE:</td>
-              <td><span>{{ show.item.price }}</span></td>
-            </tr>
-            <tr>
-              <td>DESCRIPTION</td>
-              <td><span>{{ show.item.description }}</span> </td>
-            </tr>
-            <tr>
-              <td>SIZE</td>
-              <td><span>{{ show.item.size }}</span> </td>
-            </tr>
-            <tr>
-              <td>CATEGORY</td>
-              <td><span>{{ show.item.catagory }}</span></td>
-            </tr>
-            <tr>
-              <td>LOCATION:</td>
-              <td><span>{{ show.item.createdBy.location }} </span></td>
-            </tr>
-          </table>
-=======
         <table>
           <td>CREATED BY: </td>
             <td> <span>
@@ -71,7 +43,6 @@
             <td><span>{{ show.item.createdBy.location }} </span></td>
           </tr>
         </table>
->>>>>>> development
         </div>
       </div>
 
@@ -86,53 +57,6 @@
     <div ng-hide="!showDiv" >
 
     <div class="toggle">
-<<<<<<< HEAD
-      <form name="show.makeRequest" ng-submit="show.sendRequest()" method="post">
-      <label for="numberOfDays">Days to rent</label>
-      <input type="number" name="numberOfDays" ng-model="show.request.numberOfDays">
-      <br>
-      <label for="message"> Message</label>
-      <textarea name="message" ng-model="show.request.message"></textarea>
-    <button class="btn btn-danger">Request item</button>
-    </form>
-  </div>
-</div>
-    <div class="col-lg-4 col-md-4 col-sm-12">
-      <h2>{{ show.item.name }}</h2>
-
-    <div class="item-info">
-
-    <table>
-        <td>CREATED BY: </td>
-        <td> <span>
-          <a ui-sref="profile({ id: show.item.createdBy.id})">  {{show.item.createdBy.username}}</a>
-        </span></td>
-      <tr>
-        <td>PRICE:</td>
-        <td><span>{{ show.item.price }}</span></td>
-      </tr>
-      <tr>
-        <td>DESCRIPTION</td>
-        <td><span>{{ show.item.description }}</span> </td>
-      </tr>
-      <tr>
-        <td>SIZE</td>
-        <td><span>{{ show.item.size }}</span> </td>
-      </tr>
-      <tr>
-        <td>CATEGORY</td>
-        <td><span>{{ show.item.catagory }}</span></td>
-      </tr>
-      <tr>
-        <td>RATING </td>
-        <td><span>{{ show.item.rating }}</span></td>
-      </tr>
-      <tr>
-        <td>LOCATION:</td>
-        <td><span>{{ show.item.createdBy.location }} </span></td>
-      </tr>
-  </table>
-=======
 
               <form name="show.makeRequest" ng-submit="show.sendRequest()" method="post">
                 <h5>Your request:</h5>
@@ -140,28 +64,18 @@
                 <label for="numberOfDays">Days to rent</label>
                 <input type="number" name="numberOfDays" ng-model="show.request.numberOfDays">
                   <br>
->>>>>>> development
 
 
-<<<<<<< HEAD
-=======
               <label for="message"> Message<span>Po.</span></label>
               <textarea name="message" ng-model="show.request.message"></textarea>
               <button class="requestButton">Request item</button>
             </form>
           </div>
 
->>>>>>> development
         </div>
       </div>
 
-<<<<<<< HEAD
-
-    <!-- REQUESTING ITEM -->
-
-=======
     </div>
->>>>>>> development
 
     <div class="row">
       <br>
@@ -202,13 +116,6 @@
     <input id="range" type="range" min="0" max="10" name="radius" ng-model="show.range.radius">
   </form>
 
-<<<<<<< HEAD
-        <div id="maps">
-        </div>
-=======
   <div id="maps"></div>
 
 </div>
-
-  {{show.request}}
->>>>>>> development
