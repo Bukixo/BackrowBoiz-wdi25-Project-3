@@ -31,7 +31,6 @@ function showRoute(req, res, next) {
 
 function updateRoute(req, res, next) {
   if(req.file) req.body.image = req.file.filename;
-  console.log(req.body);
   User
     .findById(req.params.id)
     .then((user) => {
@@ -43,7 +42,7 @@ function updateRoute(req, res, next) {
 
       return user.save();
     })
-    .then((user) => res.status(302).json(user))
+    .then((user) => res.status(204).json(user))
     .catch(next);
 }
 
