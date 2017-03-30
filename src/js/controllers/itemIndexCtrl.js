@@ -2,10 +2,19 @@ angular
   .module('rentApp')
   .controller( 'itemIndexCtrl', itemIndexCtrl);
 
-itemIndexCtrl.$inject = ['Item','User', 'Request', 'filterFilter', 'orderByFilter', '$scope'];
-function itemIndexCtrl(Item, User, Request, filterFilter, orderByFilter, $scope) {
-
+itemIndexCtrl.$inject = ['Item','User', 'Request', 'filterFilter', 'orderByFilter', '$scope', '$rootScope'];
+function itemIndexCtrl(Item, User, Request, filterFilter, orderByFilter, $scope, $rootScope) {
   const vm = this;
+  
+  vm.menuIsOpen = false;
+
+  function stateChange(e, toState){
+    vm.pageName = toState.name;
+    vm.menuIsOpen = false;
+  }
+
+  $rootScope.$on('$stateChangeStart', stateChange);
+
 
   Item.query().$promise.then((items) => {
     vm.all = items;

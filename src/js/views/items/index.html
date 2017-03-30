@@ -1,3 +1,37 @@
+
+<div class="menu" ng-click="index.menuIsOpen = !index.menuIsOpen" ng-class=" { 'open': index.menuIsOpen }">
+  <div class="burger">
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+</div>
+</div>
+
+<aside class="filters" ng-class="{ 'open': index.menuIsOpen }">
+
+<h5>Search items</h5>
+<input type="text" class="search" ng-model="index.q" placeholder="Search...">
+
+<h5>Price</h5>
+<select ng-model="index.sort">
+  <option value="+price">Price ascending</option>
+  <option value="-price">Price descending</option>
+</select>
+
+<h5>Category</h5>
+<select class="cata" ng-model="index.catagory">
+  <option>All</option>
+  <option>Men</option>
+  <option>Women</option>
+  <option>Child</option>
+</select>
+</aside>
+<!--- Renders all Items from the GET request in the Controller REMOVE THIS LATER -->
+<div class="bigDiv">
+  <!-- <div ng-repeat="item in index.items | filter: index.q | filter: index.sort | filter: index.catagory: true" class="col-lg-3 col-md-4 col-sm-6"> -->
+  <div ng-repeat="item in index.filtered" class="col-lg-3 col-md-4 col-sm-6">
+    <div class="l-box">
 <div class="container-index">
   <div class="nav-extension">
     <h1 class="title">FABRIC</h1>
