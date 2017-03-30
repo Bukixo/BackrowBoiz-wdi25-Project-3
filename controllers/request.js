@@ -31,7 +31,6 @@ function showRequestRoute(req, res, next){
 
 //Creates a new request route ==> Someone makes a request to create a user
 function createRequestRoute(req, res, next){
-  console.log(req.body);
   Request
   .create(req.body)
   .then((request) => {
@@ -51,22 +50,9 @@ function createRequestRoute(req, res, next){
     const item = data.item;
     const currentUser = data.user;
     const request = data.request;
-    console.log(data);
-    console.log(currentUser.username); //console logs are for the email below, so we know what we're sending
-    console.log(currentUser.email);
-
-    console.log(user.email);
-    console.log(user.username);
-
-    console.log(item.name);
-    console.log(item.username);
-
-    console.log(request.numberOfDays);
-
 //sending an email to the item owner (const user) telling them that someone has made a request
     mail.send(user.email, 'Someone\'s made a request!', `Hey ${user.username}! Great News! ${currentUser.username} has requested ${item.name} for ${request.numberOfDays}.  To accept this request, please go to heroku.com and accept the payment from ${currentUser.username}`, (err) => {
       if(err) next(err);
-    //  res.status(201).json(request);
     });
 //sending email to user (const currentuser) telling them that they've successfully made a request
     mail.send(currentUser.email, 'Thanks for making a request!', `Hey ${currentUser.username}! Thanks for requesting ${item.name} from ${user.username} for ${request.numberOfDays} days at £${request.price} per day, we'll let you know when the request has been accepted or not!`, (err) => {
@@ -78,7 +64,6 @@ function createRequestRoute(req, res, next){
     .catch(next);
 }
 //deleteRequestRoute Deletes the request only used by the owner of the request
-// PUT NODEMAILER EMAIL HERE!!
 function deleteRequestRoute(req, res, next){
   console.log(req.body, 'payment accepted');
   Request
@@ -163,7 +148,7 @@ function postPaymentRoute(req, res, next) {
   var token = req.body.token;
   stripe.charges.create({
     //amount: parseInt(parseFloat(req.body.amount * 100), 10),
-    amount: req.body.amount, 
+    amount: req.body.amount,
     currency: req.body.currency,
     source: token,
     description: 'TEST'
@@ -171,11 +156,11 @@ function postPaymentRoute(req, res, next) {
     if(err) return res.status(500).json({ message: err });
     res.status(200).json({ message: 'Payment successful' });
   })
+  .catch(next);
 
   //email to requester, telling them it's gone through
 
   //emial to item owner, telling them that thye've paid, and this is their address.
-  .catch(next);
 }
 
 module.exports = {

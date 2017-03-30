@@ -2,26 +2,10 @@ angular
   .module('rentApp')
   .controller( 'MainCtrl', MainCtrl);
 
-MainCtrl.$inject = ['$rootScope', '$state', '$auth', 'filterFilter', 'orderByFilter'];
-function MainCtrl($rootScope, $state, $auth, filterFilter, orderByFilter) {
+MainCtrl.$inject = ['$rootScope', '$state', '$auth'];
+function MainCtrl($rootScope, $state, $auth) {
   const vm = this;
   vm.navIsOpen = false;
-
-  // const socket = io('http://localhost:4001');
-  // socket.emit('yo');
-  // vm.send = sendMsg;
-  // function sendMsg(){
-  //   socket.emit('chat message', vm.socketMessage);
-  //   vm.socketMessage = '';
-  //   return false;
-  // }
-  //
-  // socket.on('chat message', function(msg){
-  //   // var mess = document.createElement('div');
-  //   // mess.innerHTML = msg;
-  //   vm.message = msg;
-  //   console.log('works');
-  // });
 
   vm.isAuthenticated = $auth.isAuthenticated;
 

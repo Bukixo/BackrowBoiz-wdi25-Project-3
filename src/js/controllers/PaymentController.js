@@ -17,15 +17,11 @@ function PaymentController($http, $window, $state, $stateParams, Request) {
 
 
   vm.card = {};
-//  vm.payee = null;
-//  vm.amount = null;
   vm.currency = 'gbp';
   vm.paymentSuccessful = false;
 
   vm.pay = function pay() {
     Stripe.card.createToken(vm.card, (status, response) => {
-      console.log(status);
-      console.log(vm.card);
       const data = {
         card: vm.card,
         token: response.id,

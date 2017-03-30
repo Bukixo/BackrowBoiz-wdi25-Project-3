@@ -13,8 +13,6 @@ function ProfileCtrl(User, $stateParams, $http, $state, $auth, Request, Item){
     .$promise
     .then((items)=>{
       items.forEach((item)=>{
-        console.log(vm.user.id, item.name);
-        console.log(item.createdBy.id, item.name);
         if(item.createdBy.id === vm.user.id){
           vm.allUserItems.push(item);
         }
@@ -22,7 +20,6 @@ function ProfileCtrl(User, $stateParams, $http, $state, $auth, Request, Item){
     });
   }
 //defines all functions that is going be interact directly with the UI
-  // vm.open = openEditModal;
 // Grabs Request info from back end
   vm.user = User.get($stateParams, ()=>{
     getUsersItems();
@@ -36,18 +33,13 @@ function ProfileCtrl(User, $stateParams, $http, $state, $auth, Request, Item){
 
   $http.get('/api/profile')
   .then((response)=> {
-    //console.log(response);
     vm.activeUser = response.data.user; // ActiveUser is the one being logged in
     vm.pending = response.data.pending;
     vm.requested = response.data.requested;
-    console.log(vm.requested);
-  //  vm.myRequest= if(vm.requested)
 
     vm.requested.forEach((request)=>{
       if(request.requester[0].id === vm.user.id){
         vm.myRequests.push(request);
-      } else{
-        console.log(request.requester[0].id);
       }
     });
 
@@ -71,7 +63,6 @@ function ProfileCtrl(User, $stateParams, $http, $state, $auth, Request, Item){
       request.accepted = true;
       request.requester = request.requester[0].id;
       request.item = request.item[0].id;
-      console.log(request);
       $http
       .put(`/api/request/${request.id}`,request)
       .then(()=> $state.go('profile', $stateParams));
@@ -112,14 +103,7 @@ function EditCtrl(User, $state, $stateParams){
 
   vm.user = User.get($stateParams);
 
-//hooks up all the UI functionality
-  // vm.close = closeEditModal;
-  // vm.update= updateUser;
 
-//closes the Modal
-  // function closeEditModal(){
-  //   $uibModalInstance.close();
-  // }
 //updates the user
   function updateUser(){
     // if(vm.editProfileForm){

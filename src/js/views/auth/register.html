@@ -1,8 +1,8 @@
 <div class="form">
 
 <h1>register page</h1>
-<form name="register.registerForm" ng-submit="register.createUser()" novalidate> <!-- Hook up the register.createUser() from the CTRL --->
-<!-- All of the error messages  -->
+<form name="register.registerForm" ng-submit="register.createUser()" novalidate>
+  
   <div ng-messages="register.registerForm.username.$error" role="alert" ng-show="(register.registerForm.username.$touched) &&(register.registerForm.username.$invalid)">
     <div ng-message="required"> Username is required </div>
   </div>
