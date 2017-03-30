@@ -13,8 +13,11 @@ function ProfileCtrl(User, $stateParams, $http, $state, $auth, Request, Item){
     .$promise
     .then((items)=>{
       items.forEach((item)=>{
-        if(item.createdBy.id === vm.user.id);
-        vm.allUserItems.push(item);
+        console.log(vm.user.id, item.name);
+        console.log(item.createdBy.id, item.name);
+        if(item.createdBy.id === vm.user.id){
+          vm.allUserItems.push(item);
+        }
       });
     });
   }
