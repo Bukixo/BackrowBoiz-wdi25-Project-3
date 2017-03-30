@@ -74,12 +74,9 @@ function itemShowCtrl(Item, $stateParams, $state, $scope, $http, Comments, geoCo
     const map = new google.maps.Map(document.getElementById('maps'), {
       center: latlng,
       zoom: 10,
-<<<<<<< HEAD
       scrollwheel: false,
       styles: mapStyles.styles
-=======
-      scrollwheel: false
->>>>>>> development
+
     });
     //marker puts marker on the screen with a animation
 

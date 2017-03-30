@@ -208,13 +208,22 @@ nav {
 
 ////////////////////////////////////Masonry//////////////////////////////
 .hidden-masonry{
+  text-align: left;
   visibility: hidden;
+  font-size: 13px;
   height:10px;
   width: 200px;
   z-index: 200;
   margin-top: -30px;
   margin-left: 20px;
   color: lightblue;
+}
+.mask{
+  display: none;
+  height:100px;
+  width:100px;
+  background: rgba(0,0,0,0.1);
+  z-index: 199;
 }
 .container-index {
   margin-top: 60px;
@@ -240,18 +249,17 @@ nav {
       .hidden-masonry{
         visibility: visible;
       }
+      .mask{
+        display: inline;
+      }
     }
 
     img {
       width: 100% !important;
       height: auto !important;
-<<<<<<< HEAD
       border-radius: 5px;
-=======
-      border-radius: 20px;
       padding: 3px;
       display: block;
->>>>>>> development
     }
   }
 
