@@ -1,4 +1,4 @@
-/* global google, marker*/
+/* global google:ignore mapStyles:ignore  */
 angular
   .module('rentApp')
   .controller('itemShowCtrl', itemShowCtrl)
@@ -88,7 +88,8 @@ function itemShowCtrl(Item, $stateParams, $state, $scope, $http, Comments, geoCo
     const map = new google.maps.Map(document.getElementById('maps'), {
       center: latlng,
       zoom: 10,
-      scrollwheel: false
+      scrollwheel: false,
+      styles: mapStyles
     });
     //marker puts marker on the screen with a animation
 
