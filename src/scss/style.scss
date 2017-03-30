@@ -22,6 +22,32 @@ $dark-blue: #3E7FC6;
 $lightGrey: #827d78;
 $darkGrey: #242322;
 
+
+.table-styling {
+  table {
+    padding-left: 50px;
+  }
+  td {
+    font-size: 10px;
+    padding: 7px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    line-height: normal;
+    span {
+      font-family: 'Playfair Display', serif;
+      font-weight: bold;
+      letter-spacing: normal;
+      font-size: 13px;
+    }
+  }
+}
+//
+// .hello {
+//   @extend .table-styling;
+// }
+
+
 //FONTS
 //'Open Sans Condensed'
 //'Playfair Display'Headings on show etc
@@ -176,7 +202,10 @@ nav {
 /////////////////////////////profile page styling/////////////////////////////////
 
  .profile-show {
-  border: 2px solid black;
+  // border: 5px solid lightGrey;
+  border: 5px solid black;
+  margin: 70px;
+  left: 20px;
   button {
     display: block;
     margin-top: 3px;
@@ -184,22 +213,60 @@ nav {
   }
   .show-row{
     padding: 20px;
-  }
-  .box-1 {
-  border: 1px solid black;
-    img {
-      height: 250px;
-      padding: 10px;
+    .box-1 {
+      top: 50px;
+      .delete {
+        transform: translate(116%, -116%);
+      }
+      img {
+        height: 250px;
+        padding: 10px;
+        border-radius: 20px;
+      }
     }
-  }
-  .box-2 {
-    @extend .table-styling;
-    border: 1px solid black;
-    padding: 50px;
+
+    .box-2 {
+      @extend .table-styling;
+      // border: 1px solid black;
+      padding: 50px;
+      right: 70px;
+      top: 60px;
+      td {
+        font-size: 15px;
+        span {
+          font-size: 18px;
+          font-weight: normal;
+        }
+      }
+      }
+    .box-3 {
+        // border: 1px solid black;
+        left: 20px;
+        ul {
+          li {
+            border: white;
+            list-style: none;
+          }
+        }
+
+        a{
+          &:hover{
+            color:#81a7ce;
+            text-decoration: none;
+          }
+        }
+        h3{
+          // font-family: 'Poppins', sans-serif;
+          font-family: 'Playfair Display', serif;
+          font-size: 25px;
+          &:hover{
+            color:#81a7ce;
+            text-decoration: none;
+          }
+        }
     }
-  .box-3 {
-      border: 1px solid black;
-  }
+}
+
 
  }
 // .item{
@@ -561,7 +628,9 @@ nav {
   }
 
 
-///  //REQUESTING ITEM
+
+  //REQUESTING ITEM
+
   input{
     color:black;
     &:focus {
@@ -711,6 +780,7 @@ div.footer{
   color: white;
   //position: fixed;
   bottom: 0;
+  position: fixed;
   width:100%;
   p{
     float:right;

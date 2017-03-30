@@ -30,8 +30,8 @@ function showRoute(req, res, next) {
 }
 
 function updateRoute(req, res, next) {
-  console.log(req.body);
   if(req.file) req.body.image = req.file.filename;
+  console.log(req.body);
   User
     .findById(req.params.id)
     .then((user) => {

@@ -8,46 +8,40 @@ ProfileCtrl.$inject = ['User','$stateParams', '$http', '$state', '$auth', 'Reque
 function ProfileCtrl(User, $stateParams, $http, $state, $auth, Request, Item){
   const vm = this;
 
-  function getUsersItems(){
-    Item.query()
-    .$promise
-    .then((items)=>{
-      items.forEach((item)=>{
-        console.log(vm.user.id, item.name);
-        console.log(item.createdBy.id, item.name);
-        if(item.createdBy.id === vm.user.id){
-          vm.allUserItems.push(item);
-        }
-      });
-    });
-  }
-//defines all functions that is going be interact directly with the UI
-  // vm.open = openEditModal;
-// Grabs Request info from back end
-  vm.user = User.get($stateParams, ()=>{
-    getUsersItems();
-  }); // vm.user is the current user's userpage rendering
-
   vm.allUserItems = [];
   vm.incomingRequests = [];
   vm.activeRequests = [];
   vm.myRequests = [];
   vm.accepted = [];
 
+
+  function getUsersItems(){
+    Item.query()
+    .$promise
+    .then((items)=>{
+      items.forEach((item)=>{
+        if(item.createdBy.id === vm.user.id){
+          vm.allUserItems.push(item);
+        }
+      });
+    });
+  }
+
+//defines all functions that is going be interact directly with the UI
+// Grabs Request info from back end
+  vm.user = User.get($stateParams, ()=>{
+    getUsersItems();
+  }); // vm.user is the current user's userpage rendering
+
+
   $http.get('/api/profile')
   .then((response)=> {
-    //console.log(response);
     vm.activeUser = response.data.user; // ActiveUser is the one being logged in
     vm.pending = response.data.pending;
     vm.requested = response.data.requested;
-    console.log(vm.requested);
-  //  vm.myRequest= if(vm.requested)
-
     vm.requested.forEach((request)=>{
       if(request.requester[0].id === vm.user.id){
         vm.myRequests.push(request);
-      } else{
-        console.log(request.requester[0].id);
       }
     });
 
@@ -63,15 +57,15 @@ function ProfileCtrl(User, $stateParams, $http, $state, $auth, Request, Item){
     });
 
 
-    vm.mine = vm.activeUser.id === vm.user.id; // Checks if the user is the same as the logged in
+     // Checks if the user is the same as the logged in
     vm.accept = acceptRequest;
-
-
+    vm.decline = declineRequest;
+    vm.delete = profileDelete;
+    vm.mine = vm.activeUser.id === vm.user.id;
     function acceptRequest(request){
       request.accepted = true;
       request.requester = request.requester[0].id;
       request.item = request.item[0].id;
-      console.log(request);
       $http
       .put(`/api/request/${request.id}`,request)
       .then(()=> $state.go('profile', $stateParams));
@@ -80,9 +74,8 @@ function ProfileCtrl(User, $stateParams, $http, $state, $auth, Request, Item){
       const index = vm.incomingRequests.indexOf(request);
       vm.incomingRequests.splice(index, 1);
     }
-
   });
-  vm.decline = declineRequest;
+
   function declineRequest(request){
     Request
     .delete({id: request.id})
@@ -95,7 +88,6 @@ function ProfileCtrl(User, $stateParams, $http, $state, $auth, Request, Item){
   }
 
 
-  vm.delete = profileDelete;
   function profileDelete() {
     $auth.logout();
     vm.user
@@ -107,28 +99,20 @@ function ProfileCtrl(User, $stateParams, $http, $state, $auth, Request, Item){
 EditCtrl.$inject = ['User', '$state', '$stateParams'];
 function EditCtrl(User, $state, $stateParams){
   //gets the user from the profile passed in
-
   const vm = this;
 
+  vm.update= updateUser;
   vm.user = User.get($stateParams);
-
-//hooks up all the UI functionality
-  // vm.close = closeEditModal;
-  // vm.update= updateUser;
-
-//closes the Modal
-  // function closeEditModal(){
-  //   $uibModalInstance.close();
-  // }
 //updates the user
   function updateUser(){
     // if(vm.editProfileForm){
+    console.log(vm.user);
     vm.user
     .$update()
     .then(()=> {
       // closeEditModal();
-      $state.go('itemsIndex', $stateParams);
+      $state.go('profile', $stateParams);
     });
   }
-  vm.update= updateUser;
+
 }
