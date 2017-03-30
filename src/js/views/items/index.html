@@ -33,10 +33,15 @@
   <!--- Renders all Items from the GET request in the Controller REMOVE THIS LATER -->
   <div class="masonry-container">
 
-    <a ui-sref="itemsShow({ id: item.id })" ng-repeat="item in index.filtered" class="masonry">
+<div ng-repeat="item in index.filtered" class="masonry">
+
+
+    <a ui-sref="itemsShow({ id: item.id })" >
+      <div class="mask"></div>
       <img ng-src="{{ item.image }}">
-      <p class="hidden-masonry">{{item.name}}</p>
     </a>
+      <p class="hidden-masonry">{{item.name}}</p>
+      </div>
   </div>
 
 </div>

@@ -247,6 +247,25 @@ nav {
 // }
 
 ////////////////////////////////////Masonry//////////////////////////////
+<<<<<<< HEAD
+.hidden-masonry{
+  text-align: left;
+  visibility: hidden;
+  font-size: 13px;
+  height:10px;
+  width: 200px;
+  z-index: 200;
+  margin-top: -30px;
+  margin-left: 20px;
+  color: lightblue;
+}
+.mask{
+  display: none;
+  height:100px;
+  width:100px;
+  background: rgba(0,0,0,0.1);
+  z-index: 199;
+}
 
 .container-index {
   margin-top: 60px;
@@ -262,16 +281,25 @@ nav {
   column-count:         5;
   column-gap:           0px;
 
-
+  
   .masonry {
     /* Just in case there are inline attributes */
     width: 100% !important;
     height: auto !important;
+    display: block;
+    &:hover{
+      .hidden-masonry{
+        visibility: visible;
+      }
+      .mask{
+        display: inline;
+      }
+    }
 
     img {
       width: 100% !important;
       height: auto !important;
-      border-radius: 20px;
+      border-radius: 5px;
       padding: 3px;
       display: block;
     }
