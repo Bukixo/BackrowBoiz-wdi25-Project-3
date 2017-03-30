@@ -45,6 +45,11 @@ describe('GET /api/item', ()=>{
   it('should return a 200 response', (done)=>{
     app.get('/api/item')
     .end((err, res)=>{
+      expect(res.text).to.contain('createdBy');
+      expect(res.text).to.contain('price');
+      expect(res.text).to.contain('image');
+      expect(res.text).to.contain('description');
+      expect(res.text).to.contain('size');
       res.should.have.status(200);
       done();
     });
@@ -54,6 +59,8 @@ describe('GET /api/item', ()=>{
   it('should return a 404 not found', (done)=>{
     app.get('/api/THISISNOTAURL')
     .end((err, res)=>{
+      console.log(res);
+      expect(res.body).to.have.property('message').to.equal('Not Found');
       res.should.have.status(404);
       done();
     });
@@ -69,32 +76,23 @@ describe('GET /api/item', ()=>{
       done();
     });
   });
-
-  it('should dig down to one of the Objects in the array', (done)=>{
-    chai.request(server)
-    .get('api/item')
-  .end((err, res)=>{
-    expect(res.body[1]).to.be.a('Object');
-  });
-    done();
-  });
 });
 
-xdescribe('Post api/item', ()=>{
+describe('Post api/item', ()=>{
 
   it('should return a 201status and have all the properties',(done)=>{
+    const item = {
+      name: 'Bacon',
+      createdBy: '58d54d45f028b0f6b0375803',
+      price: 117,
+      image: 'ImageofBacon',
+      description: 'Sweet Bacon',
+      size: 'Hippo'
+    };
     app.post('/api/item')
-    .type('form')
-  .send({
-    name: 'Bacon',
-    createdBy: '58d54d45f028b0f6b0375803',
-    price: 117,
-    image: 'ImageofBacon',
-    description: 'Sweet Bacon',
-    size: 'Hippo'
-  })
+  .send(item)
   .end((err, res)=>{
-    console.log(err);
+    console.log(res);
     expect(res.status).to.equal(302);
     expect(res.body).to.be.a('object');
     //expect(res.headers.location).to.equal('/api/item');
