@@ -78,7 +78,8 @@ function createRequestRoute(req, res, next){
     });
   })
   .catch(next);
-}
+});
+};
 //deleteRequestRoute Deletes the request only used by the owner of the request
 // PUT NODEMAILER EMAIL HERE!!
 function deleteRequestRoute(req, res, next){
@@ -122,12 +123,10 @@ function declineRequestRoute(req, res, next){
   .then(()=> res.status(204).end())
   .catch(next);
 }
-<<<<<<< HEAD
+
 //owner of item clicked 'accepted', then function runs.  then up to requester to pay.
-=======
 
 
->>>>>>> 4bf93e8ed807a4a360e45ce793c2107ec793d08d
 function updateRequestRoute(req, res, next){
   console.log(req.body);
   Request
