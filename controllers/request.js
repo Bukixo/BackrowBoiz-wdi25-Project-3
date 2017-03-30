@@ -162,7 +162,8 @@ function paymentRoute(req, res, next) {
 function postPaymentRoute(req, res, next) {
   var token = req.body.token;
   stripe.charges.create({
-    amount: parseInt(parseFloat(req.body.amount * 100), 10),
+    //amount: parseInt(parseFloat(req.body.amount * 100), 10),
+    amount: req.body.amount, 
     currency: req.body.currency,
     source: token,
     description: 'TEST'

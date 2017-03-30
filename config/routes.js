@@ -18,7 +18,7 @@ router.route('/users')
 router.route('/users/:id')
   .get(userController.show)
   .put(imageUpload, userController.update)
-  .delete(userController.delete);
+  .delete(secureRoute,userController.delete);
 
 router.route('/register')
   .post(imageUpload, auth.register);
@@ -28,11 +28,11 @@ router.route('/login')
 
 router.route('/request')
   .get(requestController.index)
-  .post(requestController.create);
+  .post(secureRoute,requestController.create);
 
 router.route('/request/:id')
   .get(requestController.show)
-  .put(requestController.update)
+  .put(secureRoute, requestController.update)
   .delete(secureRoute, requestController.delete);
 
 router.route('/item')
@@ -43,20 +43,20 @@ router.route('/item/:id')
   .get(itemController.show)
   .put(imageUpload, itemController.update)
   // .post(requestController.create)
-  .delete(itemController.delete);
+  .delete(secureRoute,itemController.delete);
 
 router.route('/item/:id/comments')
   .post(secureRoute, itemController.createComment);
 
 router.route('/item/:id/comments/:commentId')
-  .delete(itemController.deleteComment);
+  .delete(secureRoute,itemController.deleteComment);
 
 router.route('/profile')
   .get(secureRoute, userController.profile);
 
 router.route('/payment')
   .get(requestController.payment)
-  .post(requestController.postPayment);
+  .post(secureRoute,requestController.postPayment);
 
 router.route('/oauth/github')
   .post(oauth.github);
