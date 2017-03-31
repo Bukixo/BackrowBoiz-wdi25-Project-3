@@ -51,7 +51,7 @@ function createRequestRoute(req, res, next){
       if(err) next(err);
     });
 //sending email to user (const currentuser) telling them that they've successfully made a request
-    mail.send(user.email, 'Thanks for making a request!', `Hey ${user.username}! Thanks for requesting ${item.name} from ${itemOwner.username} for ${request.numberOfDays} days at £${request.price} per day, we'll let you know when the request has been accepted or not!`, (err) => {
+    mail.send(user.email, 'Thanks for making a request!', `Hey ${user.username}! Thanks for requesting ${item.name} from ${itemOwner.username} for ${request.numberOfDays} days at £${item.price} per day, we'll let you know when the request has been accepted or not!`, (err) => {
       if(err) next(err);
       res.status(201).json(request);
     });
