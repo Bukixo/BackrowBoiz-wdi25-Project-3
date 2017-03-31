@@ -1,19 +1,21 @@
 <div class="form form-style-8">
 
 <h2>New item</h2>
-<form name="itemsNew.newForm" ng-submit="itemsNew.create()" novalidate >
-  <div ng-messages="itemsNew.newForm.name.$error" role="alert" ng-show="(itemsNew.newForm.name.$touched) &&(itemsNew.newForm.name.$invalid)">
-    <div ng-message="required">Item name is required </div>
-  </div>
-  <div ng-show="itemsNew.newForm.price.$touched &&(itemsNew.newForm.price.$invalid)" ng-messages="itemsNew.newForm.price.$error" role="alert">
-    <div ng-message="required">Price is required </div>
-  </div>
-  <div ng-messages="itemsNew.newForm.size.$error" role="alert" ng-show="(itemsNew.newForm.size.$touched) &&(itemsNew.newForm.size.$invalid)">
-    <div ng-message="required">Size is required </div>
-  </div>
-  <div ng-messages="itemsNew.newForm.catagory.$error" role="alert" ng-show="(itemsNew.newForm.catagory.$touched) &&(itemsNew.newForm.catagory.$invalid)">
-    <div ng-message="required">Category is required </div>
-  </div>
+
+  <form name="itemsNew.newForm" ng-submit="itemsNew.create()" novalidate >
+    <div ng-messages="itemsNew.newForm.name.$error" role="alert" ng-show="(itemsNew.newForm.name.$touched) &&(itemsNew.newForm.name.$invalid)">
+      <div ng-message="required">Item name is required </div>
+    </div>
+    <div ng-show="itemsNew.newForm.price.$touched &&(itemsNew.newForm.price.$invalid)" ng-messages="itemsNew.newForm.price.$error" role="alert">
+      <div ng-message="required">Price is required </div>
+    </div>
+    <div ng-messages="itemsNew.newForm.size.$error" role="alert" ng-show="(itemsNew.newForm.size.$touched) &&(itemsNew.newForm.size.$invalid)">
+      <div ng-message="required">Size is required </div>
+    </div>
+    <div ng-messages="itemsNew.newForm.catagory.$error" role="alert" ng-show="(itemsNew.newForm.catagory.$touched) &&(itemsNew.newForm.catagory.$invalid)">
+      <div ng-message="required">Category is required </div>
+    </div>
+
 
     <label for="name">Name</label>
     <input type="text" name="name" id="name" ng-model="itemsNew.item.name" class="form-control" required>

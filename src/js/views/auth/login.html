@@ -1,7 +1,7 @@
 <div class="form form-style-8">
 
-<h2>Login page</h2>
-
+  <h2>Login page</h2>
+  
 <form name="login.loginForm" ng-submit="login.submit()" novalidate>
   <div ng-messages="login.loginForm.email.$error" role="alert" ng-show="(login.loginForm.email.$touched) &&(login.loginForm.email.$invalid)">
     <div ng-message="required">Email is required </div>
@@ -10,6 +10,7 @@
   <div ng-messages="login.loginForm.password.$error" role="alert" ng-show="(login.loginForm.password.$touched) &&(login.loginForm.password.$invalid)">
     <div ng-message="required">Password is required </div>
   </div>
+
 
     <label for="email">Email</label>
     <input type="text" name="email" id="email" ng-pattern="/@/" ng-model="login.credentials.email" required>
