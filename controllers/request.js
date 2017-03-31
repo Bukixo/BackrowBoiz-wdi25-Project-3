@@ -47,11 +47,11 @@ function createRequestRoute(req, res, next){
     const itemOwner = data.itemOwner;
     const request = data.request;
 //sending an email to the item owner (const user) telling them that someone has made a request
-    mail.send(user.email, 'Someone\'s made a request!', `Hey ${user.username}! Great News! ${itemOwner.username} has requested ${item.name} for ${request.numberOfDays}.  To accept this request, please go to heroku.com and accept the payment from ${itemOwner.username}`, (err) => {
+    mail.send(itemOwner.email, 'Someone\'s made a request!', `Hey ${itemOwner.username}! Great News! ${user.username} has requested ${item.name} for ${request.numberOfDays}.  To accept this request, please go to heroku.com and accept the payment from ${user.username}`, (err) => {
       if(err) next(err);
     });
 //sending email to user (const currentuser) telling them that they've successfully made a request
-    mail.send(itemOwner.email, 'Thanks for making a request!', `Hey ${itemOwner.username}! Thanks for requesting ${item.name} from ${user.username} for ${request.numberOfDays} days at £${request.price} per day, we'll let you know when the request has been accepted or not!`, (err) => {
+    mail.send(user.email, 'Thanks for making a request!', `Hey ${user.username}! Thanks for requesting ${item.name} from ${itemOwner.username} for ${request.numberOfDays} days at £${request.price} per day, we'll let you know when the request has been accepted or not!`, (err) => {
       if(err) next(err);
       res.status(201).json(request);
     });
