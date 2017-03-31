@@ -30,8 +30,14 @@ function ProfileCtrl(User, $stateParams, $http, $state, $auth, Request, Item){
 //defines all functions that is going be interact directly with the UI
 // Grabs Request info from back end
   vm.user = User.get($stateParams, ()=>{
-    console.log(vm.user.imageSRC);
-    if(!vm.user.imageSRC) vm.user.imageSRC = vm.user.image;
+    console.log(vm.user);
+    if(vm.user.githubId && !vm.user.facebookId && !vm.user.instagramId){
+      vm.user.imageSRC = vm.user.image;
+    }
+    if(vm.user.instagramId && !vm.user.facebookId && !vm.user.githubId){
+      vm.user.imageSRC = vm.user.image;
+    }
+    if(vm.user.facebookId) vm.user.imageSRC = vm.user.image;
     getUsersItems();
   }); // vm.user is the current user's userpage rendering
 
