@@ -115,7 +115,6 @@ function declineRequestRoute(req, res, next){
 
 
 function updateRequestRoute(req, res, next){
-  console.log(req.body);
   Request
   .findById(req.params.id)
   .exec()

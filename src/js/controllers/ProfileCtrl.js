@@ -30,7 +30,6 @@ function ProfileCtrl(User, $stateParams, $http, $state, $auth, Request, Item){
 //defines all functions that is going be interact directly with the UI
 // Grabs Request info from back end
   vm.user = User.get($stateParams, ()=>{
-    console.log(vm.user);
     if(vm.user.githubId && !vm.user.facebookId && !vm.user.instagramId){
       vm.user.imageSRC = vm.user.image;
     }
