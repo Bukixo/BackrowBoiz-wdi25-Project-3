@@ -45,14 +45,13 @@ $darkGrey: #242322;
 //'Open Sans Condensed'
 //'Playfair Display'Headings on show etc
 //font-family: 'Poppins', sans-serif;  used for title
-
-button {
+.btn-primary {
   border-width: medium;
   border-color: white;
   margin: 10px;
   padding: 5px 20px;
-  background-color: $lightGrey;
-  color: $darkGrey;
+  background-color: black;
+  color: white;
   border-radius: 5px;
   font-size: 16px;
   a {
@@ -73,12 +72,12 @@ a:visited {
 
 /* mouse over link */
 a:hover {
-    color: $dark-blue;
+    color: grey;
 }
 
 /* selected link */
 a:active {
-    color: blue;
+    color: lightGrey;
 }
 
 //////////////////////////////END OF USEFUL BITS///////////////////////////

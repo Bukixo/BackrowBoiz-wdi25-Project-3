@@ -34,11 +34,12 @@ function github(req, res, next) {
         if(!user) {
           user = new User({
             username: profile.login,
-            email: profile.email
+            email: profile.email,
+            image: profile.avatar_url
           });
         }
         user.githubId = profile.id;
-        // user.image = profile.avatar_url;
+        user.image = profile.avatar_url;
 
         return user.save();
       });
@@ -90,7 +91,7 @@ function facebook(req, res, next) {
           });
         }
         user.facebookId = profile.id;
-
+        user.image = profile.pricture.data.url;
         return user.save();
       });
   })
@@ -120,7 +121,6 @@ function instagram(req, res, next) {
     json: true
   })
   .then((profile) => {
-    console.log(profile);
     return User
       .findOne({ instagramId: profile.user.id })
       .then((user) => {
