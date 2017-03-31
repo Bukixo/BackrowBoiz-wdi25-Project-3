@@ -3,11 +3,11 @@
 <h2>Login page</h2>
 
 <form name="login.loginForm" ng-submit="login.submit()" novalidate>
-  <div ng-messages="login.loginForm.email.$error" role="alert" ng-show="(login.loginForm.$submitted)||(login.loginForm.email.$touched) &&(login.loginForm.email.$invalid)">
+  <div ng-messages="login.loginForm.email.$error" role="alert" ng-show="(login.loginForm.email.$touched) &&(login.loginForm.email.$invalid)">
     <div ng-message="required">Email is required </div>
     <div ng-message="pattern">Please enter a valid email.</div>
   </div>
-  <div ng-messages="login.loginForm.password.$error" role="alert" ng-show="(login.loginForm.$submitted)||(login.loginForm.password.$touched) &&(login.loginForm.password.$invalid)">
+  <div ng-messages="login.loginForm.password.$error" role="alert" ng-show="(login.loginForm.password.$touched) &&(login.loginForm.password.$invalid)">
     <div ng-message="required">Password is required </div>
   </div>
 

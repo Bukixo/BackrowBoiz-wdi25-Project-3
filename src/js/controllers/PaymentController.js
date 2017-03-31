@@ -44,13 +44,15 @@ function PaymentController($http, $window, $state, $stateParams, Request) {
   }
 
   vm.pay = function pay() {
-    Stripe.card.createToken(vm.card, (status, response) => {
+    const tokenData = angular.copy(vm.card);
+    delete tokenData.amount;
+    Stripe.card.createToken(tokenData, (status, response) => {
       const data = {
         card: vm.card,
         token: response.id,
         payee: vm.card.payee,
-        amount: vm.card.amount,
-        currency: vm.card.currency
+        amount: vm.card.amount * 100,
+        currency: vm.currency
       };
       paymentTransaction(data);
     });
