@@ -47,7 +47,7 @@ function createRequestRoute(req, res, next){
     const itemOwner = data.itemOwner;
     const request = data.request;
 //sending an email to the item owner (const user) telling them that someone has made a request
-    mail.send(itemOwner.email, 'Someone\'s made a request!', `Hey ${itemOwner.username}! Great News! ${user.username} has requested ${item.name} for ${request.numberOfDays}.  To accept this request, please go to heroku.com and accept the payment from ${user.username}`, (err) => {
+    mail.send(itemOwner.email, 'Someone\'s made a request!', `Hey ${itemOwner.username}! Great News! ${user.username} has requested ${item.name} for ${request.numberOfDays} days.  To accept this request, please go to heroku.com and accept the payment from ${user.username}`, (err) => {
       if(err) next(err);
     });
 //sending email to user (const currentuser) telling them that they've successfully made a request
