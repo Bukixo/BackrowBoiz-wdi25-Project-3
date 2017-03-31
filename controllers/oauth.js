@@ -91,7 +91,7 @@ function facebook(req, res, next) {
           });
         }
         user.facebookId = profile.id;
-        user.image = profile.pricture.data.url;
+        user.image = profile.picture.data.url;
         return user.save();
       });
   })
