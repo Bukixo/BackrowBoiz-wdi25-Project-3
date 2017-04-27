@@ -90,7 +90,7 @@ function facebook(req, res, next) {
           });
         }
         user.facebookId = profile.id;
-    console.log(User);
+        console.log(User);
         return user.save();
       });
   })
